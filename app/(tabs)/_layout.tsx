@@ -1,7 +1,26 @@
 import { Tabs } from 'expo-router';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { useFonts } from 'expo-font';
+import { useEffect } from 'react';
+import { SplashScreen } from 'expo-router';
 
 export default function TabLayout() {
+  const [loaded] = useFonts({
+    Ionicons: require('../../assets/fonts/Ionicons.ttf'),
+  });
+
+  useEffect(() => {
+    if (!loaded) {
+      SplashScreen.preventAutoHideAsync();
+    } else {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded]);
+
+  if (!loaded) {
+    return null;
+  }
+
   return (
     <Tabs
       screenOptions={{
