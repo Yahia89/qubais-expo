@@ -136,7 +136,11 @@ export default function Programs() {
         </View>
 
         {/* Column 2 */}
-        <View style={[styles.column, !isSmallScreen && styles.columnBorder]}>
+        <View style={[
+          styles.column, 
+          !isSmallScreen && styles.columnBorder,
+          isSmallScreen && { marginVertical: 580 }
+        ]}>
           <Text style={styles.headlineHL2}>ISLAMIC CURRICULUM</Text>
           <Text style={styles.bodyText}>
             Quba Islamic School utilizes ICO's Islamic curriculum which seeks to ground the next generation of Muslims to Sunni Islamic beliefs, values, and norms.
@@ -221,7 +225,7 @@ export default function Programs() {
         </View>
 
         {/* Column 3 */}
-        <View style={[styles.column, !isSmallScreen && styles.columnBorder]}>
+        <View style={[styles.column, !isSmallScreen && styles.columnBorder, isSmallScreen && {top: -300}]}>
           <Text style={styles.headlineHL3}>EXTRACURRICULAR ACTIVITIES</Text>
           <Text style={styles.citation}>
             "Nurturing minds beyond the classroom"
@@ -383,8 +387,8 @@ const styles = StyleSheet.create({
     color: '#2f2f2f',
     marginVertical: 40,
     paddingHorizontal: 20,
-    // borderTopWidth: 1,
-    // borderBottomWidth: 1,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
     borderColor: '#2f2f2f',
     paddingVertical: 16,
     fontStyle: 'italic',
