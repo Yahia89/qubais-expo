@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import {
   Text,
   View,
@@ -17,8 +18,16 @@ import { useState } from 'react';
 import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import Constants from 'expo-constants';
+import { useGoogleAds } from '../../hooks/useGoogleAds.web';
 
 export default function Inquire() {
+  const { trackPageView } = useGoogleAds();
+
+  // Track page view when component mounts
+  useEffect(() => {
+    trackPageView();
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.content}>
