@@ -10,6 +10,8 @@ import { ScrollReveal } from '../components/ScrollReveal';
 import { GlassCard } from '../components/GlassCard';
 import Inquire from './inquire';
 import { Footer } from '../components/Footer';
+import { Linking } from 'react-native';
+
 
 
 export default function Admissions() {
