@@ -9,7 +9,8 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.yahiaalhejoj.Qubais"
     },
     "android": {
       "adaptiveIcon": {
@@ -37,7 +38,6 @@
     ],
     "experiments": {
       "typedRoutes": true
-      
     }
   }
 }
