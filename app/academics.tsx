@@ -137,6 +137,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    minHeight: '100vh',
   },
   backgroundImage: {
     position: 'absolute',
@@ -145,15 +146,20 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     zIndex: -1,
-    width: '120%',
+    width: '100%',
+    height: '100%',
   },
   backgroundImageContent: {
     flex: 1,
     opacity: 0.65,
+    width: '100%',
+    height: '100%',
   },
   scrollView: {
     flex: 1,
     marginTop: 40,
+    flexGrow: 1,
+    minHeight: '100%',
   },
   content: {
     padding: 20,
@@ -162,7 +168,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: 'bold',
     color: '#fff',
-    marginBottom: 20,
+    marginTop: 70,
     textAlign: 'center',
   },
   description: {
@@ -177,7 +183,7 @@ const styles = StyleSheet.create({
   calendarContainer: {
     alignItems: 'center',
     width: '100%',
-    marginVertical: 20,
+    // marginVertical: 20,
   },
   calendarGrid: {
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
@@ -283,7 +289,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: undefined,
     aspectRatio: 1.4, // Adjust this based on your image's aspect ratio
-    marginBottom: 20,
+    marginTop: 20,
   },
   downloadButton: {
     backgroundColor: '#2c365d',

@@ -1,4 +1,6 @@
-import { View, Text, TouchableOpacity, StyleSheet, Linking } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Linking } from 'react-native';
+import { GlassCard } from './GlassCard';
 
 export const PrincipalsMessage = () => {
   const handleRegistration = () => {
@@ -6,12 +8,8 @@ export const PrincipalsMessage = () => {
   };
 
   return (
-    <View style={styles.glassCard}>
-      <View style={[styles.blob, styles.blob1]} />
-      <View style={[styles.blob, styles.blob2]} />
-      <View style={[styles.blob, styles.blob3]} />
-      <View style={[styles.blob, styles.blob4]} />
-      <View style={styles.glassContent}>
+    <GlassCard>
+      <View style={styles.content}>
         <Text style={styles.sectionTitle}>Principal's Welcome Message</Text>
         <Text style={styles.welcomeText}>
           Assalamu Alaikum Wa Rahmatullahi Wa Barakatuh,
@@ -38,63 +36,19 @@ export const PrincipalsMessage = () => {
           <Text style={styles.buttonText}>Begin Your Journey - Registration Form</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </GlassCard>
   );
 };
 
 const styles = StyleSheet.create({
-  glassCard: {
-    position: 'relative',
+  content: {
     width: '100%',
-    minHeight: 150,
-    marginVertical: 15,
-    borderRadius: 21,
-    overflow: 'hidden',
-    backgroundColor: 'transparent',
-  },
-  glassContent: {
-    backgroundColor: 'rgba(255, 255, 255, 0.15)',
-    padding: 20,
-    width: '100%',
-    height: '100%',
-    borderRadius: 21,
-    zIndex: 1,
-  },
-  blob: {
-    position: 'absolute',
-    width: 200,
-    height: 200,
-    borderRadius: 100,
-    zIndex: -1,
-  },
-  blob1: {
-    left: -50,
-    top: -90,
-    backgroundColor: '#E31B23',
-    opacity: 0.7,
-  },
-  blob2: {
-    right: -40,
-    top: -20,
-    backgroundColor: '#1729CE',
-    opacity: 0.6,
-  },
-  blob3: {
-    left: -40,
-    bottom: -60,
-    backgroundColor: '#FF8C11',
-    opacity: 0.5,
-  },
-  blob4: {
-    right: -30,
-    bottom: -40,
-    backgroundColor: '#E31B23',
-    opacity: 0.4,
   },
   sectionTitle: {
     fontSize: 28,
     fontWeight: 'bold',
     color: '#fff',
+    marginTop: 70,
     marginBottom: 20,
     textAlign: 'center',
   },

@@ -111,11 +111,11 @@ export default function Inquire() {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { minHeight: '100vh' }]}>
       <View style={styles.backgroundImage}>
         <ImageBackground
           source={require('../assets/images/school-bg.png')}
-          style={styles.backgroundImageContent}
+          style={[styles.backgroundImageContent, { width: '100%', height: '100%' }]}
           resizeMode="cover"
         />
       </View>
@@ -128,7 +128,7 @@ export default function Inquire() {
         keyboardOpeningTime={0}
       >
         <Animated.ScrollView
-          style={styles.scrollView}
+          style={[styles.scrollView, { flexGrow: 1, minHeight: '100%' }]}
           onScroll={scrollHandler}
           scrollEventThrottle={16}
           keyboardShouldPersistTaps="handled"
@@ -276,7 +276,7 @@ export default function Inquire() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'transparent',
   },
   backgroundImage: {
     position: 'absolute',
@@ -302,6 +302,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: 'bold',
     color: '#fff',
+    marginTop: 70,
     marginBottom: 20,
     textAlign: 'center',
   },

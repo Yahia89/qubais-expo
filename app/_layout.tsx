@@ -1,11 +1,12 @@
 import { Stack } from 'expo-router';
+import { View, StyleSheet } from 'react-native';
 import { GoogleTag } from '../components/GoogleTag.web';
 import { CustomHeader } from '../components/CustomHeader';
 import { Footer } from '../components/Footer';
 
 export default function RootLayout() {
   return (
-    <>
+    <View style={styles.container}>
       <GoogleTag />
       <Stack
         screenOptions={{
@@ -23,7 +24,13 @@ export default function RootLayout() {
         <Stack.Screen name="inquire" />
         <Stack.Screen name="+not-found" />
       </Stack>
-      {/* <Footer /> <-- Remove this line */}
-    </>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    minHeight: '100vh',
+  }
+});

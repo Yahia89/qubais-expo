@@ -214,10 +214,8 @@ export default function Admissions() {
           </ScrollReveal>
 
           <ScrollReveal delay={500}>
-            <GlassCard>
               <Text style={styles.sectionTitle}>Request Info / Schedule a Tour</Text>
               <Inquire />
-            </GlassCard>
           </ScrollReveal>
 
           <ScrollReveal delay={600}>
@@ -258,6 +256,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    minHeight: '100vh',
   },
   backgroundImage: {
     position: 'absolute',
@@ -266,15 +265,20 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     zIndex: -1,
-    width: '120%',
+    width: '100%',
+    height: '100%',
   },
   backgroundImageContent: {
     flex: 1,
     opacity: 0.65,
+    width: '100%',
+    height: '100%',
   },
   scrollView: {
     flex: 1,
     marginTop: 40,
+    flexGrow: 1,
+    minHeight: '100%',
   },
   content: {
     padding: 20,
@@ -283,6 +287,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: '700',
     color: '#2c365d',
+    marginTop: 70,
     marginBottom: 20,
     textAlign: 'center',
     textShadowColor: 'rgba(0, 0, 0, 0.3)',
@@ -303,7 +308,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
     color: '#2c365d',
-    marginBottom: 20,
+    marginBottom: 75,
     textAlign: 'justify',
     textShadowColor: 'rgba(0, 0, 0, 0.3)',
     textShadowOffset: { width: 1, height: 1 },
@@ -327,6 +332,7 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     color: '#2c365d',
     marginTop: 20,
+    marginBottom:80,
     textAlign: 'center',
     textShadowColor: 'rgba(0, 0, 0, 0.3)',
     textShadowOffset: { width: 1, height: 1 },
@@ -414,6 +420,7 @@ const styles = StyleSheet.create({
     color: '#ff6b6b',
     fontWeight: '600',
     marginTop: 15,
+    marginBottom: 80,
     textAlign: 'center',
     textShadowColor: 'rgba(0, 0, 0, 0.3)',
     textShadowOffset: { width: 1, height: 1 },

@@ -113,6 +113,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    minHeight: '100vh',
   },
   backgroundImage: {
     position: 'absolute',
@@ -121,15 +122,20 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     zIndex: -1,
-    width: '120%',
+    width: '100%',
+    height: '100%',
   },
   backgroundImageContent: {
     flex: 1,
     opacity: 0.65,
+    width: '100%',
+    height: '100%',
   },
   scrollView: {
     flex: 1,
     marginTop: 40,
+    flexGrow: 1,
+    minHeight: '100%',
   },
   content: {
     padding: 20,
@@ -138,6 +144,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: 'bold',
     color: '#fff',
+    marginTop: 70,
     marginBottom: 20,
     textAlign: 'center',
   },
@@ -145,7 +152,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
     color: '#2c365d',
-    marginBottom: 15,
+    marginBottom: 75,
     textAlign: 'justify',
     textShadowColor: 'rgba(0, 0, 0, 0.3)',
     textShadowOffset: { width: 1, height: 1 },

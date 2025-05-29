@@ -1,29 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, Image, Text, useWindowDimensions } from 'react-native';
-import { useNavigation } from 'expo-router';
+import React, { useEffect } from 'react';
+import { View, StyleSheet, Text, ImageBackground, Image } from 'react-native';
 import Animated, {
   useAnimatedScrollHandler,
   useAnimatedStyle,
   useSharedValue,
-  interpolate,
-  Extrapolation,
+  withTiming,
 } from 'react-native-reanimated';
-import { CustomHeader } from '../components/CustomHeader';
 import { HeroCard } from '../components/HeroCard';
 import { NavigationGrid } from '@/components/NavigationGrid';
-import { ParallaxBackground } from '@/components/ParallaxBackground';
-import { FloatingStickers } from '@/components/FloatingStickers';
+import { ScrollReveal } from '../components/ScrollReveal';
+import { GlassCard } from '../components/GlassCard';
 import { Footer } from '../components/Footer';
 
-const isSmallScreen = (width: number) => width < 768;
-
-const ParallaxComponent = () => {
-  const { width, height } = useWindowDimensions();
-  const navigation = useNavigation();
+export default function Index() {
   const scrollY = useSharedValue(0);
-  const [heroCardHeight, setHeroCardHeight] = useState(0);
-  const [descriptionHeight, setDescriptionHeight] = useState(0);
-  const [navigationGridHeight, setNavigationGridHeight] = useState(0);
+  const contentOpacity = useSharedValue(0);
 
   const scrollHandler = useAnimatedScrollHandler({
     onScroll: (event) => {
@@ -31,153 +22,120 @@ const ParallaxComponent = () => {
     },
   });
 
-  const indexLogoStyle = useAnimatedStyle(() => ({
-    transform: [
-      {
-        translateY: interpolate(scrollY.value, [0, 150], [100, 0], Extrapolation.CLAMP),
-      },
-    ],
-    opacity: interpolate(scrollY.value, [0, 150], [1, 0], Extrapolation.CLAMP),
-  }));
-
-  const headerLogoStyle = useAnimatedStyle(() => ({
-    opacity: interpolate(scrollY.value, [100, 200], [0, 1], Extrapolation.CLAMP),
-  }));
-
   useEffect(() => {
-    navigation.setOptions({
-      header: () => <CustomHeader logoStyle={headerLogoStyle} />,
-    });
-  }, [navigation, headerLogoStyle]);
+    contentOpacity.value = withTiming(1, { duration: 1000 });
+  }, []);
+
+  const contentStyle = useAnimatedStyle(() => ({
+    opacity: contentOpacity.value,
+  }));
 
   return (
     <View style={styles.container}>
-      <ParallaxBackground scrollY={scrollY} />
-      <FloatingStickers />
-
+      <View style={styles.backgroundImage}>
+        <ImageBackground
+          source={require('../assets/images/school-bg.png')}
+          style={styles.backgroundImageContent}
+          resizeMode="cover"
+        />
+      </View>
       <Animated.ScrollView
         style={styles.scrollView}
-        contentContainerStyle={[
-          styles.contentContainer,
-          {
-            paddingBottom: isSmallScreen(width) ? 200 : 300,
-            minHeight: heroCardHeight + descriptionHeight + navigationGridHeight + (isSmallScreen(width) ? 500 : 600),
-          },
-        ]}
         onScroll={scrollHandler}
         scrollEventThrottle={16}
-        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollViewContent}
       >
-        <View style={styles.content}>
-          <Animated.View style={[styles.indexLogoContainer, indexLogoStyle]}>
-            <Image
-              source={require('../assets/quba-logo.png')}
-              style={styles.logo}
-              resizeMode="contain"
-            />
-          </Animated.View>
+        <Animated.View style={[styles.content, contentStyle]}>
+          <ScrollReveal delay={200}>
+            <GlassCard>
+              <Text style={styles.sectionTitle}>Welcome to Our School</Text>
+              <View style={styles.welcomeContainer}>
+                <View style={styles.logoContainer}>
+                  <Image
+                    source={require('../assets/images/wasc-logo-Photoroom.png')}
+                    style={styles.wascLogo}
+                    resizeMode="contain"
+                  />
+                </View>
+                <View style={styles.textContainer}>
+                  <Text style={styles.description}>
+                    A WASC accredited K-12, we are a private Islamic school that focuses on fulfilling the academic and character development needs of Muslim students. Our school provides small class sizes with low student-teacher ratios in a safe, secure and nurturing campus community. We take pride in instilling lasting Islamic values while maintaining highly qualified teachers and a robust academic program. 
+                  </Text>
+                </View>
+              </View>
+              <Text style={styles.swipeText}>(Swipe Me)</Text>
+              <HeroCard
+                scrollY={scrollY}
+                source={[
+                  require('../assets/images/DSC06614-768x432.jpg'),
+                  require('../assets/images/DSC06696-768x446.png'),
+                ]}
+                onPress={() => {}}
+              />
+            </GlassCard>
+          </ScrollReveal>
 
-          <View
-            onLayout={(event) => setHeroCardHeight(event.nativeEvent.layout.height)}
-          >
-          <View
-            style={[
-              styles.descriptionContainer,
-              { marginTop: 80 }, // Fixed margin instead of dynamic
-            ]}
-            onLayout={(event) => setDescriptionHeight(event.nativeEvent.layout.height)}
-          >
-            <View style={styles.descriptionContent}>
-              <Text style={styles.descriptionTitle}>Welcome to Our School</Text>
-              <Text style={styles.descriptionText}>
-                A WASC accredited K-12, we are a private Islamic school that focuses on fulfilling the academic and character development needs of Muslim students. Our school provides small class sizes with low student-teacher ratios in a safe, secure and nurturing campus community.
-              </Text>
-              <Text style={styles.descriptionText}>
-                We take pride in instilling lasting Islamic values while maintaining highly qualified teachers and a robust academic program.
-              </Text>
-            </View>
-          </View>
-          <Text style={styles.swipeText}>(Swipe Me)</Text>
-          <HeroCard
-            scrollY={scrollY}
-            source={[
-              require('../assets/images/DSC06614-768x432.jpg'),
-              require('../assets/images/DSC06696-768x446.png'),
-            ]}
-            onPress={() => {}}
-          />
-          </View>
-
-
-          <View
-            onLayout={(event) => setNavigationGridHeight(event.nativeEvent.layout.height)}
-          >
-            <NavigationGrid />
-          </View>
-        <Text>Test</Text>
-        </View>
-        <Footer /> {/* Add Footer here so it appears at the bottom */}
+          <ScrollReveal delay={400}>
+            <GlassCard>
+              <NavigationGrid />
+            </GlassCard>
+          </ScrollReveal>
+        </Animated.View>
+        <Footer />
       </Animated.ScrollView>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    minHeight: '100vh',
   },
-  scrollView: {
-    flex: 1,
-    zIndex: 1,
-    width: '100%',
-  },
-  contentContainer: {
-    flexGrow: 1,
-    paddingHorizontal: 10,
-  },
-  content: {
-    position: 'relative',
-    width: '100%',
-    alignItems: 'center',
-  },
-  indexLogoContainer: {
+  backgroundImage: {
     position: 'absolute',
-    top: -70,
-    width: 100,
-    height: 45,
-    alignSelf: 'center',
-    zIndex: 100,
-  },
-  logo: {
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: -1,
     width: '100%',
     height: '100%',
   },
-  descriptionContainer: {
+  backgroundImageContent: {
+    flex: 1,
     width: '100%',
-    paddingVertical: 30,
-    paddingHorizontal: 10,
-    // backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    height: '100%',
   },
-  descriptionContent: {
-    maxWidth: 600,
-    marginHorizontal: 'auto',
-    alignItems: 'center',
+  scrollView: {
+    flex: 1,
+    marginTop: 40,
   },
-  descriptionTitle: {
-    fontSize: 26,
-    fontWeight: '700',
+  scrollViewContent: {
+    flexGrow: 1,
+    minHeight: '100%',
+  },
+  content: {
+    padding: 20,
+  },
+  sectionTitle: {
+    fontSize: 28,
+    fontWeight: 'bold',
     color: '#fff',
-    marginBottom: 16,
+    marginTop: 70,
+    marginBottom: 20,
     textAlign: 'center',
   },
-  descriptionText: {
+  description: {
     fontSize: 16,
     lineHeight: 24,
     color: '#fff',
-    textAlign: 'center',
-    marginBottom: 16,
-    maxWidth: 500,
+    marginBottom: 15,
+    textAlign: 'justify',
+    textShadowColor: 'rgba(0, 0, 0, 0.3)',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 2,
   },
   swipeText: {
     fontSize: 14,
@@ -187,6 +145,34 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     opacity: 0.8
   },
+  welcomeContainer: {
+    gap: 24,
+    alignItems: 'center',
+    marginBottom: 16,
+    '@media (min-width: 768px)': {
+      flexDirection: 'row',
+    },
+  },
+  textContainer: {
+    flex: 1,
+  },
+  description: {
+    fontSize: 16,
+    lineHeight: 24,
+    color: '#333',
+    textAlign: 'justify',
+  },
+  logoContainer: {
+    width: '100%',
+    maxWidth: 250, // Increased from 200
+    alignSelf: 'center',
+    '@media (min-width: 768px)': {
+      width: 250, // Increased from 200
+      order: 2,
+    },
+  },
+  wascLogo: {
+    width: '100%',
+    height: 150, // Increased from 120
+  },
 });
-
-export default ParallaxComponent;

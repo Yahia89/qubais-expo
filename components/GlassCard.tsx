@@ -9,15 +9,30 @@ interface GlassCardProps {
 export const GlassCard: React.FC<GlassCardProps> = ({ children }) => {
   return (
     <View style={styles.glassCard}>
-      {/* <ImageBackground
-        source={require('../assets/quba-logo.png')}
-        style={styles.watermark}
-        resizeMode="contain"
-      /> */}
-      <View style={[styles.blob, styles.blob1]} />
-      <View style={[styles.blob, styles.blob2]} />
-      <View style={[styles.blob, styles.blob3]} />
-      <View style={[styles.blob, styles.blob4]} />
+      <ImageBackground
+        source={require('../assets/images/corner-pattern-removebg-preview.png')}
+        style={[styles.blob, styles.blob1]}
+        imageStyle={styles.blobPattern}
+        resizeMode="cover"
+      />
+      <ImageBackground
+        source={require('../assets/images/corner-pattern-removebg-preview.png')}
+        style={[styles.blob, styles.blob2]}
+        imageStyle={styles.blobPattern}
+        resizeMode="cover"
+      />
+      <ImageBackground
+        source={require('../assets/images/corner-pattern-removebg-preview.png')}
+        style={[styles.blob, styles.blob3]}
+        imageStyle={styles.blobPattern}
+        resizeMode="cover"
+      />
+      <ImageBackground
+        source={require('../assets/images/corner-pattern-removebg-preview.png')}
+        style={[styles.blob, styles.blob4]}
+        imageStyle={styles.blobPattern}
+        resizeMode="cover"
+      />
       <View style={styles.glassContent}>
         {children}
       </View>
@@ -35,14 +50,9 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     backgroundColor: 'transparent',
   },
-  watermark: {
-    position: 'absolute',
-    width: '50%',
-    height: '100%',
-    // opacity: 0.05,
-    left: '25%',
-    right: '25%',
-    zIndex: 0,
+  blobPattern: {
+    // opacity: 0.9,
+    backgroundColor: 'transparent',
   },
   glassContent: {
     backgroundColor: 'rgba(255, 255, 255, 0.15)',
@@ -60,27 +70,29 @@ const styles = StyleSheet.create({
     zIndex: -1,
   },
   blob1: {
-    left: -50,
+    left: -95,
     top: -90,
-    backgroundColor: '#E31B23',
-    opacity: 0.7,
+    // opacity: 0.9,
   },
   blob2: {
-    right: -40,
-    top: -20,
-    backgroundColor: '#1729CE',
-    opacity: 0.6,
+    right: -150,
+    top: -130,
+    // opacity: 0.9,
+    width: 300,
+    height: 300,
   },
   blob3: {
-    left: -40,
-    bottom: -60,
-    backgroundColor: '#FF8C11',
-    opacity: 0.5,
+    left: -140,
+    bottom: -150,
+    // opacity: 0.9,
+    width: 300,
+    height: 300,
   },
   blob4: {
-    right: -30,
-    bottom: -40,
-    backgroundColor: '#E31B23',
-    opacity: 0.4,
+    right: -199,
+    bottom: -195,
+    // opacity: 0.9,
+    width: 400,
+    height: 400,
   },
 });

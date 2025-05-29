@@ -20,6 +20,7 @@ export function Footer() {
           <TouchableOpacity
             onPress={() => Linking.openURL('https://www.acswasc.org/')}
             accessibilityLabel="WASC Accreditation"
+            style={styles.logoContainer}
           >
             <Image
               source={require('../assets/images/Accredited-logo.png')}
@@ -27,11 +28,13 @@ export function Footer() {
               resizeMode="contain"
             />
           </TouchableOpacity>
-          <Image
-            source={require('../assets/quba-logo.png')}
-            style={styles.schoolLogo}
-            resizeMode="contain"
-          />
+          <View style={styles.logoContainer}>
+            <Image
+              source={require('../assets/quba-logo.png')}
+              style={styles.schoolLogo}
+              resizeMode="contain"
+            />
+          </View>
         </View>
       </View>
       <View style={styles.copyrightSection}>
@@ -45,7 +48,7 @@ export function Footer() {
 
 const styles = StyleSheet.create({
   footer: {
-    backgroundColor: '#2c365d',
+    backgroundColor: '#2f2f2f',
     paddingVertical: 24,
     paddingHorizontal: 16,
     borderTopLeftRadius: 24,
@@ -89,15 +92,23 @@ const styles = StyleSheet.create({
   accreditationRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 16,
-    marginTop: 4,
+    justifyContent: 'center',
+    gap: 20,
+    backgroundColor: 'rgb(255, 255, 255)',
+    borderRadius: 12,
+    padding: 15,
+    marginTop: 10,
+  },
+  logoContainer: {
+    backgroundColor: 'transparent',
+    padding: 8,
   },
   accreditationLogo: {
     width: 120,
     height: 40,
   },
   schoolLogo: {
-    width: 90,
+    width: 120,
     height: 60,
     marginLeft: 12,
     backgroundColor: '#fff'

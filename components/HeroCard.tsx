@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ImageBackground, useWindowDimensions } from 'react-native';
 import Animated, { 
   useAnimatedStyle, 
@@ -7,9 +7,9 @@ import Animated, {
   useSharedValue 
 } from 'react-native-reanimated';
 import Carousel, { 
-  ICarouselInstance,
   Pagination 
 } from 'react-native-reanimated-carousel';
+import type { ICarouselInstance } from "react-native-reanimated-carousel";
 
 interface CardItem {
   id: string;
@@ -72,15 +72,43 @@ export const HeroCard: React.FC<Props> = ({ scrollY, onPress }) => {
   const { width } = useWindowDimensions();
   const progress = useSharedValue<number>(0);
   const carouselRef = useRef<ICarouselInstance>(null);
+  const [dimensions, setDimensions] = useState({ width: 1200, height: 400 });
+  const [isClient, setIsClient] = useState(false);
 
-  // Properly type the carousel mode
-  let cardWidth = width < 400 ? 200 : width < 600 ? 280 : width < 900 ? 360 : 420;
-  let carouselMode: "parallax" | "horizontal-stack" = width >= 900 ? "parallax" : "horizontal-stack";
-  let modeConfig = width >= 900 
-    ? { parallaxScrollingScale: 0.9, parallaxScrollingOffset: 60 }
-    : { snapDirection: 'left' as const, stackInterval: 18 };
+  useEffect(() => {
+    setIsClient(true);
+    const handleResize = () => {
+      setDimensions({
+        width: window.innerWidth,
+        height: 400
+      });
+    };
 
-  const cardHeight = 380;
+    if (typeof window !== 'undefined') {
+      handleResize(); // Initial call
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, []);
+
+  // Calculate card dimensions based on current width
+  const cardWidth = React.useMemo(() => {
+    const currentWidth = isClient ? dimensions.width : 1200;
+    if (currentWidth < 400) return 200;
+    if (currentWidth < 600) return 280;
+    if (currentWidth < 900) return 360;
+    return 420;
+  }, [dimensions.width, isClient]);
+
+  const carouselMode = React.useMemo(() => 
+    dimensions.width >= 900 ? "parallax" : "horizontal-stack"
+  , [dimensions.width]) as "parallax" | "horizontal-stack";
+
+  const modeConfig = React.useMemo(() => 
+    dimensions.width >= 900
+      ? { parallaxScrollingScale: 0.9, parallaxScrollingOffset: 60 }
+      : { snapDirection: 'left' as const, stackInterval: 18 }
+  , [dimensions.width]);
 
   const heroMotion = useAnimatedStyle(() => ({
     transform: [
@@ -107,12 +135,12 @@ export const HeroCard: React.FC<Props> = ({ scrollY, onPress }) => {
       <View style={styles.carouselWrapper}>
         <Carousel
           ref={carouselRef}
-          width={width}
-          height={cardHeight}
+          width={dimensions.width}
+          height={dimensions.height}
           data={cardItems}
           style={{ width: '100%' }}
           renderItem={({ item }) => (
-            <View style={[styles.card, { width: cardWidth, height: cardHeight, marginHorizontal: (width - cardWidth) / 2 }]}>
+            <View style={[styles.card, { width: cardWidth, height: dimensions.height, marginHorizontal: (dimensions.width - cardWidth) / 2 }]}>
               <ImageBackground
                 source={item.image}
                 style={styles.cardBackground}
@@ -130,14 +158,14 @@ export const HeroCard: React.FC<Props> = ({ scrollY, onPress }) => {
               </ImageBackground>
             </View>
           )}
-          autoPlay={true}
+          autoPlay={isClient}
           autoPlayInterval={4000}
           loop
           pagingEnabled
           mode={carouselMode}
           modeConfig={modeConfig}
-          defaultIndex={0}  // Add this to ensure initial render
-          enabled={true}    // Add this to ensure carousel is enabled on mount
+          defaultIndex={0}
+          enabled={true}
           panGestureHandlerProps={{
             activeOffsetX: [-10, 10],
           }}
