@@ -9,30 +9,6 @@ interface GlassCardProps {
 export const GlassCard: React.FC<GlassCardProps> = ({ children }) => {
   return (
     <View style={styles.glassCard}>
-      <ImageBackground
-        source={require('../assets/images/corner-pattern-removebg-preview.png')}
-        style={[styles.blob, styles.blob1]}
-        imageStyle={styles.blobPattern}
-        resizeMode="cover"
-      />
-      <ImageBackground
-        source={require('../assets/images/corner-pattern-removebg-preview.png')}
-        style={[styles.blob, styles.blob2]}
-        imageStyle={styles.blobPattern}
-        resizeMode="cover"
-      />
-      <ImageBackground
-        source={require('../assets/images/corner-pattern-removebg-preview.png')}
-        style={[styles.blob, styles.blob3]}
-        imageStyle={styles.blobPattern}
-        resizeMode="cover"
-      />
-      <ImageBackground
-        source={require('../assets/images/corner-pattern-removebg-preview.png')}
-        style={[styles.blob, styles.blob4]}
-        imageStyle={styles.blobPattern}
-        resizeMode="cover"
-      />
       <View style={styles.glassContent}>
         {children}
       </View>

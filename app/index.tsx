@@ -48,7 +48,7 @@ export default function Index() {
         <Animated.View style={[styles.content, contentStyle]}>
           <ScrollReveal delay={200}>
             <GlassCard>
-              <Text style={styles.sectionTitle}>Welcome to Our School</Text>
+              <Text style={styles.sectionTitle}>Quba Islamic School</Text>
               <View style={styles.welcomeContainer}>
                 <View style={styles.logoContainer}>
                   <Image
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
   },
   logoContainer: {
     width: '100%',
-    maxWidth: 250, // Increased from 200
+    maxWidth: 350, // Increased from 200
     alignSelf: 'center',
     '@media (min-width: 768px)': {
       width: 250, // Increased from 200

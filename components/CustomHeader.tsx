@@ -9,7 +9,10 @@ export function CustomHeader({ logoStyle }) {
   const { width } = useWindowDimensions();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
+  // Improved responsive breakpoints
   const isMobile = width < 768;
+  const isMediumScreen = width >= 768 && width < 1024;
+  const isLargeScreen = width >= 1024;
 
   const menuAnimation = useAnimatedStyle(() => {
     return {
@@ -112,7 +115,13 @@ export function CustomHeader({ logoStyle }) {
   ), []);
 
   return (
-    <View style={[styles.header, { paddingTop: insets.top }]}>
+    <View style={[
+      styles.header, 
+      { paddingTop: insets.top },
+      // Adjust padding based on screen size
+      isMediumScreen && { paddingHorizontal: 32 },
+      isLargeScreen && { paddingHorizontal: 40 }
+    ]}>
       <Animated.View style={[styles.logoContainer, logoStyle]}>
         <Image
           source={require('../assets/quba-logo.png')}
@@ -134,7 +143,12 @@ export function CustomHeader({ logoStyle }) {
           </Animated.View>
         </>
       ) : (
-        <View style={styles.navContainer}>
+        <View style={[
+          styles.navContainer,
+          // Adjust navigation spacing based on screen size
+          isMediumScreen && { gap: 16, marginLeft: 24 },
+          isLargeScreen && { gap: 24, marginLeft: 32 }
+        ]}>
           <NavLinks />
         </View>
       )}
@@ -147,38 +161,50 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 20,
-    height: 80,
+    paddingHorizontal: 24, // Increased from 20
+    height: 100,
     backgroundColor: 'transparent',
     borderBottomWidth: 0,
     position: 'absolute',
     left: 0,
     right: 0,
     zIndex: 100,
+    minWidth: 0, // Prevent flex overflow
+    ...Platform.select({
+      web: {
+        backdropFilter: 'blur(10px)',
+      },
+    }),
   },
   navContainer: {
     flexDirection: 'row',
-    gap: 15,
+    gap: 20, // Increased from 15
     flex: 1,
     justifyContent: 'center',
+    marginLeft: 20, // Add space between logo and nav
+    minWidth: 0, // Prevent overflow
+    flexWrap: 'wrap', // Allow wrapping on very tight screens
   },
   logoContainer: {
     position: 'relative',
     width: 120,
-    height: 40,
-    marginRight: 'auto',
+    height: 80,
+    flexShrink: 0, // Prevent logo from shrinking
+    marginRight: 0, // Remove auto margin
   },
   logo: {
     width: '100%',
     height: '100%',
   },
   navItem: {
-    padding: 10,
+    padding: 12, // Increased from 10
+    minWidth: 60, // Ensure minimum touch target
   },
   navText: {
-    fontSize: 14,
-    color: '#fff',
+    fontSize: 16,
+    color: '#333',
     fontWeight: '500',
+    textAlign: 'center',
   },
   burgerMenu: {
     width: 30,
@@ -186,6 +212,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'flex-end',
     padding: 0,
+    marginLeft: 20, // Add space from logo
   },
   burgerLine: {
     width: 30,
@@ -197,7 +224,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 80,
     right: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+    backgroundColor: 'rgba(255, 255, 255, 0.3)',
     padding: 20,
     borderRadius: 8,
     width: 250,
