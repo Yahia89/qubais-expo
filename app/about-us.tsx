@@ -92,11 +92,11 @@ const blobStyle = useAnimatedStyle(() => ({
         <Animated.View style={[styles.content, contentStyle]}>
         <GlassCard>
           <ScrollReveal delay={200}>
-                <Text style={{textAlign:"center", color:"#fff", fontSize:"24px"}}>Our Vision</Text>
+                <Text style={{textAlign:"center", color:"#333", fontSize:"24px"}}>Our Vision</Text>
                 <Text style={{textAlign:"center", color:"#000", marginTop:70, marginBottom:20}}>
                   The purpose of Quba Islamic School is to nourish the new generation of students – our future leaders – to enable them to become critical thinkers, lifelong learners, and believers in positive action; so that they can become the moral compass in their own communities as well as global domains.
                 </Text>                
-                <Text style={{textAlign:"center", color:"#fff", fontSize:"24px"}}>Mission Statement</Text>
+                <Text style={{textAlign:"center", color:"#333", fontSize:"24px"}}>Mission Statement</Text>
                 <Text style={{textAlign:"center", color:"#000", marginTop:20, marginBottom:20}}>
                   We deliver on our vision through the following goals and guidelines:
                 </Text>                
@@ -160,19 +160,19 @@ const blobStyle = useAnimatedStyle(() => ({
                   <View style={{ paddingVertical: 45, paddingHorizontal: 25 }}>
                     <Text style={{textAlign:"center", color:"#333", fontSize:"24px"}}>Contact Us</Text>
                     <TouchableOpacity style={styles.contactItem} onPress={() => handlePress('address')}>
-                      <Ionicons name="location-outline" size={24} color="#fff" />
+                      <Ionicons name="location-outline" size={24} color="#333" />
                       <Text style={styles.contactText}>1127 Otterbein Ave, Rowland Heights, CA 91748</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.contactItem} onPress={() => handlePress('phone')}>
-                      <Ionicons name="call-outline" size={24} color="#fff" />
+                      <Ionicons name="call-outline" size={24} color="#333" />
                       <Text style={styles.contactText}>(909) 620-5297</Text>
                     </TouchableOpacity>
                     <View style={styles.contactItem}>
-                      <Ionicons name="print-outline" size={24} color="#fff" />
+                      <Ionicons name="print-outline" size={24} color="#333" />
                       <Text style={styles.contactText}>Fax: (909) 766-8362</Text>
                     </View>
                     <TouchableOpacity style={styles.contactItem} onPress={() => handlePress('email')}>
-                      <Ionicons name="mail-outline" size={24} color="#fff" />
+                      <Ionicons name="mail-outline" size={24} color="#333" />
                       <Text style={styles.contactText}>info@qubais.org</Text>
                     </TouchableOpacity>
                   </View>
@@ -244,6 +244,7 @@ const styles = StyleSheet.create({
     minWidth: 250,
     maxWidth: 400,
     aspectRatio: 2.5,
+    borderRadius: 10,
   },
   wascLogo: {
     width: '100%',

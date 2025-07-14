@@ -372,7 +372,7 @@ const styles = StyleSheet.create({
   },
   feeName: {
     fontSize: 16,
-    color: '#fff',
+    color: '#333',
     flex: 1,
     textShadowColor: 'rgba(0, 0, 0, 0.3)',
     textShadowOffset: { width: 1, height: 1 },
@@ -380,7 +380,7 @@ const styles = StyleSheet.create({
   },
   feeAmount: {
     fontSize: 16,
-    color: '#fff',
+    color: '#333',
     fontWeight: '600',
     textShadowColor: 'rgba(0, 0, 0, 0.3)',
     textShadowOffset: { width: 1, height: 1 },
@@ -401,7 +401,7 @@ const styles = StyleSheet.create({
   },
   dueMonth: {
     fontSize: 16,
-    color: '#fff',
+    color: '#333',
     fontWeight: '500',
     textShadowColor: 'rgba(0, 0, 0, 0.3)',
     textShadowOffset: { width: 1, height: 1 },
@@ -409,7 +409,7 @@ const styles = StyleSheet.create({
   },
   dueDate: {
     fontSize: 16,
-    color: '#fff',
+    color: '#333',
     fontWeight: '600',
     textShadowColor: 'rgba(0, 0, 0, 0.3)',
     textShadowOffset: { width: 1, height: 1 },
@@ -449,7 +449,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   downloadButton: {
-    backgroundColor: '#E31B23',
+    backgroundColor: '#333',
     paddingVertical: 12,
     paddingHorizontal: 24,
     borderRadius: 8,

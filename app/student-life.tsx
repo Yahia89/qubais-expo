@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#fff',
+    color: '#333',
     marginTop: 70,
     marginBottom: 20,
     textAlign: 'center',
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
   subTitle: {
     fontSize: 22,
     fontWeight: '600',
-    color: '#fff',
+    color: '#333',
     marginBottom: 15,
     textAlign: 'center',
   },

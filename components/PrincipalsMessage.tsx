@@ -33,7 +33,7 @@ export const PrincipalsMessage = () => {
           The application process is a journey that clarifies the educational and life goals you have for your child and the way Quba Islamic School can help you achieve them.
         </Text>
         <TouchableOpacity onPress={handleRegistration} style={styles.registrationButton}>
-          <Text style={styles.buttonText}>Begin Your Journey - Registration Form</Text>
+          <Text style={styles.buttonText}>Begin registration</Text>
         </TouchableOpacity>
       </View>
     </GlassCard>
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#fff',
+    color: '#333',
     marginTop: 70,
     marginBottom: 20,
     textAlign: 'center',
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   welcomeText: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#fff',
+    color: '#333',
     marginBottom: 15,
     textAlign: 'center',
     fontStyle: 'italic',
@@ -71,11 +71,14 @@ const styles = StyleSheet.create({
     textShadowRadius: 2,
   },
   registrationButton: {
-    backgroundColor: '#E31B23',
+    backgroundColor: '#333',
     padding: 15,
     borderRadius: 10,
     marginTop: 20,
     alignItems: 'center',
+    minWidth: '50%',
+    maxWidth: '50%',
+    alignSelf: 'center',
   },
   buttonText: {
     color: '#fff',
