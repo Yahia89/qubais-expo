@@ -66,7 +66,7 @@ export default function News() {
             <GlassCard>
               <Text style={styles.sectionTitle}>Announcements</Text>
               <Text style={styles.description}>
-                Important announcements will be displayed in this section.
+                Announcement coming soon...
               </Text>
               {/* Placeholder for future announcements */}
             </GlassCard>
@@ -76,7 +76,7 @@ export default function News() {
             <GlassCard>
               <Text style={styles.sectionTitle}>Photo & Video Gallery</Text>
               <Text style={styles.description}>
-                Photo and video gallery content will be provided by Ms. Nadia.
+      
               </Text>
               {/* Placeholder for future gallery content */}
             </GlassCard>
