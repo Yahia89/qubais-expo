@@ -1,14 +1,18 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { View, Text, StyleSheet, ImageBackground, useWindowDimensions } from 'react-native';
-import Animated, { 
-  useAnimatedStyle, 
-  interpolate, 
+import React, { useRef, useState, useEffect } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ImageBackground,
+  useWindowDimensions,
+} from "react-native";
+import Animated, {
+  useAnimatedStyle,
+  interpolate,
   Extrapolation,
-  useSharedValue 
-} from 'react-native-reanimated';
-import Carousel, { 
-  Pagination 
-} from 'react-native-reanimated-carousel';
+  useSharedValue,
+} from "react-native-reanimated";
+import Carousel, { Pagination } from "react-native-reanimated-carousel";
 import type { ICarouselInstance } from "react-native-reanimated-carousel";
 
 interface CardItem {
@@ -25,46 +29,60 @@ interface Props {
 
 const cardItems: CardItem[] = [
   {
-    id: '1',
-    title: 'Library Resources',
-    description: 'Access our extensive collection of books, digital resources, and study materials in our modern library space.',
-    image: require('../assets/images/DSC06614-768x432.jpg'),
+    id: "1",
+    title: "Library Resources",
+    description:
+      "Access our extensive collection of books, digital resources, and study materials in our modern library space.",
+    image: require("../assets/images/DSC06614-768x432.jpg"),
   },
   {
-    id: '2',
-    title: 'Student Community',
-    description: 'Join a diverse and supportive community of students from around the world, building lifelong connections.',
-    image: require('../assets/images/DSC06624-scaled.jpg'),
+    id: "2",
+    title: "Student Community",
+    description:
+      "Join a diverse and supportive community of students from around the world, building lifelong connections.",
+    image: require("../assets/images/DSC06624-scaled.jpg"),
   },
   {
-    id: '3',
-    title: 'Collaborative Learning',
-    description: 'Engage in collaborative learning environments designed to foster creativity and critical thinking.',
-    image: require('../assets/images/DSC06614-768x432.jpg'),
+    id: "3",
+    title: "Collaborative Learning",
+    description:
+      "Engage in collaborative learning environments designed to foster creativity and critical thinking.",
+    image: require("../assets/images/collborative.jpg"),
   },
   {
-    id: '4',
-    title: 'Diverse Education',
-    description: 'Experience a curriculum that celebrates diversity and prepares students for global citizenship.',
-    image: require('../assets/images/DSC06583.jpg'),
+    id: "4",
+    title: "Diverse Education",
+    description:
+      "Experience a curriculum that celebrates diversity and prepares students for global citizenship.",
+    image: require("../assets/images/DSC06583.jpg"),
   },
   {
-    id: '5',
-    title: 'Spacious Learning Environment',
-    description: 'Experience learning in our modern, spacious classrooms designed to ensure comfort and safety while maintaining an optimal student-to-space ratio.',
-    image: require('../assets/images/DSC06592.jpg'),
+    id: "5",
+    title: "Spacious Learning Environment",
+    description:
+      "Experience learning in our modern, spacious classrooms designed to ensure comfort and safety while maintaining an optimal student-to-space ratio.",
+    image: require("../assets/images/DSC06592.jpg"),
   },
   {
-    id: '6',
-    title: 'Diverse Education',
-    description: 'Experience a curriculum that celebrates diversity and prepares students for global citizenship.',
-    image: require('../assets/images/DSC06614-768x432.jpg'),
+    id: "6",
+    title: "Know Your Rights",
+    description:
+      "Empower students through education that builds legal awareness, civic responsibility, and understanding of their rights.",
+    image: require("../assets/images/PHOTO-2022-10-19-10-20-16.jpg"),
   },
   {
-    id: '7',
-    title: 'Diverse Education',
-    description: 'Experience a curriculum that celebrates diversity and prepares students for global citizenship.',
-    image: require('../assets/images/DSC06614-768x432.jpg'),
+    id: "7",
+    title: "Beyond the Classroom",
+    description:
+      "Encourage students to think creatively, explore real-world learning, and engage with their communities through volunteering opportunities.",
+    image: require("../assets/images/PHOTO-2024-11-29-11-48-10.jpg"),
+  },
+  {
+    id: "8",
+    title: "Wildlife at our place",
+    description:
+      "Inspire curiosity through hands-on experiences, like wildlife visits, that spark creative thinking and connect students to real-world learning and community involvement.",
+    image: require("../assets/images/PHOTO-2024-04-23-14-35-17.jpg"),
   },
 ];
 
@@ -80,14 +98,14 @@ export const HeroCard: React.FC<Props> = ({ scrollY, onPress }) => {
     const handleResize = () => {
       setDimensions({
         width: window.innerWidth,
-        height: 400
+        height: 400,
       });
     };
 
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       handleResize(); // Initial call
-      window.addEventListener('resize', handleResize);
-      return () => window.removeEventListener('resize', handleResize);
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
     }
   }, []);
 
@@ -100,15 +118,18 @@ export const HeroCard: React.FC<Props> = ({ scrollY, onPress }) => {
     return 420;
   }, [dimensions.width, isClient]);
 
-  const carouselMode = React.useMemo(() => 
-    dimensions.width >= 900 ? "parallax" : "horizontal-stack"
-  , [dimensions.width]) as "parallax" | "horizontal-stack";
+  const carouselMode = React.useMemo(
+    () => (dimensions.width >= 900 ? "parallax" : "horizontal-stack"),
+    [dimensions.width]
+  ) as "parallax" | "horizontal-stack";
 
-  const modeConfig = React.useMemo(() => 
-    dimensions.width >= 900
-      ? { parallaxScrollingScale: 0.9, parallaxScrollingOffset: 60 }
-      : { snapDirection: 'left' as const, stackInterval: 18 }
-  , [dimensions.width]);
+  const modeConfig = React.useMemo(
+    () =>
+      dimensions.width >= 900
+        ? { parallaxScrollingScale: 0.9, parallaxScrollingOffset: 60 }
+        : { snapDirection: "left" as const, stackInterval: 18 },
+    [dimensions.width]
+  );
 
   const heroMotion = useAnimatedStyle(() => ({
     transform: [
@@ -138,17 +159,29 @@ export const HeroCard: React.FC<Props> = ({ scrollY, onPress }) => {
           width={dimensions.width}
           height={dimensions.height}
           data={cardItems}
-          style={{ width: '100%' }}
+          style={{ width: "100%" }}
           renderItem={({ item }) => (
-            <View style={[styles.card, { width: cardWidth, height: dimensions.height, marginHorizontal: (dimensions.width - cardWidth) / 2 }]}>
+            <View
+              style={[
+                styles.card,
+                {
+                  width: cardWidth,
+                  height: dimensions.height,
+                  marginHorizontal: (dimensions.width - cardWidth) / 2,
+                },
+              ]}
+            >
               <ImageBackground
                 source={item.image}
                 style={styles.cardBackground}
-                imageStyle={[styles.cardImage, {
-                  width: '100%',
-                  height: '100%',
-                  resizeMode: 'cover',
-                }]}
+                imageStyle={[
+                  styles.cardImage,
+                  {
+                    width: "100%",
+                    height: "100%",
+                    resizeMode: "cover",
+                  },
+                ]}
               >
                 <View style={styles.overlay} />
                 <View style={styles.cardContent}>
@@ -172,7 +205,7 @@ export const HeroCard: React.FC<Props> = ({ scrollY, onPress }) => {
           snapEnabled
           onProgressChange={progress}
         />
-        
+
         <Pagination.Basic
           progress={progress}
           data={cardItems}
@@ -201,33 +234,33 @@ export const HeroCard: React.FC<Props> = ({ scrollY, onPress }) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    alignItems: 'center',
+    width: "100%",
+    alignItems: "center",
     paddingVertical: 80, // Increase top padding from 40 to 80
     paddingHorizontal: 0,
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
   },
   carouselWrapper: {
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'transparent', // Added to ensure transparency
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "transparent", // Added to ensure transparency
   },
   card: {
     borderRadius: 18,
-    overflow: 'hidden',
-    backgroundColor: '#343434',
+    overflow: "hidden",
+    backgroundColor: "#343434",
     borderWidth: 3,
-    borderColor: 'transparent',
+    borderColor: "transparent",
   },
   cardBackground: {
     flex: 1,
-    justifyContent: 'flex-end',
-    overflow: 'hidden',
+    justifyContent: "flex-end",
+    overflow: "hidden",
   },
   cardImage: {
     borderRadius: 18,
-    position: 'absolute',
+    position: "absolute",
     top: 0,
     left: 0,
     bottom: 0,
@@ -235,31 +268,31 @@ const styles = StyleSheet.create({
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: "rgba(0,0,0,0.5)",
     opacity: 0.5,
   },
   cardContent: {
     padding: 22,
     paddingBottom: 18,
     zIndex: 2,
-    alignItems: 'flex-start',
-    justifyContent: 'flex-end',
+    alignItems: "flex-start",
+    justifyContent: "flex-end",
   },
   cardTitle: {
     fontSize: 22,
-    fontWeight: '700',
-    color: '#fff',
+    fontWeight: "700",
+    color: "#fff",
     marginBottom: 8,
-    textShadowColor: 'rgba(0,0,0,0.4)',
+    textShadowColor: "rgba(0,0,0,0.4)",
     textShadowOffset: { width: 0, height: 2 },
     textShadowRadius: 4,
   },
   cardDescription: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 15,
     lineHeight: 22,
     opacity: 0.92,
-    textShadowColor: 'rgba(0,0,0,0.2)',
+    textShadowColor: "rgba(0,0,0,0.2)",
     textShadowOffset: { width: 0, height: 1 },
     textShadowRadius: 2,
   },

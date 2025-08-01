@@ -47,7 +47,7 @@ export default function Academics() {
         <Animated.View style={[styles.content, contentStyle]}>
           <ScrollReveal delay={200}>
             <GlassCard>
-              <Text style={styles.sectionTitle}>Elementary School (K–5)</Text>
+              <Text style={styles.sectionTitle}>Elementary School (K–4)</Text>
               <Text style={styles.description}>
                 Content for Elementary School will go here...
               </Text>
@@ -56,7 +56,7 @@ export default function Academics() {
 
           <ScrollReveal delay={300}>
             <GlassCard>
-              <Text style={styles.sectionTitle}>Middle School (6–8)</Text>
+              <Text style={styles.sectionTitle}>Middle School (5–8)</Text>
               <Text style={styles.description}>
                 Content for Middle School will go here...
               </Text>
@@ -67,7 +67,44 @@ export default function Academics() {
             <GlassCard>
               <Text style={styles.sectionTitle}>High School (9–12)</Text>
               <Text style={styles.description}>
-                Content for High School will go here...
+                              <View style={styles.listContainer}>
+                                <View style={styles.listItem}>
+                                  <Text style={styles.bullet}>•</Text>
+                                  <Text style={styles.listText}>Rigorous Academic Program</Text>
+                                </View>
+                                <View style={styles.listItem}>
+                                  <Text style={styles.bullet}>•</Text>
+                                  <Text style={styles.listText}>Courses in Alignment with the University of California A-G Requirement</Text>
+                                </View>
+                                <View style={styles.listItem}>
+                                  <Text style={styles.bullet}>•</Text>
+                                  <Text style={styles.listText}>Daily Quran and Islamic Studies</Text>
+                                </View>
+                                <View style={styles.listItem}>
+                                  <Text style={styles.bullet}>•</Text>
+                                  <Text style={styles.listText}>Low students to teacher ratio</Text>
+                                </View>
+                                <View style={styles.listItem}>
+                                  <Text style={styles.bullet}>•</Text>
+                                  <Text style={styles.listText}>Co-curricular and extracurricular activities building leadership and 21st century critical thinking skills</Text>
+                                </View>
+                                <View style={styles.listItem}>
+                                  <Text style={styles.bullet}>•</Text>
+                                  <Text style={styles.listText}>Option: AP Capstone Diploma (10th-12th grade)</Text>
+                                </View>
+                                <View style={styles.listItem}>
+                                  <Text style={styles.bullet}>•</Text>
+                                  <Text style={styles.listText}>Focused college guidance and preparation</Text>
+                                </View>
+                                <View style={styles.listItem}>
+                                  <Text style={styles.bullet}>•</Text>
+                                  <Text style={styles.listText}>Gain free college credits during high school</Text>
+                                </View>
+                                <View style={styles.listItem}>
+                                  <Text style={styles.bullet}>•</Text>
+                                  <Text style={styles.listText}>Earn up to 2 years of transferable, general education, college credit while enrolled at Quba Islamic High School</Text>
+                                </View>
+                              </View>
               </Text>
             </GlassCard>
           </ScrollReveal>
@@ -75,36 +112,238 @@ export default function Academics() {
           <ScrollReveal delay={500}>
             <GlassCard>
               <Text style={styles.sectionTitle}>Curriculum Overview</Text>
+              
+              <Text style={styles.subSectionTitle}>Late Pick-up Policy</Text>
+              <View style={styles.policyContainer}>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>
+                    Students picked up after 3:30 PM Monday through Thursday will incur a $25 late fee
+                  </Text>
+                </View>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>
+                    Friday dismissal time is 12:30 PM - students picked up after 12:35 PM will be charged a $40 late fee
+                  </Text>
+                </View>
+              </View>
+
+              <Text style={styles.subSectionTitle}>Travel Policy</Text>
               <Text style={styles.description}>
-                Content for Curriculum Overview will go here...
+                Quba Islamic School urges parents to make sure their children attend school regularly and to 
+                schedule all travel during school holidays. Independent Studies do not excuse the student's 
+                absence from school.
               </Text>
+              
+              <Text style={styles.subSubTitle}>Travel Approval Requirements:</Text>
+              <View style={styles.listContainer}>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>1.</Text>
+                  <Text style={styles.listText}>
+                    Parents must request and obtain approval prior to the trip. Travel contracts must be 
+                    turned in to the office no later than 14 school days prior to the trip.
+                  </Text>
+                </View>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>2.</Text>
+                  <Text style={styles.listText}>
+                    Terms and conditions will be placed by the teacher(s) regarding assignments. 
+                    Late or missing work acceptance is at the teacher's discretion.
+                  </Text>
+                </View>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>3.</Text>
+                  <Text style={styles.listText}>
+                    Parents will be called in for a meeting with the school principal to sign the agreement.
+                  </Text>
+                </View>
+              </View>
+
+              <Text style={styles.subSectionTitle}>Curriculum & Instruction</Text>
+              <Text style={styles.description}>
+                Quba Islamic School follows a comprehensive curriculum designed to promote academic 
+                excellence and student achievement.
+              </Text>
+              
+              <View style={styles.listContainer}>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>
+                    <Text style={styles.boldText}>Core Subjects:</Text> English Language Arts, Mathematics, 
+                    Science, and Social Studies
+                  </Text>
+                </View>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>
+                    <Text style={styles.boldText}>Enrichment Subjects:</Text> Arabic, Islamic Studies, 
+                    Quran, Art, and Physical Education
+                  </Text>
+                </View>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>
+                    Teachers use diverse instructional methods to meet student needs and promote active learning
+                  </Text>
+                </View>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>
+                    Parents are encouraged to be actively involved and communicate regularly with teachers
+                  </Text>
+                </View>
+              </View>
             </GlassCard>
           </ScrollReveal>
 
           <ScrollReveal delay={600}>
-            <GlassCard>
+            {/* <GlassCard>
               <Text style={styles.sectionTitle}>Graduation Requirements</Text>
               <Text style={styles.description}>
                 Content for Graduation Requirements will go here...
               </Text>
-            </GlassCard>
+            </GlassCard> */}
           </ScrollReveal>
 
           <ScrollReveal delay={700}>
             <GlassCard>
               <Text style={styles.sectionTitle}>Technology Integration</Text>
+              
+              <Text style={styles.subSectionTitle}>Personal Device Policy</Text>
+              <View style={styles.policyContainer}>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>
+                    Cell phones, AirPods, and smartwatches are <Text style={styles.boldText}>not allowed</Text> during school hours
+                  </Text>
+                </View>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>
+                    All cell phones must be turned off and kept in the office until dismissal
+                  </Text>
+                </View>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>
+                    QIS is not responsible for lost, stolen, or damaged electronics
+                  </Text>
+                </View>
+                <View style={styles.warningBox}>
+                  <Text style={styles.warningText}>
+                    ⚠️ Violation Policy: Devices will be confiscated and only returned to parents at year-end
+                  </Text>
+                </View>
+              </View>
+
+              <Text style={styles.subSectionTitle}>School-Provided Technology</Text>
               <Text style={styles.description}>
-                Content for Technology Integration will go here...
+                To ensure consistency and security, students are not permitted to bring personal laptops. 
+                The school provides laptops equipped with necessary software and security features.
               </Text>
+              
+              <Text style={styles.subSubTitle}>Student Responsibilities:</Text>
+              <View style={styles.listContainer}>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>
+                    Proper care and use of school-issued laptops
+                  </Text>
+                </View>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>
+                    Immediate reporting of any damage or loss to administration
+                  </Text>
+                </View>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>
+                    Students and families may be held responsible for repair or replacement costs due to negligence
+                  </Text>
+                </View>
+              </View>
             </GlassCard>
           </ScrollReveal>
 
           <ScrollReveal delay={800}>
             <GlassCard>
               <Text style={styles.sectionTitle}>Assessment & Testing</Text>
+              <Text style={styles.subSectionTitle}>Assessment Methods</Text>
               <Text style={styles.description}>
-                Content for Assessment & Testing will go here...
+                Quba Islamic School uses a variety of assessment methods to measure student learning. 
+                All assessments are designed to be fair, valid, and aligned with curriculum standards.
               </Text>
+              
+              <View style={styles.listContainer}>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>Tests and Quizzes</Text>
+                </View>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>Projects and Assignments</Text>
+                </View>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>Class Participation</Text>
+                </View>
+              </View>
+
+              <Text style={styles.subSectionTitle}>Grading Scale</Text>
+              <View style={styles.gradingContainer}>
+                <View style={styles.gradeRow}>
+                  <Text style={styles.gradeLetter}>A</Text>
+                  <Text style={styles.gradeRange}>90-100%</Text>
+                </View>
+                <View style={styles.gradeRow}>
+                  <Text style={styles.gradeLetter}>B</Text>
+                  <Text style={styles.gradeRange}>80-89%</Text>
+                </View>
+                <View style={styles.gradeRow}>
+                  <Text style={styles.gradeLetter}>C</Text>
+                  <Text style={styles.gradeRange}>70-79%</Text>
+                </View>
+                <View style={styles.gradeRow}>
+                  <Text style={styles.gradeLetter}>D</Text>
+                  <Text style={styles.gradeRange}>60-69%</Text>
+                </View>
+                <View style={styles.gradeRow}>
+                  <Text style={styles.gradeLetter}>F</Text>
+                  <Text style={styles.gradeRange}>Below 60%</Text>
+                </View>
+              </View>
+
+              <Text style={styles.subSectionTitle}>Grade Reporting</Text>
+              <Text style={styles.description}>
+                Grades are reported regularly through report cards, progress reports, and JupiterEd. 
+                Parents are encouraged to review grades and communicate with teachers regarding any concerns.
+              </Text>
+
+              <Text style={styles.subSectionTitle}>Homework & Academic Support</Text>
+              <View style={styles.listContainer}>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>
+                    Homework assignments reinforce classroom learning and are important for assessment
+                  </Text>
+                </View>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>
+                    Parents should support timely completion and submission of assignments
+                  </Text>
+                </View>
+              </View>
+              
+              <View style={styles.homeworkClubBox}>
+                <Text style={styles.homeworkClubTitle}>📚 Homework Club</Text>
+                <Text style={styles.homeworkClubText}>
+                  Available Monday through Thursday for a monthly fee. Provides structured environment 
+                  and additional academic support to help students excel.
+                </Text>
+              </View>
             </GlassCard>
           </ScrollReveal>
 
@@ -302,6 +541,123 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 16,
     fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  listContainer: {
+    marginVertical: 10,
+  },
+  listItem: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    marginBottom: 8,
+    paddingHorizontal: 10,
+  },
+  bullet: {
+    fontSize: 16,
+    color: '#2c365d',
+    marginRight: 10,
+    marginTop: 2,
+    fontWeight: 'bold',
+  },
+  listText: {
+    fontSize: 16,
+    lineHeight: 24,
+    color: '#2c365d',
+    flex: 1,
+    textShadowColor: 'rgba(0, 0, 0, 0.3)',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 2,
+  },
+  subSectionTitle: {
+    fontSize: 22,
+    fontWeight: '700',
+    color: '#2c365d',
+    marginTop: 20,
+    marginBottom: 12,
+    textShadowColor: 'rgba(0, 0, 0, 0.2)',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 1,
+  },
+  subSubTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#2c365d',
+    marginTop: 15,
+    marginBottom: 8,
+    fontStyle: 'italic',
+  },
+  policyContainer: {
+    backgroundColor: 'rgba(44, 54, 93, 0.05)',
+    borderRadius: 12,
+    padding: 15,
+    marginVertical: 10,
+    borderLeftWidth: 4,
+    borderLeftColor: '#fcb040',
+  },
+  boldText: {
+    fontWeight: '700',
+    color: '#2c365d',
+  },
+  warningBox: {
+    backgroundColor: 'rgba(255, 152, 0, 0.1)',
+    borderRadius: 8,
+    padding: 12,
+    marginTop: 10,
+    borderLeftWidth: 3,
+    borderLeftColor: '#ff9800',
+  },
+  warningText: {
+    fontSize: 15,
+    color: '#e65100',
+    fontWeight: '600',
+    textAlign: 'center',
+  },
+  gradingContainer: {
+    backgroundColor: 'rgba(44, 54, 93, 0.08)',
+    borderRadius: 12,
+    padding: 20,
+    marginVertical: 15,
+  },
+  gradeRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 8,
+    paddingHorizontal: 15,
+    marginVertical: 2,
+    backgroundColor: 'rgba(255, 255, 255, 0.7)',
+    borderRadius: 8,
+  },
+  gradeLetter: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#2c365d',
+    width: 30,
+  },
+  gradeRange: {
+    fontSize: 16,
+    color: '#2c365d',
+    fontWeight: '500',
+  },
+  homeworkClubBox: {
+    backgroundColor: 'rgba(252, 176, 64, 0.1)',
+    borderRadius: 12,
+    padding: 18,
+    marginTop: 15,
+    borderWidth: 2,
+    borderColor: 'rgba(252, 176, 64, 0.3)',
+  },
+  homeworkClubTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#2c365d',
+    marginBottom: 8,
+    textAlign: 'center',
+  },
+  homeworkClubText: {
+    fontSize: 15,
+    lineHeight: 22,
+    color: '#2c365d',
     textAlign: 'center',
   },
 });

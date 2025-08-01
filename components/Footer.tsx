@@ -12,6 +12,9 @@ export function Footer() {
           <Link href="/about-us" asChild><Text style={styles.link}>About Us</Text></Link>
           <Link href="/admissions" asChild><Text style={styles.link}>Admissions</Text></Link>
           <Link href="/inquire" asChild><Text style={styles.link}>Contact</Text></Link>
+          <TouchableOpacity onPress={() => Linking.openURL('https://login.jupitered.com/login/')}>
+            <Text style={styles.link}>Jupiter</Text>
+          </TouchableOpacity>
         </View>
       </View>
       <View style={styles.accreditationSection}>
@@ -36,11 +39,16 @@ export function Footer() {
             />
           </View>
         </View>
-      </View>
       <View style={styles.copyrightSection}>
-        <Text style={styles.copyright}>
-          © {new Date().getFullYear()} ICSGV Quba School. All rights reserved.
-        </Text>
+        <TouchableOpacity
+          onPress={() => Linking.openURL('https://techdevprime.com/')}
+          style={styles.developerLink}
+        >
+          <Text style={styles.developerText}>
+            Designed & Developed by techdevprime.com © {new Date().getFullYear()}
+          </Text>
+        </TouchableOpacity>
+      </View>
       </View>
     </View>
   );
@@ -122,5 +130,19 @@ const styles = StyleSheet.create({
     fontSize: 12,
     opacity: 0.8,
     letterSpacing: 0.5,
+    textAlign: 'center',
+  },
+  developerLink: {
+    marginTop: 8,
+    paddingVertical: 4,
+    paddingHorizontal: 8,
+  },
+  developerText: {
+    color: '#fcb040',
+    fontSize: 11,
+    opacity: 0.9,
+    textAlign: 'center',
+    textDecorationLine: 'underline',
+    letterSpacing: 0.3,
   },
 });

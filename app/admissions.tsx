@@ -231,7 +231,7 @@ export default function Admissions() {
                 <Text style={styles.documentSubtitle}>Private KG-12th Grade</Text>
                 <TouchableOpacity 
                   style={styles.downloadButton}
-                  onPress={() => Linking.openURL('/assets/QIS Admission Packet 2025-2026-K-12.pdf')}
+                  onPress={() => Linking.openURL('/assets/QIS-Admission-Packet-2025-2026-K-12.pdf')}
                 >
                   <Text style={styles.downloadButtonText}>Download Admission Packet</Text>
                 </TouchableOpacity>

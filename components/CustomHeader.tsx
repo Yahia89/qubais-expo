@@ -1,15 +1,14 @@
 import React, { useState, useCallback } from 'react';
-import { View, StyleSheet, Pressable, Text, Image, Platform, useWindowDimensions } from 'react-native';
+import { View, StyleSheet, Pressable, Text, Image, Platform, useWindowDimensions, Linking } from 'react-native';
 import { Link } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Animated, { useAnimatedStyle, withSpring, withTiming, interpolate, Easing } from 'react-native-reanimated';
 
-export function CustomHeader({ logoStyle }) {
+export function CustomHeader({ logoStyle }: { logoStyle?: any }) {
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
-  // Improved responsive breakpoints
+
   const isMobile = width < 768;
   const isMediumScreen = width >= 768 && width < 1024;
   const isLargeScreen = width >= 1024;
@@ -17,11 +16,13 @@ export function CustomHeader({ logoStyle }) {
   const menuAnimation = useAnimatedStyle(() => {
     return {
       transform: [
-        { translateX: withSpring(isMenuOpen ? 0 : 300, {
-          damping: 20,
-          stiffness: 90,
-          mass: 1,
-        }) },
+        {
+          translateX: withSpring(isMenuOpen ? 0 : 300, {
+            damping: 20,
+            stiffness: 90,
+            mass: 1,
+          }),
+        },
       ],
       opacity: withTiming(isMenuOpen ? 1 : 0, {
         duration: 300,
@@ -30,44 +31,62 @@ export function CustomHeader({ logoStyle }) {
     };
   });
 
-  const burgerLine1Style = useAnimatedStyle(() => ({
-    transform: [
-      { rotateZ: withSpring(`${interpolate(isMenuOpen ? 1 : 0, [0, 1], [0, 45])}deg`, {
-        damping: 15,
-        stiffness: 120,
-      }) },
-      { translateY: withSpring(interpolate(isMenuOpen ? 1 : 0, [0, 1], [0, 8]), {
-        damping: 15,
-        stiffness: 120,
-      }) }
-    ],
-  }));
+  const progress = isMenuOpen ? 1 : 0;
 
-  const burgerLine2Style = useAnimatedStyle(() => ({
-    opacity: withTiming(isMenuOpen ? 0 : 1, {
-      duration: 200,
-      easing: Easing.bezier(0.4, 0, 0.2, 1),
-    }),
-    transform: [
-      { scaleX: withSpring(isMenuOpen ? 0 : 1, {
-        damping: 15,
-        stiffness: 120,
-      }) }
-    ],
-  }));
+  const burgerLine1Style = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          rotateZ: withSpring(`${interpolate(progress, [0, 1], [0, 45])}deg`, {
+            damping: 18,
+            stiffness: 160,
+          }),
+        },
+        {
+          translateY: withSpring(interpolate(progress, [0, 1], [0, 10]), {
+            damping: 18,
+            stiffness: 160,
+          }),
+        },
+      ],
+    };
+  });
 
-  const burgerLine3Style = useAnimatedStyle(() => ({
-    transform: [
-      { rotateZ: withSpring(`${interpolate(isMenuOpen ? 1 : 0, [0, 1], [0, -45])}deg`, {
-        damping: 15,
-        stiffness: 120,
-      }) },
-      { translateY: withSpring(interpolate(isMenuOpen ? 1 : 0, [0, 1], [0, -8]), {
-        damping: 15,
-        stiffness: 120,
-      }) }
-    ],
-  }));
+  const burgerLine2Style = useAnimatedStyle(() => {
+    return {
+      opacity: withTiming(interpolate(progress, [0, 1], [1, 0]), {
+        duration: 200,
+        easing: Easing.out(Easing.ease),
+      }),
+      transform: [
+        {
+          scaleX: withTiming(interpolate(progress, [0, 1], [1, 0]), {
+            duration: 200,
+            easing: Easing.out(Easing.ease),
+          }),
+        },
+      ],
+    };
+  });
+
+  const burgerLine3Style = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          rotateZ: withSpring(`${interpolate(progress, [0, 1], [0, -45])}deg`, {
+            damping: 18,
+            stiffness: 160,
+          }),
+        },
+        {
+          translateY: withSpring(interpolate(progress, [0, 1], [0, -10]), {
+            damping: 18,
+            stiffness: 160,
+          }),
+        },
+      ],
+    };
+  });
 
   const NavLinks = useCallback(() => (
     <>
@@ -111,6 +130,13 @@ export function CustomHeader({ logoStyle }) {
           <Text style={styles.navText}>Contact</Text>
         </Pressable>
       </Link>
+      <View style={styles.separator} />
+      <Pressable 
+        style={[styles.navItem, styles.jupiterNavItem]}
+        onPress={() => Linking.openURL('https://login.jupitered.com/login/')}
+      >
+        <Text style={[styles.navText, styles.jupiterNavText]}>Jupiter</Text>
+      </Pressable>
     </>
   ), []);
 
@@ -118,7 +144,6 @@ export function CustomHeader({ logoStyle }) {
     <View style={[
       styles.header, 
       { paddingTop: insets.top },
-      // Adjust padding based on screen size
       isMediumScreen && { paddingHorizontal: 32 },
       isLargeScreen && { paddingHorizontal: 40 }
     ]}>
@@ -137,7 +162,7 @@ export function CustomHeader({ logoStyle }) {
             <Animated.View style={[styles.burgerLine, burgerLine2Style]} />
             <Animated.View style={[styles.burgerLine, burgerLine3Style]} />
           </Pressable>
-          
+
           <Animated.View style={[styles.mobileMenu, menuAnimation]}>
             <NavLinks />
           </Animated.View>
@@ -145,7 +170,6 @@ export function CustomHeader({ logoStyle }) {
       ) : (
         <View style={[
           styles.navContainer,
-          // Adjust navigation spacing based on screen size
           isMediumScreen && { gap: 16, marginLeft: 24 },
           isLargeScreen && { gap: 24, marginLeft: 32 }
         ]}>
@@ -161,7 +185,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 24, // Increased from 20
+    paddingHorizontal: 24,
     height: 100,
     backgroundColor: 'transparent',
     borderBottomWidth: 0,
@@ -169,7 +193,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     zIndex: 100,
-    minWidth: 0, // Prevent flex overflow
+    minWidth: 0,
     ...Platform.select({
       web: {
         backdropFilter: 'blur(10px)',
@@ -178,27 +202,27 @@ const styles = StyleSheet.create({
   },
   navContainer: {
     flexDirection: 'row',
-    gap: 20, // Increased from 15
+    gap: 20,
     flex: 1,
     justifyContent: 'center',
-    marginLeft: 20, // Add space between logo and nav
-    minWidth: 0, // Prevent overflow
-    flexWrap: 'wrap', // Allow wrapping on very tight screens
+    marginLeft: 20,
+    minWidth: 0,
+    flexWrap: 'wrap',
   },
   logoContainer: {
     position: 'relative',
     width: 120,
     height: 80,
-    flexShrink: 0, // Prevent logo from shrinking
-    marginRight: 0, // Remove auto margin
+    flexShrink: 0,
+    marginRight: 0,
   },
   logo: {
     width: '100%',
     height: '100%',
   },
   navItem: {
-    padding: 12, // Increased from 10
-    minWidth: 60, // Ensure minimum touch target
+    padding: 12,
+    minWidth: 60,
   },
   navText: {
     fontSize: 16,
@@ -212,7 +236,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'flex-end',
     padding: 0,
-    marginLeft: 20, // Add space from logo
+    marginLeft: 20,
   },
   burgerLine: {
     width: 30,
@@ -224,7 +248,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 80,
     right: 0,
-    backgroundColor: 'rgba(255, 255, 255, 0.3)',
+    backgroundColor: 'rgba(255, 255, 255, 0.74)',
     padding: 20,
     borderRadius: 8,
     width: 250,
@@ -233,5 +257,22 @@ const styles = StyleSheet.create({
         backdropFilter: 'blur(10px)',
       },
     }),
+  },
+  separator: {
+    width: 1,
+    height: 20,
+    backgroundColor: '#ccc',
+    marginHorizontal: 8,
+    alignSelf: 'center',
+  },
+  jupiterNavItem: {
+    backgroundColor: 'rgb(101, 82, 53)',
+    borderRadius: 6,
+    borderBottomWidth: 2,
+    borderBottomColor: '#fcb040',
+  },
+  jupiterNavText: {
+    color: '#fcb040',
+    fontWeight: '600',
   },
 });

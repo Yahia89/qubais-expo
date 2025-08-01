@@ -32,6 +32,10 @@ export const PrincipalsMessage = () => {
         <Text style={styles.messageText}>
           The application process is a journey that clarifies the educational and life goals you have for your child and the way Quba Islamic School can help you achieve them.
         </Text>
+        <Text style={styles.messageText}>
+          Ms. Nadia Kashuka
+Principal
+        </Text>
         <TouchableOpacity onPress={handleRegistration} style={styles.registrationButton}>
           <Text style={styles.buttonText}>Begin registration</Text>
         </TouchableOpacity>

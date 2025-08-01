@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, ImageBackground, Linking } from 'react-native';
+import { Text, View, StyleSheet, ImageBackground, Linking, TouchableOpacity } from 'react-native';
 import Animated, {
   useAnimatedScrollHandler,
   useAnimatedStyle,
@@ -45,20 +45,26 @@ export default function Parents() {
         <Animated.View style={[styles.content, contentStyle]}>
           <ScrollReveal delay={200}>
             <GlassCard>
-              <Text style={styles.sectionTitle}>Parent Portal</Text>
+              <Text style={styles.sectionTitle}>Parent Resources and School policies</Text>
               <Text style={styles.description}>
-                See attached QIS Parent Handbook
+                Access comprehensive information for parents including school policies, procedures, and guidelines through our Parent Handbook. This document contains everything you need to know about our school community, academic expectations, and important policies.
               </Text>
+              <TouchableOpacity 
+                style={styles.downloadButton}
+                onPress={() => Linking.openURL('/assets/QIS-Parent-Handbook.pdf')}
+              >
+                <Text style={styles.downloadButtonText}>Download Parent Handbook PDF</Text>
+              </TouchableOpacity>
+              <TouchableOpacity 
+                style={styles.jupiterButton}
+                onPress={() => Linking.openURL('https://login.jupitered.com/login/')}
+              >
+                <Text style={styles.jupiterButtonText}>Access Jupiter Portal</Text>
+              </TouchableOpacity>
             </GlassCard>
           </ScrollReveal>
 
           <ScrollReveal delay={300}>
-            <GlassCard>
-              <Text style={styles.sectionTitle}>School Policies</Text>
-              <Text style={styles.description}>
-                Content for School Policies will be provided...
-              </Text>
-            </GlassCard>
           </ScrollReveal>
 
           <ScrollReveal delay={400}>
@@ -67,6 +73,12 @@ export default function Parents() {
               <Text style={styles.description}>
                 See attached Student Handbooks for Elementary, Middle and High School
               </Text>
+              <TouchableOpacity 
+                style={styles.downloadButton}
+                onPress={() => Linking.openURL('/assets/QIS-Dress-Code-Policy.pdf')}
+              >
+                <Text style={styles.downloadButtonText}>Download Dress Code Policy PDF</Text>
+              </TouchableOpacity>
             </GlassCard>
           </ScrollReveal>
 
@@ -153,9 +165,37 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     color: '#2c365d',
     marginBottom: 75,
-    textAlign: 'justify',
+    textAlign: 'center',
     textShadowColor: 'rgba(0, 0, 0, 0.3)',
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 2,
-  }
+  },
+  downloadButton: {
+    backgroundColor: '#333',
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 8,
+    marginTop: 10,
+    alignSelf: 'center',
+  },
+  downloadButtonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  jupiterButton: {
+    backgroundColor: '#333',
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 8,
+    marginTop: 10,
+    alignSelf: 'center',
+  },
+  jupiterButtonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
 });

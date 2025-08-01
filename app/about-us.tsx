@@ -155,6 +155,23 @@ const blobStyle = useAnimatedStyle(() => ({
           <ScrollReveal  delay={350}>
             <PrincipalsMessage />
           </ScrollReveal>
+          <ScrollReveal delay={375}>
+            <GlassCard>
+              <View style={{  paddingHorizontal: 25 }}>
+                <Text style={{textAlign:"center", color:"#333", fontSize:"24px", marginBottom: 30}}>Faculty & Staff Directory</Text>
+                
+                <View style={styles.staffMember}>
+                  <Text style={styles.staffName}>Ms. Nadia Kashuka</Text>
+                  <Text style={styles.staffTitle}>Principal</Text>
+                </View>
+                
+                <View style={styles.staffMember}>
+                  <Text style={styles.staffName}>Hala Elattar</Text>
+                  <Text style={styles.staffTitle}>Admission Coordinator / Office Manager</Text>
+                </View>
+              </View>
+            </GlassCard>
+          </ScrollReveal>
           <ScrollReveal delay={400}>
                 <GlassCard>
                   <View style={{ paddingVertical: 45, paddingHorizontal: 25 }}>
@@ -288,5 +305,22 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#333',
     flex: 1,
+  },
+  staffMember: {
+    marginBottom: 25,
+    paddingBottom: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(51, 51, 51, 0.1)',
+  },
+  staffName: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#333',
+    // marginBottom: 5,
+  },
+  staffTitle: {
+    fontSize: 16,
+    color: '#2c365d',
+    fontStyle: 'italic',
   },
 });
