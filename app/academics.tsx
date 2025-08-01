@@ -47,66 +47,99 @@ export default function Academics() {
         <Animated.View style={[styles.content, contentStyle]}>
           <ScrollReveal delay={200}>
             <GlassCard>
-              <Text style={styles.sectionTitle}>Elementary School (K–4)</Text>
+              <Text style={styles.sectionTitle}>K-12 Academic Program</Text>
+              
               <Text style={styles.description}>
-                Content for Elementary School will go here...
+                Quba Islamic School offers a comprehensive K-12 educational program that combines academic 
+                excellence with Islamic values, preparing students for success in higher education and beyond.
               </Text>
+
+              <Text style={styles.subSectionTitle}>Elementary School (K–4)</Text>
+              <View style={styles.listContainer}>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>Foundation in core academic subjects</Text>
+                </View>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>Introduction to Islamic Studies and Quran</Text>
+                </View>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>Hands-on learning and creative exploration</Text>
+                </View>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>Small class sizes for personalized attention</Text>
+                </View>
+              </View>
+
+              <Text style={styles.subSectionTitle}>Middle School (5–8)</Text>
+              <View style={styles.listContainer}>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>Advanced academic curriculum preparation</Text>
+                </View>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>Character development and leadership skills</Text>
+                </View>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>Enhanced Islamic Studies and Arabic language</Text>
+                </View>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>Introduction to critical thinking and research skills</Text>
+                </View>
+              </View>
+
+              <Text style={styles.subSectionTitle}>High School (9–12)</Text>
+              <View style={styles.listContainer}>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>Rigorous Academic Program</Text>
+                </View>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>Courses in Alignment with the University of California A-G Requirement</Text>
+                </View>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>Daily Quran and Islamic Studies</Text>
+                </View>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>Low students to teacher ratio</Text>
+                </View>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>Co-curricular and extracurricular activities building leadership and 21st century critical thinking skills</Text>
+                </View>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>Option: AP Capstone Diploma (10th-12th grade)</Text>
+                </View>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>Focused college guidance and preparation</Text>
+                </View>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>Gain free college credits during high school</Text>
+                </View>
+                <View style={styles.listItem}>
+                  <Text style={styles.bullet}>•</Text>
+                  <Text style={styles.listText}>Earn up to 2 years of transferable, general education, college credit while enrolled at Quba Islamic High School</Text>
+                </View>
+              </View>
             </GlassCard>
           </ScrollReveal>
 
           <ScrollReveal delay={300}>
-            <GlassCard>
-              <Text style={styles.sectionTitle}>Middle School (5–8)</Text>
-              <Text style={styles.description}>
-                Content for Middle School will go here...
-              </Text>
-            </GlassCard>
           </ScrollReveal>
 
           <ScrollReveal delay={400}>
-            <GlassCard>
-              <Text style={styles.sectionTitle}>High School (9–12)</Text>
-              <Text style={styles.description}>
-                              <View style={styles.listContainer}>
-                                <View style={styles.listItem}>
-                                  <Text style={styles.bullet}>•</Text>
-                                  <Text style={styles.listText}>Rigorous Academic Program</Text>
-                                </View>
-                                <View style={styles.listItem}>
-                                  <Text style={styles.bullet}>•</Text>
-                                  <Text style={styles.listText}>Courses in Alignment with the University of California A-G Requirement</Text>
-                                </View>
-                                <View style={styles.listItem}>
-                                  <Text style={styles.bullet}>•</Text>
-                                  <Text style={styles.listText}>Daily Quran and Islamic Studies</Text>
-                                </View>
-                                <View style={styles.listItem}>
-                                  <Text style={styles.bullet}>•</Text>
-                                  <Text style={styles.listText}>Low students to teacher ratio</Text>
-                                </View>
-                                <View style={styles.listItem}>
-                                  <Text style={styles.bullet}>•</Text>
-                                  <Text style={styles.listText}>Co-curricular and extracurricular activities building leadership and 21st century critical thinking skills</Text>
-                                </View>
-                                <View style={styles.listItem}>
-                                  <Text style={styles.bullet}>•</Text>
-                                  <Text style={styles.listText}>Option: AP Capstone Diploma (10th-12th grade)</Text>
-                                </View>
-                                <View style={styles.listItem}>
-                                  <Text style={styles.bullet}>•</Text>
-                                  <Text style={styles.listText}>Focused college guidance and preparation</Text>
-                                </View>
-                                <View style={styles.listItem}>
-                                  <Text style={styles.bullet}>•</Text>
-                                  <Text style={styles.listText}>Gain free college credits during high school</Text>
-                                </View>
-                                <View style={styles.listItem}>
-                                  <Text style={styles.bullet}>•</Text>
-                                  <Text style={styles.listText}>Earn up to 2 years of transferable, general education, college credit while enrolled at Quba Islamic High School</Text>
-                                </View>
-                              </View>
-              </Text>
-            </GlassCard>
           </ScrollReveal>
 
           <ScrollReveal delay={500}>
