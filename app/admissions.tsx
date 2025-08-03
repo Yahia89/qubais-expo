@@ -11,6 +11,7 @@ import { GlassCard } from '../components/GlassCard';
 import Inquire from './inquire';
 import { Footer } from '../components/Footer';
 import { Linking } from 'react-native';
+import { InquireForm } from '../components/InquireForm';
 
 
 
@@ -40,6 +41,18 @@ export default function Admissions() {
     }
   };
 
+  const { width } = useWindowDimensions();
+
+const responsivePaddingStyle = () => {
+    if (width >= 1024) {
+      return { paddingHorizontal: 60, marginHorizontal: 40 };
+    } else if (width >= 768) {
+      return { paddingHorizontal: 40, marginHorizontal: 20 };
+    } else {
+      return { paddingHorizontal: 0, marginHorizontal: 0 };
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.backgroundImage}>
@@ -54,7 +67,7 @@ export default function Admissions() {
         onScroll={scrollHandler}
         scrollEventThrottle={16}
       >
-        <Animated.View style={[styles.content, contentStyle]}>
+        <Animated.View style={[styles.content, responsivePaddingStyle(), contentStyle]}>
           <ScrollReveal delay={200}>
             <GlassCard>
               <Text style={styles.sectionTitle}>Why Choose Us?</Text>
@@ -215,7 +228,7 @@ export default function Admissions() {
 
           <ScrollReveal delay={500}>
               <Text style={styles.sectionTitle}>Request Info / Schedule a Tour</Text>
-              <Inquire />
+              <InquireForm />
           </ScrollReveal>
 
           <ScrollReveal delay={600}>
@@ -352,7 +365,7 @@ const styles = StyleSheet.create({
   },
   contactText: {
     fontSize: 16,
-    color: '#fff',
+    color: '#2c365d',
     flex: 1,
     textShadowColor: 'rgba(0, 0, 0, 0.3)',
     textShadowOffset: { width: 1, height: 1 },
@@ -362,30 +375,32 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     gap: 10,
   },
-  feeRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingVertical: 8,
-    borderBottomWidth: 1,
-    borderBottomColor: 'rgba(255, 255, 255, 0.1)',
-  },
-  feeName: {
-    fontSize: 16,
-    color: '#333',
-    flex: 1,
-    textShadowColor: 'rgba(0, 0, 0, 0.3)',
-    textShadowOffset: { width: 1, height: 1 },
-    textShadowRadius: 2,
-  },
-  feeAmount: {
-    fontSize: 16,
-    color: '#333',
-    fontWeight: '600',
-    textShadowColor: 'rgba(0, 0, 0, 0.3)',
-    textShadowOffset: { width: 1, height: 1 },
-    textShadowRadius: 2,
-  },
+ feeRow: {
+  flexDirection: 'row',
+  alignItems: 'center',       // Aligns text nicely vertically
+  paddingVertical: 12,        // Slightly more vertical space for clarity
+  borderBottomWidth: 1,
+  borderBottomColor: 'rgba(255, 255, 255, 0.1)',
+},
+feeName: {
+  fontSize: 16,
+  color: '#2c365d',
+  flex: 1,                    // Takes up remaining space, keeps layout clean
+  textShadowColor: 'rgba(0, 0, 0, 0.3)',
+  textShadowOffset: { width: 1, height: 1 },
+  textShadowRadius: 2,
+},
+feeAmount: {
+  fontSize: 16,
+  color: '#2c365d',
+  fontWeight: '600',
+  marginLeft: 16,             // Moderate spacing from the label
+  textShadowColor: 'rgba(0, 0, 0, 0.3)',
+  textShadowOffset: { width: 1, height: 1 },
+  textShadowRadius: 2,
+},
+
+
   dueDatesContainer: {
     marginVertical: 20,
     gap: 8,
@@ -401,7 +416,7 @@ const styles = StyleSheet.create({
   },
   dueMonth: {
     fontSize: 16,
-    color: '#333',
+    color: '#2c365d',
     fontWeight: '500',
     textShadowColor: 'rgba(0, 0, 0, 0.3)',
     textShadowOffset: { width: 1, height: 1 },
@@ -409,7 +424,7 @@ const styles = StyleSheet.create({
   },
   dueDate: {
     fontSize: 16,
-    color: '#333',
+    color: '#2c365d',
     fontWeight: '600',
     textShadowColor: 'rgba(0, 0, 0, 0.3)',
     textShadowOffset: { width: 1, height: 1 },

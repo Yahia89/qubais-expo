@@ -11,6 +11,7 @@ import {
   Linking,
   TouchableOpacity,
   ImageBackground,
+  useWindowDimensions
 } from 'react-native';
 import Animated, {
   useAnimatedScrollHandler,
@@ -50,6 +51,8 @@ export default function Inquire() {
     },
   });
 
+const { width } = useWindowDimensions();
+
   useEffect(() => {
     contentOpacity.value = withTiming(1, { duration: 1000 });
     trackPageView();
@@ -58,6 +61,17 @@ export default function Inquire() {
   const contentStyle = useAnimatedStyle(() => ({
     opacity: contentOpacity.value,
   }));
+
+  const responsivePaddingStyle = () => {
+    if (width >= 1024) {
+      return { paddingHorizontal: 60, marginHorizontal: 40 };
+    } else if (width >= 768) {
+      return { paddingHorizontal: 40, marginHorizontal: 20 };
+    } else {
+      return { paddingHorizontal: 0, marginHorizontal: 0 };
+    }
+  };
+
 
   // Form validation function
   const validateForm = () => {
@@ -133,7 +147,7 @@ export default function Inquire() {
           scrollEventThrottle={16}
           keyboardShouldPersistTaps="handled"
         >
-          <Animated.View style={[styles.content, contentStyle]}>
+          <Animated.View style={[styles.content, responsivePaddingStyle(),contentStyle]}>
             <ScrollReveal delay={200}>
               <GlassCard>
                 <Text style={styles.sectionTitle}>Inquire / Contact Us</Text>
@@ -246,8 +260,9 @@ export default function Inquire() {
               </GlassCard>
             </ScrollReveal>
           </Animated.View>
-          <View style={{ height: 100 }} />
+          <View />
         </Animated.ScrollView>
+        <Footer />
       </KeyboardAwareScrollView>
       {/* Success Message Overlay */}
       <Modal
@@ -298,13 +313,6 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   content: {
-         padding: 20,
-    paddingHorizontal: 40, // More horizontal padding
-    marginHorizontal: 8, // Additional margin from edges
-    '@media (min-width: 768px)': {
-      paddingHorizontal: 40, // More padding on larger screens
-      marginHorizontal: 20,
-    },
   },
   sectionTitle: {
     fontSize: 28,
@@ -456,7 +464,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '600',
     color: '#2c365d',
-    marginBottom: 15,
     textAlign: 'center',
   },
   contactItem: {

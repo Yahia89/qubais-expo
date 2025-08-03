@@ -22,6 +22,18 @@ export default function Academics() {
     },
   });
 
+  const { width } = useWindowDimensions();
+
+  const responsivePaddingStyle = () => {
+    if (width >= 1024) {
+      return { paddingHorizontal: 60, marginHorizontal: 40 };
+    } else if (width >= 768) {
+      return { paddingHorizontal: 40, marginHorizontal: 20 };
+    } else {
+      return { paddingHorizontal: 0, marginHorizontal: 0 };
+    }
+  };
+
   useEffect(() => {
     contentOpacity.value = withTiming(1, { duration: 1000 });
   }, []);
@@ -44,7 +56,7 @@ export default function Academics() {
         onScroll={scrollHandler}
         scrollEventThrottle={16}
       >
-        <Animated.View style={[styles.content, contentStyle]}>
+        <Animated.View style={[styles.content, responsivePaddingStyle(), contentStyle]}>
           <ScrollReveal delay={200}>
             <GlassCard>
               <Text style={styles.sectionTitle}>K-12 Academic Program</Text>
@@ -410,7 +422,6 @@ const styles = StyleSheet.create({
    flex: 1,
     backgroundColor: '#fff',
     minHeight: '100vh',
-    paddingHorizontal: 16, // Add horizontal padding
   },
   backgroundImage: {
     position: 'absolute',
@@ -433,23 +444,13 @@ const styles = StyleSheet.create({
     marginTop: 40,
     flexGrow: 1,
     minHeight: '100%',
-      padding: 20,
-    paddingHorizontal: 40, // More horizontal padding
-    marginHorizontal: 8, // Additional margin from edges
-    '@media (min-width: 768px)': {
-      paddingHorizontal: 40, // More padding on larger screens
-      marginHorizontal: 20,
-    },
   },
   content: {
-    padding: 20,
   },
   sectionTitle: {
       fontSize: 32,
     fontWeight: '700',
     color: '#2c365d',
-    marginTop: 70,
-    marginBottom: 20,
     textAlign: 'center',
     textShadowColor: 'rgba(0, 0, 0, 0.3)',
     textShadowOffset: { width: 1, height: 1 },
@@ -459,7 +460,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
     color: '#2c365d',
-    marginBottom: 15,
     textShadowColor: 'rgba(0, 0, 0, 0.3)',
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 2,
@@ -475,7 +475,6 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   calendarLegend: {
-    marginTop: 20,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
@@ -510,19 +509,16 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
     borderRadius: 10,
     padding: 15,
-    marginBottom: 20,
   },
   monthTitle: {
     fontSize: 18,
     fontWeight: 'bold',
     color: '#fff',
     textAlign: 'center',
-    marginBottom: 10,
   },
   monthHeader: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginBottom: 10,
   },
   dayHeader: {
     width: 30,

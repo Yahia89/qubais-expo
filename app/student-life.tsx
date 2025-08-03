@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, ImageBackground, useWindowDimensions, ScrollView, Image, TouchableOpacity, Linking } from 'react-native';
+import { Text, View, StyleSheet, ImageBackground, useWindowDimensions } from 'react-native';
 import Animated, {
   useAnimatedScrollHandler,
   useAnimatedStyle,
@@ -19,6 +19,18 @@ export default function StudentLife() {
       scrollY.value = event.contentOffset.y;
     },
   });
+
+    const { width } = useWindowDimensions();
+
+    const responsivePaddingStyle = () => {
+    if (width >= 1024) {
+      return { paddingHorizontal: 60, marginHorizontal: 40 };
+    } else if (width >= 768) {
+      return { paddingHorizontal: 40, marginHorizontal: 20 };
+    } else {
+      return { paddingHorizontal: 0, marginHorizontal: 0 };
+    }
+  };
 
   useEffect(() => {
     contentOpacity.value = withTiming(1, { duration: 1000 });
@@ -42,7 +54,7 @@ export default function StudentLife() {
         onScroll={scrollHandler}
         scrollEventThrottle={16}
       >
-        <Animated.View style={[styles.content, contentStyle]}>
+        <Animated.View style={[styles.content, responsivePaddingStyle(), contentStyle]}>
           <ScrollReveal delay={200}>
             <GlassCard>
               <Text style={styles.sectionTitle}>Clubs & Activities</Text>
@@ -228,7 +240,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     minHeight: '100vh',
-    paddingHorizontal: 16, // Add horizontal padding
   },
   backgroundImage: {
     position: 'absolute',
@@ -253,13 +264,6 @@ const styles = StyleSheet.create({
     minHeight: '100%',
   },
   content: {
-      padding: 20,
-    paddingHorizontal: 40, // More horizontal padding
-    marginHorizontal: 8, // Additional margin from edges
-    '@media (min-width: 768px)': {
-      paddingHorizontal: 40, // More padding on larger screens
-      marginHorizontal: 20,
-    },
   },
   sectionTitle: {
     fontSize: 28,

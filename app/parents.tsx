@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, ImageBackground, Linking, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, ImageBackground, Linking, TouchableOpacity, useWindowDimensions } from 'react-native';
 import Animated, {
   useAnimatedScrollHandler,
   useAnimatedStyle,
@@ -28,6 +28,18 @@ export default function Parents() {
     opacity: contentOpacity.value,
   }));
 
+  const { width } = useWindowDimensions();
+
+    const responsivePaddingStyle = () => {
+    if (width >= 1024) {
+      return { paddingHorizontal: 60, marginHorizontal: 40 };
+    } else if (width >= 768) {
+      return { paddingHorizontal: 40, marginHorizontal: 20 };
+    } else {
+      return { paddingHorizontal: 0, marginHorizontal: 0 };
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.backgroundImage}>
@@ -42,7 +54,7 @@ export default function Parents() {
         onScroll={scrollHandler}
         scrollEventThrottle={16}
       >
-        <Animated.View style={[styles.content, contentStyle]}>
+        <Animated.View style={[styles.content, responsivePaddingStyle(), contentStyle]}>
           <ScrollReveal delay={200}>
             <GlassCard>
               <Text style={styles.sectionTitle}>Parent Resources and School policies</Text>
@@ -126,7 +138,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     minHeight: '100vh',
-    paddingHorizontal: 16, // Add horizontal padding
   },
   backgroundImage: {
     position: 'absolute',
@@ -151,13 +162,6 @@ const styles = StyleSheet.create({
     minHeight: '100%',
   },
   content: {
-           padding: 20,
-    paddingHorizontal: 40, // More horizontal padding
-    marginHorizontal: 8, // Additional margin from edges
-    '@media (min-width: 768px)': {
-      paddingHorizontal: 40, // More padding on larger screens
-      marginHorizontal: 20,
-    },
   },
   sectionTitle: {
     fontSize: 28,

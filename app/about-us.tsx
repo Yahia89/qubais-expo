@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, ScrollView, Linking, TouchableOpacity, ImageBackground, useWindowDimensions, Image } from 'react-native';
+import { Text, View, StyleSheet, Linking, TouchableOpacity, ImageBackground, useWindowDimensions, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Animated, {
   useAnimatedScrollHandler,
@@ -15,9 +15,20 @@ import { GlassCard } from '../components/GlassCard';
 import { Footer } from '../components/Footer';
 
 export default function AboutUs() {
-  const { height } = useWindowDimensions();
+  const { width } = useWindowDimensions();
   const scrollY = useSharedValue(0);
   const contentOpacity = useSharedValue(0);
+
+  const responsivePaddingStyle = () => {
+    if (width >= 1024) {
+      return { paddingHorizontal: 60, marginHorizontal: 40 };
+    } else if (width >= 768) {
+      return { paddingHorizontal: 40, marginHorizontal: 20 };
+    } else {
+      return { paddingHorizontal: 0, marginHorizontal: 0 };
+    }
+  };
+
 
   // Inside your component:
 const scale = useSharedValue(1);
@@ -89,7 +100,7 @@ const blobStyle = useAnimatedStyle(() => ({
         scrollEventThrottle={16}
         contentContainerStyle={styles.scrollViewContent}
       >
-        <Animated.View style={[styles.content, contentStyle]}>
+        <Animated.View style={[styles.content, responsivePaddingStyle(), contentStyle]}>
         <GlassCard>
           <ScrollReveal delay={200}>
                 <Text style={styles.sectionTitle}>Our Vision</Text>
@@ -207,7 +218,6 @@ const styles = StyleSheet.create({
   flex: 1,
     backgroundColor: '#fff',
     minHeight: '100vh',
-    paddingHorizontal: 16, // Add horizontal padding
   },
   backgroundImage: {
     position: 'absolute',
@@ -234,13 +244,7 @@ const styles = StyleSheet.create({
     minHeight: '100%',
   },
   content: {
-       padding: 20,
-    paddingHorizontal: 40, // More horizontal padding
-    marginHorizontal: 8, // Additional margin from edges
-    '@media (min-width: 768px)': {
-      paddingHorizontal: 40, // More padding on larger screens
-      marginHorizontal: 20,
-    },
+   
   },
   contentCard: {
     backgroundColor: '#fff',
