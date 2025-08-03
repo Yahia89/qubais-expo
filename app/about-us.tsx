@@ -92,41 +92,41 @@ const blobStyle = useAnimatedStyle(() => ({
         <Animated.View style={[styles.content, contentStyle]}>
         <GlassCard>
           <ScrollReveal delay={200}>
-                <Text style={{textAlign:"center", color:"#333", fontSize:"24px"}}>Our Vision</Text>
-                <Text style={{textAlign:"center", color:"#000", marginTop:70, marginBottom:20}}>
+                <Text style={styles.sectionTitle}>Our Vision</Text>
+                <Text style={styles.description}>
                   The purpose of Quba Islamic School is to nourish the new generation of students – our future leaders – to enable them to become critical thinkers, lifelong learners, and believers in positive action; so that they can become the moral compass in their own communities as well as global domains.
                 </Text>                
-                <Text style={{textAlign:"center", color:"#333", fontSize:"24px"}}>Mission Statement</Text>
-                <Text style={{textAlign:"center", color:"#000", marginTop:20, marginBottom:20}}>
+                <Text style={styles.sectionTitle}>Mission Statement</Text>
+                <Text style={styles.description}>
                   We deliver on our vision through the following goals and guidelines:
                 </Text>                
                 <View style={styles.missionItems}>
                   <View style={styles.missionItem}>
-                    <Text style={styles.missionItemTitle}>Students</Text>
+                    <Text style={styles.subTitle}>Students</Text>
                     <Text style={styles.missionItemText}>
                       Our children are the amanah (trust) of Allah (swt) and it is ultimately their benefit that steers our decision-making process.
                     </Text>
                   </View>                  
                   <View style={styles.missionItem}>
-                    <Text style={styles.missionItemTitle}>Teachers</Text>
+                    <Text style={styles.subTitle}>Teachers</Text>
                     <Text style={styles.missionItemText}>
                       The single most important factor in the success of students is the teachers. We seek out and partner with the best teachers and provide them with resources and training opportunities to excel in their mission.
                     </Text>
                   </View>                  
                   <View style={styles.missionItem}>
-                    <Text style={styles.missionItemTitle}>Parents</Text>
+                    <Text style={styles.subTitle}>Parents</Text>
                     <Text style={styles.missionItemText}>
                       No one has more influence on children than their parents. We team up with parents and ensure that our children have overall positive learning environments both at school and at home.
                     </Text>
                   </View>                  
                   <View style={styles.missionItem}>
-                    <Text style={styles.missionItemTitle}>Environment</Text>
+                    <Text style={styles.subTitle}>Environment</Text>
                     <Text style={styles.missionItemText}>
                       Rooted in Islamic manners and etiquette, our environment is safe, friendly, creative, and respectful for our learners.
                     </Text>
                   </View>
                   <View style={styles.missionItem}>
-                    <Text style={styles.missionItemTitle}>Administration</Text>
+                    <Text style={styles.subTitle}>Administration</Text>
                     <Text style={styles.missionItemText}>
                       With the intention of pleasing Allah (swt) we remain committed to seeking out the best for our students, parents, teachers, admin team members, and volunteers.
                     </Text>
@@ -158,15 +158,15 @@ const blobStyle = useAnimatedStyle(() => ({
           <ScrollReveal delay={375}>
             <GlassCard>
               <View style={{  paddingHorizontal: 25 }}>
-                <Text style={{textAlign:"center", color:"#333", fontSize:"24px", marginBottom: 30}}>Faculty & Staff Directory</Text>
+                <Text style={styles.sectionTitle}>Faculty & Staff Directory</Text>
                 
                 <View style={styles.staffMember}>
-                  <Text style={styles.staffName}>Ms. Nadia Kashuka</Text>
+                  <Text style={styles.checklistItem}>Ms. Nadia Kashuka</Text>
                   <Text style={styles.staffTitle}>Principal</Text>
                 </View>
                 
                 <View style={styles.staffMember}>
-                  <Text style={styles.staffName}>Hala Elattar</Text>
+                  <Text style={styles.checklistItem}>Hala Elattar</Text>
                   <Text style={styles.staffTitle}>Admission Coordinator / Office Manager</Text>
                 </View>
               </View>
@@ -175,22 +175,22 @@ const blobStyle = useAnimatedStyle(() => ({
           <ScrollReveal delay={400}>
                 <GlassCard>
                   <View style={{ paddingVertical: 45, paddingHorizontal: 25 }}>
-                    <Text style={{textAlign:"center", color:"#333", fontSize:"24px"}}>Contact Us</Text>
+                    <Text style={{textAlign:"center", color:"#2c365d", fontSize:"24px"}}>Contact Us</Text>
                     <TouchableOpacity style={styles.contactItem} onPress={() => handlePress('address')}>
-                      <Ionicons name="location-outline" size={24} color="#333" />
-                      <Text style={styles.contactText}>1127 Otterbein Ave, Rowland Heights, CA 91748</Text>
+                      <Ionicons name="location-outline" size={24} color="#2c365d" />
+                      <Text style={styles.checklistItem}>1127 Otterbein Ave, Rowland Heights, CA 91748</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.contactItem} onPress={() => handlePress('phone')}>
-                      <Ionicons name="call-outline" size={24} color="#333" />
-                      <Text style={styles.contactText}>(909) 620-5297</Text>
+                      <Ionicons name="call-outline" size={24} color="#2c365d" />
+                      <Text style={styles.checklistItem}>(909) 620-5297</Text>
                     </TouchableOpacity>
                     <View style={styles.contactItem}>
-                      <Ionicons name="print-outline" size={24} color="#333" />
-                      <Text style={styles.contactText}>Fax: (909) 766-8362</Text>
+                      <Ionicons name="print-outline" size={24} color="#2c365d" />
+                      <Text style={styles.checklistItem}>Fax: (909) 766-8362</Text>
                     </View>
                     <TouchableOpacity style={styles.contactItem} onPress={() => handlePress('email')}>
-                      <Ionicons name="mail-outline" size={24} color="#333" />
-                      <Text style={styles.contactText}>info@qubais.org</Text>
+                      <Ionicons name="mail-outline" size={24} color="#2c365d" />
+                      <Text style={styles.checklistItem}>info@qubais.org</Text>
                     </TouchableOpacity>
                   </View>
                 </GlassCard>
@@ -204,9 +204,10 @@ const blobStyle = useAnimatedStyle(() => ({
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+  flex: 1,
     backgroundColor: '#fff',
     minHeight: '100vh',
+    paddingHorizontal: 16, // Add horizontal padding
   },
   backgroundImage: {
     position: 'absolute',
@@ -233,7 +234,13 @@ const styles = StyleSheet.create({
     minHeight: '100%',
   },
   content: {
-    padding: 20,
+       padding: 20,
+    paddingHorizontal: 40, // More horizontal padding
+    marginHorizontal: 8, // Additional margin from edges
+    '@media (min-width: 768px)': {
+      paddingHorizontal: 40, // More padding on larger screens
+      marginHorizontal: 20,
+    },
   },
   contentCard: {
     backgroundColor: '#fff',
@@ -261,7 +268,6 @@ const styles = StyleSheet.create({
     minWidth: 250,
     maxWidth: 400,
     aspectRatio: 2.5,
-    borderRadius: 10,
   },
   wascLogo: {
     width: '100%',
@@ -322,5 +328,45 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#2c365d',
     fontStyle: 'italic',
+  },
+   sectionTitle: {
+    fontSize: 32,
+    fontWeight: '700',
+    color: '#2c365d',
+    marginTop: 70,
+    marginBottom: 20,
+    textAlign: 'center',
+    textShadowColor: 'rgba(0, 0, 0, 0.3)',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 2,
+  },
+  description: {
+    fontSize: 16,
+    lineHeight: 24,
+    color: '#2c365d',
+    marginBottom: 75,
+    textAlign: 'justify',
+    textShadowColor: 'rgba(0, 0, 0, 0.3)',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 2,
+  },
+  subTitle: {
+    fontSize: 24,
+    fontWeight: '600',
+    color: '#2c365d',
+    marginTop: 20,
+    marginBottom: 15,
+    textShadowColor: 'rgba(0, 0, 0, 0.3)',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 2,
+  },
+   checklistItem: {
+    fontSize: 16,
+    // lineHeight: 24,
+    color: '#2c365d',
+    // marginBottom: 10,
+    textShadowColor: 'rgba(0, 0, 0, 0.3)',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 2,
   },
 });

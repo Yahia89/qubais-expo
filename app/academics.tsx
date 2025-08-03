@@ -407,9 +407,10 @@ export default function Academics() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+   flex: 1,
     backgroundColor: '#fff',
     minHeight: '100vh',
+    paddingHorizontal: 16, // Add horizontal padding
   },
   backgroundImage: {
     position: 'absolute',
@@ -432,16 +433,27 @@ const styles = StyleSheet.create({
     marginTop: 40,
     flexGrow: 1,
     minHeight: '100%',
+      padding: 20,
+    paddingHorizontal: 40, // More horizontal padding
+    marginHorizontal: 8, // Additional margin from edges
+    '@media (min-width: 768px)': {
+      paddingHorizontal: 40, // More padding on larger screens
+      marginHorizontal: 20,
+    },
   },
   content: {
     padding: 20,
   },
   sectionTitle: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#333',
+      fontSize: 32,
+    fontWeight: '700',
+    color: '#2c365d',
     marginTop: 70,
+    marginBottom: 20,
     textAlign: 'center',
+    textShadowColor: 'rgba(0, 0, 0, 0.3)',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 2,
   },
   description: {
     fontSize: 16,

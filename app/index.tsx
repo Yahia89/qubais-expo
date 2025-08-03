@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     minHeight: '100vh',
+    paddingHorizontal: 16, // Add horizontal padding
   },
   backgroundImage: {
     position: 'absolute',
@@ -107,6 +108,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
+     opacity: 0.65,
   },
   scrollView: {
     flex: 1,
@@ -118,20 +120,29 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: 20,
+    paddingHorizontal: 40, // More horizontal padding
+    marginHorizontal: 8, // Additional margin from edges
+    '@media (min-width: 768px)': {
+      paddingHorizontal: 40, // More padding on larger screens
+      marginHorizontal: 20,
+    },
   },
   sectionTitle: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#fff',
+      fontSize: 32,
+    fontWeight: '700',
+    color: '#2c365d',
     marginTop: 70,
     marginBottom: 20,
     textAlign: 'center',
+    textShadowColor: 'rgba(0, 0, 0, 0.3)',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 2,
   },
   description: {
-    fontSize: 16,
+   fontSize: 16,
     lineHeight: 24,
-    color: '#fff',
-    marginBottom: 15,
+    color: '#2c365d',
+    marginBottom: 75,
     textAlign: 'justify',
     textShadowColor: 'rgba(0, 0, 0, 0.3)',
     textShadowOffset: { width: 1, height: 1 },
@@ -156,12 +167,6 @@ const styles = StyleSheet.create({
   textContainer: {
     flex: 1,
   },
-  description: {
-    fontSize: 16,
-    lineHeight: 24,
-    color: '#333',
-    textAlign: 'justify',
-  },
   logoContainer: {
     width: '100%',
     maxWidth: 350, // Increased from 200
@@ -173,6 +178,6 @@ const styles = StyleSheet.create({
   },
   wascLogo: {
     width: '100%',
-    height: 150, // Increased from 120
+    height: 200, // Increased from 120
   },
 });

@@ -73,13 +73,12 @@ export default function News() {
           </ScrollReveal>
 
           <ScrollReveal delay={400}>
-            <GlassCard>
+            {/* <GlassCard>
               <Text style={styles.sectionTitle}>Photo & Video Gallery</Text>
               <Text style={styles.description}>
       
               </Text>
-              {/* Placeholder for future gallery content */}
-            </GlassCard>
+            </GlassCard> */}
           </ScrollReveal>
         </Animated.View>
         <Footer />
@@ -90,9 +89,10 @@ export default function News() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+   flex: 1,
     backgroundColor: '#fff',
     minHeight: '100vh',
+    paddingHorizontal: 16, // Add horizontal padding
   },
   backgroundImage: {
     position: 'absolute',
@@ -117,12 +117,18 @@ const styles = StyleSheet.create({
     minHeight: '100%',
   },
   content: {
-    padding: 20,
+           padding: 20,
+    paddingHorizontal: 40, // More horizontal padding
+    marginHorizontal: 8, // Additional margin from edges
+    '@media (min-width: 768px)': {
+      paddingHorizontal: 40, // More padding on larger screens
+      marginHorizontal: 20,
+    },
   },
   sectionTitle: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#2c365d',
     marginTop: 70,
     marginBottom: 20,
     textAlign: 'center',

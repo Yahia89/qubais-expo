@@ -13,7 +13,7 @@ export function Footer() {
           <Link href="/admissions" asChild><Text style={styles.link}>Admissions</Text></Link>
           <Link href="/inquire" asChild><Text style={styles.link}>Contact</Text></Link>
           <TouchableOpacity onPress={() => Linking.openURL('https://login.jupitered.com/login/')}>
-            <Text style={styles.link}>Jupiter</Text>
+            <Text style={styles.link}>JupiterED</Text>
           </TouchableOpacity>
         </View>
       </View>

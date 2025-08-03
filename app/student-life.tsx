@@ -228,6 +228,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     minHeight: '100vh',
+    paddingHorizontal: 16, // Add horizontal padding
   },
   backgroundImage: {
     position: 'absolute',
@@ -252,12 +253,18 @@ const styles = StyleSheet.create({
     minHeight: '100%',
   },
   content: {
-    padding: 20,
+      padding: 20,
+    paddingHorizontal: 40, // More horizontal padding
+    marginHorizontal: 8, // Additional margin from edges
+    '@media (min-width: 768px)': {
+      paddingHorizontal: 40, // More padding on larger screens
+      marginHorizontal: 20,
+    },
   },
   sectionTitle: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#2c365d',
     marginTop: 70,
     marginBottom: 20,
     textAlign: 'center',
@@ -265,7 +272,7 @@ const styles = StyleSheet.create({
   subTitle: {
     fontSize: 22,
     fontWeight: '600',
-    color: '#333',
+    color: '#2c365d',
     marginBottom: 15,
     textAlign: 'center',
   },
@@ -281,7 +288,7 @@ const styles = StyleSheet.create({
   subSectionTitle: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#333',
+    color: '#2c365d',
     marginTop: 20,
     marginBottom: 10,
     textShadowColor: 'rgba(0, 0, 0, 0.3)',

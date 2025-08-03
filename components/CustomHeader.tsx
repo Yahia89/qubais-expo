@@ -135,7 +135,7 @@ export function CustomHeader({ logoStyle }: { logoStyle?: any }) {
         style={[styles.navItem, styles.jupiterNavItem]}
         onPress={() => Linking.openURL('https://login.jupitered.com/login/')}
       >
-        <Text style={[styles.navText, styles.jupiterNavText]}>Jupiter</Text>
+        <Text style={[styles.navText, styles.jupiterNavText]}>JupiterED</Text>
       </Pressable>
     </>
   ), []);
@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
   },
   navText: {
     fontSize: 16,
-    color: '#333',
+    color: '#2c365d',
     fontWeight: '500',
     textAlign: 'center',
   },
@@ -266,7 +266,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   jupiterNavItem: {
-    backgroundColor: 'rgb(101, 82, 53)',
+    backgroundColor: 'rgb(45, 75, 113)',
     borderRadius: 6,
     borderBottomWidth: 2,
     borderBottomColor: '#fcb040',

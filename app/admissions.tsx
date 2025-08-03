@@ -449,7 +449,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   downloadButton: {
-    backgroundColor: '#333',
+    backgroundColor: '#2c365d',
     paddingVertical: 12,
     paddingHorizontal: 24,
     borderRadius: 8,

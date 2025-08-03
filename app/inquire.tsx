@@ -275,8 +275,10 @@ export default function Inquire() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: 'transparent',
+    flex: 1,
+    minHeight: '100vh',
+    paddingHorizontal: 16, // Add horizontal padding
   },
   backgroundImage: {
     position: 'absolute',
@@ -296,12 +298,18 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   content: {
-    padding: 20,
+         padding: 20,
+    paddingHorizontal: 40, // More horizontal padding
+    marginHorizontal: 8, // Additional margin from edges
+    '@media (min-width: 768px)': {
+      paddingHorizontal: 40, // More padding on larger screens
+      marginHorizontal: 20,
+    },
   },
   sectionTitle: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#2c365d',
     marginTop: 70,
     marginBottom: 20,
     textAlign: 'center',
@@ -330,7 +338,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 10,
     fontSize: 16,
-    color: '#333',
+    color: '#2c365d',
   },
   messageGroup: {
     marginBottom: 20,
@@ -345,7 +353,7 @@ const styles = StyleSheet.create({
   },
   messageInput: {
     fontSize: 16,
-    color: '#333',
+    color: '#2c365d',
     height: 100,
     textAlignVertical: 'top',
   },
@@ -362,7 +370,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   submitButton: {
-    backgroundColor: '#E31B23',
+    backgroundColor: '#2c365d',
     padding: 15,
     borderRadius: 8,
     alignItems: 'center',
@@ -413,7 +421,7 @@ const styles = StyleSheet.create({
   },
   modalText: {
     fontSize: 18,
-    color: '#333',
+    color: '#2c365d',
     textAlign: 'center',
     marginTop: 15,
     marginBottom: 20,
@@ -447,7 +455,7 @@ const styles = StyleSheet.create({
   contactTitle: {
     fontSize: 20,
     fontWeight: '600',
-    color: '#333',
+    color: '#2c365d',
     marginBottom: 15,
     textAlign: 'center',
   },
