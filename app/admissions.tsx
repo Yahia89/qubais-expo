@@ -220,9 +220,7 @@ const responsivePaddingStyle = () => {
               <Text style={styles.note}>
                 Monthly Tuition is due by the 5th of each month.
               </Text>
-              <Text style={styles.warning}>
-                Late Payment Fee: A late payment fee of $25.00 will automatically be charged for ANY late payments made after the 5th of each month.
-              </Text>
+              
             </GlassCard>
           </ScrollReveal>
 

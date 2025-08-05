@@ -157,23 +157,6 @@ export default function Academics() {
           <ScrollReveal delay={500}>
             <GlassCard>
               <Text style={styles.sectionTitle}>Curriculum Overview</Text>
-              
-              <Text style={styles.subSectionTitle}>Late Pick-up Policy</Text>
-              <View style={styles.policyContainer}>
-                <View style={styles.listItem}>
-                  <Text style={styles.bullet}>•</Text>
-                  <Text style={styles.listText}>
-                    Students picked up after 3:30 PM Monday through Thursday will incur a $25 late fee
-                  </Text>
-                </View>
-                <View style={styles.listItem}>
-                  <Text style={styles.bullet}>•</Text>
-                  <Text style={styles.listText}>
-                    Friday dismissal time is 12:30 PM - students picked up after 12:35 PM will be charged a $40 late fee
-                  </Text>
-                </View>
-              </View>
-
               <Text style={styles.subSectionTitle}>Travel Policy</Text>
               <Text style={styles.description}>
                 Quba Islamic School urges parents to make sure their children attend school regularly and to 
@@ -255,32 +238,7 @@ export default function Academics() {
             <GlassCard>
               <Text style={styles.sectionTitle}>Technology Integration</Text>
               
-              <Text style={styles.subSectionTitle}>Personal Device Policy</Text>
-              <View style={styles.policyContainer}>
-                <View style={styles.listItem}>
-                  <Text style={styles.bullet}>•</Text>
-                  <Text style={styles.listText}>
-                    Cell phones, AirPods, and smartwatches are <Text style={styles.boldText}>not allowed</Text> during school hours
-                  </Text>
-                </View>
-                <View style={styles.listItem}>
-                  <Text style={styles.bullet}>•</Text>
-                  <Text style={styles.listText}>
-                    All cell phones must be turned off and kept in the office until dismissal
-                  </Text>
-                </View>
-                <View style={styles.listItem}>
-                  <Text style={styles.bullet}>•</Text>
-                  <Text style={styles.listText}>
-                    QIS is not responsible for lost, stolen, or damaged electronics
-                  </Text>
-                </View>
-                <View style={styles.warningBox}>
-                  <Text style={styles.warningText}>
-                    ⚠️ Violation Policy: Devices will be confiscated and only returned to parents at year-end
-                  </Text>
-                </View>
-              </View>
+              
 
               <Text style={styles.subSectionTitle}>School-Provided Technology</Text>
               <Text style={styles.description}>

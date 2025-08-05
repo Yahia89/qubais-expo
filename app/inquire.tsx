@@ -248,10 +248,7 @@ const { width } = useWindowDimensions();
                     <Ionicons name="call" size={24} color="#E31B23" />
                     <Text style={styles.contactText}>(909) 620-5297</Text>
                   </TouchableOpacity>
-                  <View style={styles.contactItem}>
-                    <Ionicons name="print" size={24} color="#E31B23" />
-                    <Text style={styles.contactText}>Fax: (909) 766-8362</Text>
-                  </View>
+                  
                   <TouchableOpacity style={styles.contactItem} onPress={() => Linking.openURL('mailto:info@qubais.org')}>
                     <Ionicons name="mail" size={24} color="#E31B23" />
                     <Text style={styles.contactText}>info@qubais.org</Text>

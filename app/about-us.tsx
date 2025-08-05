@@ -195,10 +195,7 @@ const blobStyle = useAnimatedStyle(() => ({
                       <Ionicons name="call-outline" size={24} color="#2c365d" />
                       <Text style={styles.checklistItem}>(909) 620-5297</Text>
                     </TouchableOpacity>
-                    <View style={styles.contactItem}>
-                      <Ionicons name="print-outline" size={24} color="#2c365d" />
-                      <Text style={styles.checklistItem}>Fax: (909) 766-8362</Text>
-                    </View>
+                    
                     <TouchableOpacity style={styles.contactItem} onPress={() => handlePress('email')}>
                       <Ionicons name="mail-outline" size={24} color="#2c365d" />
                       <Text style={styles.checklistItem}>info@qubais.org</Text>
