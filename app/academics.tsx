@@ -199,67 +199,67 @@ export default function Academics() {
                      Please see our High School Planning Documents:
                     </Text>
                     <View style={{ marginLeft: 15, marginTop: 8 }}>
-                      <TouchableOpacity onPress={() => Linking.openURL('/assets/HS_Planning/High-School-4-Year-Graduation-Roadmap.pdf')} style={{ marginBottom: 6 }}>
+                      <TouchableOpacity onPress={() => Linking.openURL('/assets/High-School-4-Year-Graduation-Roadmap.pdf')} style={{ marginBottom: 6 }}>
                         <Text style={[styles.listText, { color: "blue", textDecorationLine: "underline", fontSize: 14 }]}>
                           • High School 4-Year Graduation Roadmap
                         </Text>
                       </TouchableOpacity>
                       
-                      <TouchableOpacity onPress={() => Linking.openURL('/assets/HS_Planning/Graduation-Requirements.pdf')} style={{ marginBottom: 6 }}>
+                      <TouchableOpacity onPress={() => Linking.openURL('/assets/Graduation-Requirements.pdf')} style={{ marginBottom: 6 }}>
                         <Text style={[styles.listText, { color: "blue", textDecorationLine: "underline", fontSize: 14 }]}>
                           • Graduation Requirements
                         </Text>
                       </TouchableOpacity>
                       
-                      <TouchableOpacity onPress={() => Linking.openURL('/assets/HS_Planning/High-School-Course-Graduation-Requirements.pdf')} style={{ marginBottom: 6 }}>
+                      <TouchableOpacity onPress={() => Linking.openURL('/assets/High-School-Course-Graduation-Requirements.pdf')} style={{ marginBottom: 6 }}>
                         <Text style={[styles.listText, { color: "blue", textDecorationLine: "underline", fontSize: 14 }]}>
                           • High School Course Graduation Requirements
                         </Text>
                       </TouchableOpacity>
                       
-                      <TouchableOpacity onPress={() => Linking.openURL('/assets/HS_Planning/Suggested-4-Year-Academic-Plan.pdf')} style={{ marginBottom: 6 }}>
+                      <TouchableOpacity onPress={() => Linking.openURL('/assets/Suggested-4-Year-Academic-Plan.pdf')} style={{ marginBottom: 6 }}>
                         <Text style={[styles.listText, { color: "blue", textDecorationLine: "underline", fontSize: 14 }]}>
                           • Suggested 4-Year Academic Plan
                         </Text>
                       </TouchableOpacity>
                       
-                      <TouchableOpacity onPress={() => Linking.openURL('/assets/HS_Planning/9th-Grade-Course-Selection-Form.pdf')} style={{ marginBottom: 6 }}>
+                      <TouchableOpacity onPress={() => Linking.openURL('/assets/9th-Grade-Course-Selection-Form.pdf')} style={{ marginBottom: 6 }}>
                         <Text style={[styles.listText, { color: "blue", textDecorationLine: "underline", fontSize: 14 }]}>
                           • 9th Grade Course Selection Form
                         </Text>
                       </TouchableOpacity>
                       
-                      <TouchableOpacity onPress={() => Linking.openURL('/assets/HS_Planning/10th-Grade-Course-Selection-Form.pdf')} style={{ marginBottom: 6 }}>
+                      <TouchableOpacity onPress={() => Linking.openURL('/assets/10th-Grade-Course-Selection-Form.pdf')} style={{ marginBottom: 6 }}>
                         <Text style={[styles.listText, { color: "blue", textDecorationLine: "underline", fontSize: 14 }]}>
                           • 10th Grade Course Selection Form
                         </Text>
                       </TouchableOpacity>
                       
-                      <TouchableOpacity onPress={() => Linking.openURL('/assets/HS_Planning/11th-Grade-Course-Selection-Form.pdf')} style={{ marginBottom: 6 }}>
+                      <TouchableOpacity onPress={() => Linking.openURL('/assets/11th-Grade-Course-Selection-Form.pdf')} style={{ marginBottom: 6 }}>
                         <Text style={[styles.listText, { color: "blue", textDecorationLine: "underline", fontSize: 14 }]}>
                           • 11th Grade Course Selection Form
                         </Text>
                       </TouchableOpacity>
                       
-                      <TouchableOpacity onPress={() => Linking.openURL('/assets/HS_Planning/Academic-Counseling-Questionnaire.pdf')} style={{ marginBottom: 6 }}>
+                      <TouchableOpacity onPress={() => Linking.openURL('/assets/Academic-Counseling-Questionnaire.pdf')} style={{ marginBottom: 6 }}>
                         <Text style={[styles.listText, { color: "blue", textDecorationLine: "underline", fontSize: 14 }]}>
                           • Academic Counseling Questionnaire
                         </Text>
                       </TouchableOpacity>
                       
-                      <TouchableOpacity onPress={() => Linking.openURL('/assets/HS_Planning/Transfer-Credit-Worksheet.pdf')} style={{ marginBottom: 6 }}>
+                      <TouchableOpacity onPress={() => Linking.openURL('/assets/Transfer-Credit-Worksheet.pdf')} style={{ marginBottom: 6 }}>
                         <Text style={[styles.listText, { color: "blue", textDecorationLine: "underline", fontSize: 14 }]}>
                           • Transfer Credit Worksheet
                         </Text>
                       </TouchableOpacity>
                       
-                      <TouchableOpacity onPress={() => Linking.openURL('/assets/HS_Planning/Community-Service-Form.pdf')} style={{ marginBottom: 6 }}>
+                      <TouchableOpacity onPress={() => Linking.openURL('/assets/Community-Service-Form.pdf')} style={{ marginBottom: 6 }}>
                         <Text style={[styles.listText, { color: "blue", textDecorationLine: "underline", fontSize: 14 }]}>
                           • Community Service Form
                         </Text>
                       </TouchableOpacity>
                       
-                      <TouchableOpacity onPress={() => Linking.openURL('/assets/HS_Planning/HiSET-Pathway-10th-Grade-Option.pdf')} style={{ marginBottom: 6 }}>
+                      <TouchableOpacity onPress={() => Linking.openURL('/assets/HiSET-Pathway-10th-Grade-Option.pdf')} style={{ marginBottom: 6 }}>
                         <Text style={[styles.listText, { color: "blue", textDecorationLine: "underline", fontSize: 14 }]}>
                           • HiSET Pathway 10th Grade Option
                         </Text>
