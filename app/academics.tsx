@@ -78,7 +78,7 @@ export default function Academics() {
               </Text>
 
               <Text style={styles.subSectionTitle}>
-                Elementary School (K–4)
+                Elementary School (K–6)
               </Text>
               <View style={styles.listContainer}>
                 <View style={styles.listItem}>
@@ -107,7 +107,7 @@ export default function Academics() {
                 </View>
               </View>
 
-              <Text style={styles.subSectionTitle}>Middle School (5–8)</Text>
+              <Text style={styles.subSectionTitle}>Middle School (7–8)</Text>
               <View style={styles.listContainer}>
                 <View style={styles.listItem}>
                   <Text style={styles.bullet}>•</Text>
@@ -633,7 +633,9 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     minHeight: "100%",
   },
-  content: {},
+  content: {
+    padding: 20,
+  },
   sectionTitle: {
     fontSize: 32,
     fontWeight: "700",
@@ -642,6 +644,8 @@ const styles = StyleSheet.create({
     textShadowColor: "rgba(0, 0, 0, 0.3)",
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 2,
+    marginTop: 70,
+    marginBottom: 20,
   },
   description: {
     fontSize: 16,

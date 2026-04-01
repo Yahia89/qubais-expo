@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, StyleSheet, Text, ImageBackground, Image, useWindowDimensions } from 'react-native';
+import { View, StyleSheet, Text, ImageBackground, Image, useWindowDimensions, TouchableOpacity, Linking } from 'react-native';
 import Animated, {
   useAnimatedScrollHandler,
   useAnimatedStyle,
@@ -61,6 +61,12 @@ export default function Index() {
           <ScrollReveal delay={200}>
             <GlassCard>
               <Text style={styles.sectionTitle}>Quba Islamic School</Text>
+              <TouchableOpacity 
+                style={styles.bookletButton}
+                onPress={() => Linking.openURL('https://simplebooklet.com/embed.php?wpKey=qTBfP4jAZxjyTpQ8uwGqfm&source=embed')}
+              >
+                <Text style={styles.bookletButtonText}>View Our School Booklet</Text>
+              </TouchableOpacity>
               <View style={styles.welcomeContainer}>
                 <View style={styles.logoContainer}>
                   <Image
@@ -178,5 +184,20 @@ const styles = StyleSheet.create({
   wascLogo: {
     width: '100%',
     height: 200,
+  },
+  bookletButton: {
+    backgroundColor: '#2c365d',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 6,
+    alignItems: 'center',
+    marginBottom: 20,
+    alignSelf: 'center',
+    minWidth: 200,
+  },
+  bookletButtonText: {
+    color: '#fff',
+    fontSize: 14,
+    fontWeight: '600',
   },
 });

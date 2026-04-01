@@ -136,8 +136,8 @@ const responsivePaddingStyle = () => {
           <ScrollReveal delay={400}>
             <GlassCard>
               <Text style={styles.sectionTitle}>Tuition & Payment Schedule</Text>
-              <Text style={styles.subTitle}>Payment Schedule 2025 - 2026</Text>
-              
+              <Text style={styles.subTitle}>Payment Schedule 2026 - 2027</Text>
+
               <View style={styles.feeContainer}>
                 <View style={styles.feeRow}>
                   <Text style={styles.feeName}>Supply & Material Fee</Text>
@@ -160,16 +160,16 @@ const responsivePaddingStyle = () => {
                   <Text style={styles.feeAmount}>$100.00</Text>
                 </View>
                 <View style={styles.feeRow}>
-                  <Text style={styles.feeName}>Monthly Tuition</Text>
-                  <Text style={styles.feeAmount}>$625.00</Text>
-                </View>
-                <View style={styles.feeRow}>
-                  <Text style={styles.feeName}>Monthly Security Fee</Text>
-                  <Text style={styles.feeAmount}>$25.00/Family</Text>
-                </View>
-                <View style={styles.feeRow}>
                   <Text style={styles.feeName}>School Activities/Events</Text>
                   <Text style={styles.feeAmount}>$125/Family</Text>
+                </View>
+                <View style={styles.feeRow}>
+                  <Text style={styles.feeName}>Field Trips</Text>
+                  <Text style={styles.feeAmount}>$150</Text>
+                </View>
+                <View style={styles.feeRow}>
+                  <Text style={styles.feeName}>Monthly Tuition</Text>
+                  <Text style={styles.feeAmount}>$625.00</Text>
                 </View>
               </View>
 
@@ -177,43 +177,43 @@ const responsivePaddingStyle = () => {
               <View style={styles.dueDatesContainer}>
                 <View style={styles.dueRow}>
                   <Text style={styles.dueMonth}>August</Text>
-                  <Text style={styles.dueDate}>By 08/05/2025</Text>
+                  <Text style={styles.dueDate}>By 08/05/2026</Text>
                 </View>
                 <View style={styles.dueRow}>
                   <Text style={styles.dueMonth}>September</Text>
-                  <Text style={styles.dueDate}>By 09/05/2025</Text>
+                  <Text style={styles.dueDate}>By 09/05/2026</Text>
                 </View>
                 <View style={styles.dueRow}>
                   <Text style={styles.dueMonth}>October</Text>
-                  <Text style={styles.dueDate}>By 10/05/2025</Text>
+                  <Text style={styles.dueDate}>By 10/05/2026</Text>
                 </View>
                 <View style={styles.dueRow}>
                   <Text style={styles.dueMonth}>November</Text>
-                  <Text style={styles.dueDate}>By 11/05/2025</Text>
+                  <Text style={styles.dueDate}>By 11/05/2026</Text>
                 </View>
                 <View style={styles.dueRow}>
                   <Text style={styles.dueMonth}>December</Text>
-                  <Text style={styles.dueDate}>By 12/05/2025</Text>
+                  <Text style={styles.dueDate}>By 12/05/2026</Text>
                 </View>
                 <View style={styles.dueRow}>
                   <Text style={styles.dueMonth}>January</Text>
-                  <Text style={styles.dueDate}>By 01/05/2026</Text>
+                  <Text style={styles.dueDate}>By 01/05/2027</Text>
                 </View>
                 <View style={styles.dueRow}>
                   <Text style={styles.dueMonth}>February</Text>
-                  <Text style={styles.dueDate}>By 02/05/2026</Text>
+                  <Text style={styles.dueDate}>By 02/05/2027</Text>
                 </View>
                 <View style={styles.dueRow}>
                   <Text style={styles.dueMonth}>March</Text>
-                  <Text style={styles.dueDate}>By 03/05/2026</Text>
+                  <Text style={styles.dueDate}>By 03/05/2027</Text>
                 </View>
                 <View style={styles.dueRow}>
                   <Text style={styles.dueMonth}>April</Text>
-                  <Text style={styles.dueDate}>By 04/05/2026</Text>
+                  <Text style={styles.dueDate}>By 04/05/2027</Text>
                 </View>
                 <View style={styles.dueRow}>
                   <Text style={styles.dueMonth}>May</Text>
-                  <Text style={styles.dueDate}>By 05/05/2026</Text>
+                  <Text style={styles.dueDate}>By 05/05/2027</Text>
                 </View>
               </View>
 
@@ -238,11 +238,11 @@ const responsivePaddingStyle = () => {
                   style={styles.documentLogo}
                   resizeMode="contain"
                 />
-                <Text style={styles.documentTitle}>Admission Packet 2025-2026</Text>
+                <Text style={styles.documentTitle}>Admission Packet 2026-2027</Text>
                 <Text style={styles.documentSubtitle}>Private KG-12th Grade</Text>
                 <TouchableOpacity 
                   style={styles.downloadButton}
-                  onPress={() => Linking.openURL('/assets/QIS-Admission-Packet-2025-2026-K-12.pdf')}
+                  onPress={() => Linking.openURL('/assets/QIS-Admission-Packet-2026-2027-K-12.pdf')}
                 >
                   <Text style={styles.downloadButtonText}>Download Admission Packet</Text>
                 </TouchableOpacity>
