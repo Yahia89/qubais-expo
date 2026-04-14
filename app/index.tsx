@@ -42,6 +42,24 @@ export default function Index() {
     }
   };
 
+  const responsiveLogoContainerStyle = () => {
+    if (width >= 768) {
+      return { flexDirection: 'row', gap: 16 };
+    } else {
+      return { flexDirection: 'column', gap: 20 };
+    }
+  };
+
+  const responsiveLogoSize = () => {
+    if (width >= 768) {
+      return { width: '45%', height: 150 };
+    } else if (width >= 480) {
+      return { width: '70%', height: 120 };
+    } else {
+      return { width: '80%', height: 100 };
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.backgroundImage}>
@@ -68,10 +86,15 @@ export default function Index() {
                 <Text style={styles.bookletButtonText}>View Our School Booklet</Text>
               </TouchableOpacity>
               <View style={styles.welcomeContainer}>
-                <View style={styles.logoContainer}>
+                <View style={[styles.logoContainer, responsiveLogoContainerStyle()]}>
+                  <Image
+                    source={require('../assets/images/Mascot_1.png')}
+                    style={[styles.Mascot_1, responsiveLogoSize()]}
+                    resizeMode="contain"
+                  />
                   <Image
                     source={require('../assets/images/wasc-logo-Photoroom.png')}
-                    style={styles.wascLogo}
+                    style={[styles.wascLogo, responsiveLogoSize()]}
                     resizeMode="contain"
                   />
                 </View>
@@ -175,15 +198,22 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     flex: 1,
+    width: '100%',
   },
   logoContainer: {
     width: '100%',
-    maxWidth: 350,
-    alignSelf: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    gap: 16,
   },
   wascLogo: {
-    width: '100%',
-    height: 200,
+    width: '45%',
+    height: 150,
+  },
+  Mascot_1: {
+    width: '45%',
+    height: 150,
   },
   bookletButton: {
     backgroundColor: '#2c365d',
