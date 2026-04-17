@@ -27,7 +27,6 @@ export default function News() {
 
   const imageMap: Record<string, any> = {
     "chadly.jpg": require("../assets/images/chadly.jpg"),
-    "sciencefair26.jpg": require("../assets/images/sciencefair26.jpg"),
   };
 
   const scrollHandler = useAnimatedScrollHandler({
@@ -66,11 +65,13 @@ export default function News() {
     }
   };
 
-  const responsiveCategoryBoxPadding = () => {
-    if (width >= 768) {
-      return { padding: 18 };
+  const responsiveHeroImageHeight = () => {
+    if (width >= 1024) {
+      return 500;
+    } else if (width >= 768) {
+      return 400;
     } else {
-      return { padding: 14 };
+      return 300;
     }
   };
 
@@ -89,7 +90,10 @@ export default function News() {
           activeOpacity={1}
           onPress={() => setSelectedImage(null)}
         >
-          <TouchableOpacity activeOpacity={1} onPress={(e) => e.stopPropagation()}>
+          <TouchableOpacity
+            activeOpacity={1}
+            onPress={(e) => e.stopPropagation()}
+          >
             {selectedImage && imageMap[selectedImage] && (
               <Image
                 source={imageMap[selectedImage]}
@@ -108,252 +112,275 @@ export default function News() {
         <Animated.View
           style={[styles.content, responsivePaddingStyle(), contentStyle]}
         >
-          <ScrollReveal delay={200}>
-            <GlassCard>
-              <Text style={styles.sectionTitle}>School Calendar</Text>
-              <View style={styles.calendarContainer}>
-                <Image
-                  source={require("../assets/images/2026-2027-QIS-Calendar.png")}
-                  style={styles.calendarImage}
-                  resizeMode="contain"
-                />
-                <TouchableOpacity
-                  style={styles.downloadButton}
-                  onPress={() =>
-                    Linking.openURL("/assets/2026-2027-QIS-Calendar.pdf")
-                  }
-                >
-                  <Text style={styles.downloadButtonText}>
-                    Download Calendar PDF
-                  </Text>
-                </TouchableOpacity>
-              </View>
-            </GlassCard>
-          </ScrollReveal>
-
           <ScrollReveal delay={300}>
-            <GlassCard>
-              <ScrollReveal delay={350}>
-                <View style={styles.blogHeader}>
-                  <Text style={[styles.blogTitle, responsiveBlogTitleSize()]}>
-                    Quba Islamic School Shines at the LA County Science Fair
-                    2026!
-                  </Text>
-                  <Text style={styles.blogDate}>Date: April 2026</Text>
-                </View>
-              </ScrollReveal>
+            <View style={{ width: "100%", alignItems: "center" }}>
+              <View>
+                <GlassCard>
+                  <ScrollReveal delay={200}>
+                    <View
+                      style={[
+                        styles.heroImageContainer,
+                        { height: responsiveHeroImageHeight() },
+                      ]}
+                    >
 
-              <ScrollReveal delay={400}>
-                <Text style={styles.blogIntro}>
-                  Quba Islamic School proudly celebrates the outstanding
-                  achievements of our students in the fields of science,
-                  research, and innovation. Through dedication, curiosity, and
-                  hard work, our students have demonstrated excellence across a
-                  wide range of disciplines, representing our school with
-                  distinction.
-                </Text>
-              </ScrollReveal>
+                        <Image
+                          source={require("../assets/images/chadly.jpg")}
+                          style={[
+                            styles.heroImage,
+                            { width: width >= 768 ? "50%" : "100%" },
+                          ]}
+                          resizeMode="cover"
+                        />
 
-              <ScrollReveal delay={450}>
-                <View style={styles.recognitionSection}>
-                  <Text style={styles.sectionHeading}>
-                    🏅 Special Recognition
-                  </Text>
-                  <Text style={styles.recognitionText}>
-                    We extend our heartfelt congratulations to{" "}
-                    <Text style={styles.highlight}>
-                      Rafia Ahmed (10th grade)
-                    </Text>{" "}
-                    for earning the PECG Senior Honorable Mention Medal. This
-                    prestigious recognition highlights her exceptional effort
-                    and commitment to academic excellence.
-                  </Text>
-                </View>
-              </ScrollReveal>
+                      <View
+                        style={[
+                          styles.heroImageContainer,
+                          { height: responsiveHeroImageHeight() },
+                        ]}
+                      >
+                        <Image
+                          source={require("../assets/images/Mascot_2-nobg.png")}
+                          style={[
+                            styles.heroImage,
+                            { width: width >= 768 ? "50%" : "100%" },
+                          ]}
+                          resizeMode="contain"
+                        />
+                      </View>
+                    </View>
+                  </ScrollReveal>
+                  <ScrollReveal delay={350}>
+                    <View style={styles.blogHeader}>
+                      <Text
+                        style={[styles.blogTitle, responsiveBlogTitleSize()]}
+                      >
+                        Quba Islamic School Shines at the LA County Science Fair
+                        2026!
+                      </Text>
+                      <Text style={styles.blogDate}>Date: April 2026</Text>
+                    </View>
+                  </ScrollReveal>
 
-              <ScrollReveal delay={500}>
-                <View style={styles.recognitionSection}>
-                  <Text style={styles.sectionHeading}>
-                    🏅 Honorable Mention
-                  </Text>
-                  <Text style={styles.recognitionText}>
-                    <Text style={styles.highlight}>
-                      Sarah Hamid (7th grade)
-                    </Text>{" "}
-                    was awarded Honorable Mention in Cognitive Science,
-                    showcasing her strong analytical thinking and passion for
-                    understanding human behavior and cognition.
-                  </Text>
-                </View>
-              </ScrollReveal>
+                  <ScrollReveal delay={400}>
+                    <Text style={styles.blogIntro}>
+                      Quba Islamic School proudly celebrates the outstanding
+                      achievements of our students in the fields of science,
+                      research, and innovation. Through dedication, curiosity,
+                      and hard work, our students have demonstrated excellence
+                      across a wide range of disciplines, representing our
+                      school with distinction.
+                    </Text>
+                  </ScrollReveal>
 
-              <ScrollReveal delay={550}>
-                <View style={styles.categorySection}>
-                  <Text style={styles.sectionHeading}>
-                    👏 Recognition Awards
-                  </Text>
-                  <Text style={styles.categorySubheading}>
-                    Our students were also recognized across multiple scientific
-                    categories:
-                  </Text>
-                </View>
-              </ScrollReveal>
+                  <ScrollReveal delay={450}>
+                    <View style={styles.recognitionSection}>
+                      <Text style={styles.sectionHeading}>
+                        Special Recognition
+                      </Text>
+                      <Text style={styles.recognitionText}>
+                        We extend our heartfelt congratulations to{" "}
+                        <Text style={styles.highlight}>
+                          Rafia Ahmed (10th grade)
+                        </Text>{" "}
+                        for earning the PECG Senior Honorable Mention Medal.
+                        This prestigious recognition highlights her exceptional
+                        effort and commitment to academic excellence.
+                      </Text>
+                    </View>
+                  </ScrollReveal>
 
-              <ScrollReveal delay={600}>
-                <View style={styles.categoryBox}>
-                  <Text style={styles.categoryTitle}>
-                    Behavioral & Social Sciences
-                  </Text>
-                  <Text style={styles.categoryStudents}>
-                    • Baierna Zulpihaer (7th grade){"\n"}• Yanar Akoshali (10th
-                    grade){"\n"}• Rory Zamril (10th grade)
-                  </Text>
-                </View>
-              </ScrollReveal>
+                  <ScrollReveal delay={500}>
+                    <View style={styles.recognitionSection}>
+                      <Text style={styles.sectionHeading}>
+                        Honorable Mention
+                      </Text>
+                      <Text style={styles.recognitionText}>
+                        <Text style={styles.highlight}>
+                          Sarah Hamid (7th grade)
+                        </Text>{" "}
+                        was awarded Honorable Mention in Cognitive Science,
+                        showcasing her strong analytical thinking and passion
+                        for understanding human behavior and cognition.
+                      </Text>
+                    </View>
+                  </ScrollReveal>
 
-              <ScrollReveal delay={650}>
-                <View style={styles.categoryBox}>
-                  <Text style={styles.categoryTitle}>
-                    Biochemistry & Molecular Biology
-                  </Text>
-                  <Text style={styles.categoryStudents}>
-                    • Menaal Obaid (8th grade){"\n"}• Kenzy Morsy (9th grade)
-                  </Text>
-                </View>
-              </ScrollReveal>
+                  <ScrollReveal delay={550}>
+                    <View style={styles.categorySection}>
+                      <Text style={styles.sectionHeading}>
+                        Recognition Awards
+                      </Text>
+                      <Text style={styles.categorySubheading}>
+                        Our students were also recognized across multiple
+                        scientific categories:
+                      </Text>
+                    </View>
+                  </ScrollReveal>
 
-              <ScrollReveal delay={700}>
-                <View style={styles.categoryBox}>
-                  <Text style={styles.categoryTitle}>Chemistry (General)</Text>
-                  <Text style={styles.categoryStudents}>
-                    • Roqaia Eldokony (8th grade){"\n"}• Aliza Zafar (10th
-                    grade)
-                  </Text>
-                </View>
-              </ScrollReveal>
+                  <ScrollReveal delay={600}>
+                    <View style={styles.categoryBox}>
+                      <Text style={styles.categoryTitle}>
+                        Behavioral & Social Sciences
+                      </Text>
+                      <Text style={styles.categoryStudents}>
+                        • Baierna Zulpihaer (7th grade){"\n"}• Yanar Akoshali
+                        (10th grade){"\n"}• Rory Zamril (10th grade)
+                      </Text>
+                    </View>
+                  </ScrollReveal>
 
-              <ScrollReveal delay={750}>
-                <View style={styles.categoryBox}>
-                  <Text style={styles.categoryTitle}>Chemistry (Applied)</Text>
-                  <Text style={styles.categoryStudents}>
-                    • Fatima Ahmed (8th grade)
-                  </Text>
-                </View>
-              </ScrollReveal>
+                  <ScrollReveal delay={650}>
+                    <View style={styles.categoryBox}>
+                      <Text style={styles.categoryTitle}>
+                        Biochemistry & Molecular Biology
+                      </Text>
+                      <Text style={styles.categoryStudents}>
+                        • Menaal Obaid (8th grade){"\n"}• Kenzy Morsy (9th
+                        grade)
+                      </Text>
+                    </View>
+                  </ScrollReveal>
 
-              <ScrollReveal delay={800}>
-                <View style={styles.categoryBox}>
-                  <Text style={styles.categoryTitle}>
-                    Engineering: Civil & Environmental
-                  </Text>
-                  <Text style={styles.categoryStudents}>
-                    • Abdullah Zafar (8th grade){"\n"}• Omar Peerzay (6th grade)
-                    {"\n"}• Rashidi Zamril (6th grade){"\n"}• Rafia Ahmed (10th
-                    grade)
-                  </Text>
-                </View>
-              </ScrollReveal>
+                  <ScrollReveal delay={700}>
+                    <View style={styles.categoryBox}>
+                      <Text style={styles.categoryTitle}>
+                        Chemistry (General)
+                      </Text>
+                      <Text style={styles.categoryStudents}>
+                        • Roqaia Eldokony (8th grade){"\n"}• Aliza Zafar (10th
+                        grade)
+                      </Text>
+                    </View>
+                  </ScrollReveal>
 
-              <ScrollReveal delay={850}>
-                <View style={styles.categoryBox}>
-                  <Text style={styles.categoryTitle}>
-                    Engineering: Electronics & Robotics
-                  </Text>
-                  <Text style={styles.categoryStudents}>
-                    • Joud Al Tawam (10th grade)
-                  </Text>
-                </View>
-              </ScrollReveal>
+                  <ScrollReveal delay={750}>
+                    <View style={styles.categoryBox}>
+                      <Text style={styles.categoryTitle}>
+                        Chemistry (Applied)
+                      </Text>
+                      <Text style={styles.categoryStudents}>
+                        • Fatima Ahmed (8th grade)
+                      </Text>
+                    </View>
+                  </ScrollReveal>
 
-              <ScrollReveal delay={900}>
-                <View style={styles.categoryBox}>
-                  <Text style={styles.categoryTitle}>Microbiology</Text>
-                  <Text style={styles.categoryStudents}>
-                    • Haneefa AW Rahmani (8th grade){"\n"}• Chadly Ayachi (7th
-                    grade){"\n"}• Erum Hashim (9th grade)
-                  </Text>
-                </View>
-              </ScrollReveal>
+                  <ScrollReveal delay={800}>
+                    <View style={styles.categoryBox}>
+                      <Text style={styles.categoryTitle}>
+                        Engineering: Civil & Environmental
+                      </Text>
+                      <Text style={styles.categoryStudents}>
+                        • Abdullah Zafar (8th grade){"\n"}• Omar Peerzay (6th
+                        grade)
+                        {"\n"}• Rashidi Zamril (6th grade){"\n"}• Rafia Ahmed
+                        (10th grade)
+                      </Text>
+                    </View>
+                  </ScrollReveal>
 
-              <ScrollReveal delay={950}>
-                <View style={styles.categoryBox}>
-                  <Text style={styles.categoryTitle}>Product Science</Text>
-                  <Text style={styles.categoryStudents}>
-                    • Malik Sabha (6th grade)
-                  </Text>
-                </View>
-              </ScrollReveal>
+                  <ScrollReveal delay={850}>
+                    <View style={styles.categoryBox}>
+                      <Text style={styles.categoryTitle}>
+                        Engineering: Electronics & Robotics
+                      </Text>
+                      <Text style={styles.categoryStudents}>
+                        • Joud Al Tawam (10th grade)
+                      </Text>
+                    </View>
+                  </ScrollReveal>
 
-              <ScrollReveal delay={1000}>
-                <View style={styles.categoryBox}>
-                  <Text style={styles.categoryTitle}>Materials Science</Text>
-                  <Text style={styles.categoryStudents}>
-                    • Lana Almassri (6th grade){"\n"}• Maryam Rahmani (6th
-                    grade)
-                  </Text>
-                </View>
-              </ScrollReveal>
+                  <ScrollReveal delay={900}>
+                    <View style={styles.categoryBox}>
+                      <Text style={styles.categoryTitle}>Microbiology</Text>
+                      <Text style={styles.categoryStudents}>
+                        • Haneefa AW Rahmani (8th grade){"\n"}• Chadly Ayachi
+                        (7th grade){"\n"}• Erum Hashim (9th grade)
+                      </Text>
+                    </View>
+                  </ScrollReveal>
 
-              <ScrollReveal delay={1050}>
-                <View style={styles.celebrationSection}>
-                  <Text style={styles.celebrationTitle}>
-                    A Celebration of Excellence
-                  </Text>
-                  <Text style={styles.celebrationText}>
-                    These accomplishments reflect not only academic strength,
-                    but also creativity, perseverance, and a genuine passion for
-                    learning. Our students continue to embody the values of
-                    curiosity, discipline, and excellence that define Quba
-                    Islamic School.
-                  </Text>
-                  <Text style={styles.celebrationText}>
-                    We are incredibly proud of each and every student for their
-                    dedication and achievements. Their success is a testament to
-                    their hard work, the support of their families, and the
-                    commitment of our educators.
-                  </Text>
-                  <Text style={styles.celebrationText}>
-                    May Allah (SWT) continue to bless their knowledge and grant
-                    them success in this life and the next.
-                  </Text>
-                </View>
-              </ScrollReveal>
+                  <ScrollReveal delay={950}>
+                    <View style={styles.categoryBox}>
+                      <Text style={styles.categoryTitle}>Product Science</Text>
+                      <Text style={styles.categoryStudents}>
+                        • Malik Sabha (6th grade)
+                      </Text>
+                    </View>
+                  </ScrollReveal>
 
-              <ScrollReveal delay={1100}>
-                <View style={styles.outlookSection}>
-                  <Text style={styles.outlookTitle}>Looking Ahead</Text>
-                  <Text style={styles.outlookText}>
-                    At Quba Islamic School, we remain committed to nurturing
-                    future scientists, leaders, and innovators through a strong
-                    academic foundation and meaningful opportunities for
-                    exploration and growth.
-                  </Text>
-                </View>
-                <Text style={styles.sectionTitle}>Press to view image</Text>
-                <View style={styles.accreditationRow}>
-                  <TouchableOpacity
-                    onPress={() => setSelectedImage("chadly.jpg")}
-                    style={styles.logoContainer}
-                  >
-                    <Image
-                      source={require("../assets/images/chadly.jpg")}
-                      style={styles.accreditationLogo}
-                      resizeMode="contain"
-                    />
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    onPress={() => setSelectedImage("sciencefair26.jpg")}
-                    style={styles.logoContainer}
-                  >
-                    <Image
-                      source={require("../assets/images/sciencefair26.jpg")}
-                      style={styles.schoolLogo}
-                      resizeMode="contain"
-                    />
-                  </TouchableOpacity>
-                </View>
-              </ScrollReveal>
-            </GlassCard>
+                  <ScrollReveal delay={1000}>
+                    <View style={styles.categoryBox}>
+                      <Text style={styles.categoryTitle}>
+                        Materials Science
+                      </Text>
+                      <Text style={styles.categoryStudents}>
+                        • Lana Almassri (6th grade){"\n"}• Maryam Rahmani (6th
+                        grade)
+                      </Text>
+                    </View>
+                  </ScrollReveal>
+
+                  <ScrollReveal delay={1050}>
+                    <View style={styles.celebrationSection}>
+                      <Text style={styles.celebrationTitle}>
+                        A Celebration of Excellence
+                      </Text>
+                      <Text style={styles.celebrationText}>
+                        These accomplishments reflect not only academic
+                        strength, but also creativity, perseverance, and a
+                        genuine passion for learning. Our students continue to
+                        embody the values of curiosity, discipline, and
+                        excellence that define Quba Islamic School.
+                      </Text>
+                      <Text style={styles.celebrationText}>
+                        We are incredibly proud of each and every student for
+                        their dedication and achievements. Their success is a
+                        testament to their hard work, the support of their
+                        families, and the commitment of our educators.
+                      </Text>
+                      <Text style={styles.celebrationText}>
+                        May Allah (SWT) continue to bless their knowledge and
+                        grant them success in this life and the next.
+                      </Text>
+                    </View>
+                  </ScrollReveal>
+
+                  <ScrollReveal delay={1100}>
+                    <View style={styles.outlookSection}>
+                      <Text style={styles.outlookTitle}>Looking Ahead</Text>
+                      <Text style={styles.outlookText}>
+                        At Quba Islamic School, we remain committed to nurturing
+                        future scientists, leaders, and innovators through a
+                        strong academic foundation and meaningful opportunities
+                        for exploration and growth.
+                      </Text>
+                    </View>
+                  </ScrollReveal>
+
+                  <ScrollReveal delay={1150}>
+                    <Text style={styles.sectionTitle}>School Calendar</Text>
+                    <View style={styles.calendarContainer}>
+                      <Image
+                        source={require("../assets/images/2026-2027-QIS-Calendar.png")}
+                        style={styles.calendarImage}
+                        resizeMode="contain"
+                      />
+                      <TouchableOpacity
+                        style={styles.downloadButton}
+                        onPress={() =>
+                          Linking.openURL("/assets/2026-2027-QIS-Calendar.pdf")
+                        }
+                      >
+                        <Text style={styles.downloadButtonText}>
+                          Download Calendar PDF
+                        </Text>
+                      </TouchableOpacity>
+                    </View>
+                  </ScrollReveal>
+                </GlassCard>
+              </View>
+            </View>
           </ScrollReveal>
         </Animated.View>
         <Footer />
@@ -390,7 +417,6 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     minHeight: "100%",
   },
-  content: {},
   sectionTitle: {
     fontSize: 28,
     fontWeight: "bold",
@@ -515,7 +541,7 @@ const styles = StyleSheet.create({
     fontWeight: "500",
   },
   recognitionSection: {
-    backgroundColor: "#f9fafb",
+    // backgroundColor: "#f9fafb",
     padding: 16,
     marginVertical: 20,
     borderRadius: 8,
@@ -535,7 +561,7 @@ const styles = StyleSheet.create({
   highlight: {
     fontWeight: "700",
     color: "#1a5f2c",
-    backgroundColor: "#e8f5e9",
+    // backgroundColor: "#e8f5e9",
     paddingHorizontal: 4,
     paddingVertical: 2,
     borderRadius: 4,
@@ -554,9 +580,9 @@ const styles = StyleSheet.create({
     fontStyle: "italic",
   },
   categoryBox: {
-    backgroundColor: "#fafbfc",
-    borderWidth: 1,
-    borderColor: "#e8e8e8",
+    // backgroundColor: "#fafbfc",
+    // borderWidth: 1,
+    // borderColor: "#e8e8e8",
     borderRadius: 10,
     padding: 16,
     marginVertical: 12,
@@ -573,7 +599,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     paddingBottom: 10,
     borderBottomWidth: 2,
-    borderBottomColor: "#e0e0e0",
+    // borderBottomColor: "#e0e0e0",
   },
   categoryStudents: {
     fontSize: 14,
@@ -582,7 +608,7 @@ const styles = StyleSheet.create({
     fontWeight: "500",
   },
   celebrationSection: {
-    backgroundColor: "#fef7e8",
+    // backgroundColor: "#fef7e8",
     borderRadius: 10,
     padding: 20,
     marginVertical: 30,
@@ -601,7 +627,7 @@ const styles = StyleSheet.create({
     fontWeight: "500",
   },
   outlookSection: {
-    backgroundColor: "#e3f2fd",
+    // backgroundColor: "#e3f2fd",
     borderRadius: 10,
     padding: 20,
     marginVertical: 20,
@@ -666,5 +692,19 @@ const styles = StyleSheet.create({
     height: 500,
     maxWidth: "100%",
     maxHeight: "100%",
+  },
+  heroImageContainer: {
+    width: "100%",
+    marginBottom: 30,
+    marginTop: 60,
+    borderRadius: 12,
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+  },
+  heroImage: {
+    width: "100%",
+    height: "100%",
+    borderRadius: 12,
   },
 });

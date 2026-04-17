@@ -14,7 +14,7 @@ export function Footer() {
     <View style={styles.footer}>
       <View style={styles.linksSection}>
         <Image
-          source={require("../assets/images/Mascot_2.png")}
+          source={require("../assets/images/Mascot_2-nobg.png")}
           style={styles.Mascot_2}
           resizeMode="contain"
         />

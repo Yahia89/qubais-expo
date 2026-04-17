@@ -52,11 +52,11 @@ export default function Index() {
 
   const responsiveLogoSize = () => {
     if (width >= 768) {
-      return { width: '45%', height: 150 };
+      return { width: '50%', height: 300 };
     } else if (width >= 480) {
-      return { width: '70%', height: 120 };
+      return { width: '75%', height: 140 };
     } else {
-      return { width: '80%', height: 100 };
+      return { width: '85%', height: 120 };
     }
   };
 
@@ -86,9 +86,9 @@ export default function Index() {
                 <Text style={styles.bookletButtonText}>View Our School Booklet</Text>
               </TouchableOpacity>
               <View style={styles.welcomeContainer}>
-                <View style={[styles.logoContainer, responsiveLogoContainerStyle()]}>
+                <View style={[styles.logoContainer, { width: width >= 768 ? '75%' : '100%' }, responsiveLogoContainerStyle()]}>
                   <Image
-                    source={require('../assets/images/Mascot_1.png')}
+                    source={require('../assets/images/Mascot_2-nobg.png')}
                     style={[styles.Mascot_1, responsiveLogoSize()]}
                     resizeMode="contain"
                   />
@@ -212,8 +212,8 @@ const styles = StyleSheet.create({
     height: 150,
   },
   Mascot_1: {
-    width: '45%',
-    height: 150,
+    width: '60%',
+    height: 200,
   },
   bookletButton: {
     backgroundColor: '#2c365d',

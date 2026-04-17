@@ -19,12 +19,13 @@ export const GlassCard: React.FC<GlassCardProps> = ({ children }) => {
 const styles = StyleSheet.create({
   glassCard: {
     position: 'relative',
-    width: '100%',
+    width: '75%',
     minHeight: 150,
     marginVertical: 15,
     borderRadius: 21,
     overflow: 'hidden',
     backgroundColor: 'transparent',
+    alignSelf: 'center',
   },
   blobPattern: {
     // opacity: 0.9,
