@@ -6,6 +6,7 @@ import {
   useWindowDimensions,
   Image,
   TouchableOpacity,
+    Linking,
 } from "react-native";
 import Animated, {
   useAnimatedScrollHandler,
