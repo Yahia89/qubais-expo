@@ -356,27 +356,6 @@ export default function News() {
                       </Text>
                     </View>
                   </ScrollReveal>
-
-                  <ScrollReveal delay={1150}>
-                    <Text style={styles.sectionTitle}>School Calendar</Text>
-                    <View style={styles.calendarContainer}>
-                      <Image
-                        source={require("../assets/images/2026-2027-QIS-Calendar.png")}
-                        style={styles.calendarImage}
-                        resizeMode="contain"
-                      />
-                      <TouchableOpacity
-                        style={styles.downloadButton}
-                        onPress={() =>
-                          Linking.openURL("/assets/2026-2027-QIS-Calendar.pdf")
-                        }
-                      >
-                        <Text style={styles.downloadButtonText}>
-                          Download Calendar PDF
-                        </Text>
-                      </TouchableOpacity>
-                    </View>
-                  </ScrollReveal>
                 </GlassCard>
               </View>
             </View>
@@ -435,27 +414,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "bold",
   },
-  calendarContainer: {
-    alignItems: "center",
-    width: "100%",
-    marginVertical: 20,
-  },
-  calendarImage: {
-    width: "100%",
-    height: 400,
-  },
-  downloadButton: {
-    backgroundColor: "#2c365d",
-    padding: 15,
-    borderRadius: 10,
-    marginTop: 20,
-    alignItems: "center",
-  },
-  downloadButtonText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "600",
-  },
+
   hashtags: {
     fontSize: 12,
     color: "#666",
