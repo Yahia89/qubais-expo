@@ -123,15 +123,14 @@ export default function News() {
                         { height: responsiveHeroImageHeight() },
                       ]}
                     >
-
-                        <Image
-                          source={require("../assets/images/chadly.jpg")}
-                          style={[
-                            styles.heroImage,
-                            { width: width >= 768 ? "50%" : "100%" },
-                          ]}
-                          resizeMode="cover"
-                        />
+                      <Image
+                        source={require("../assets/images/chadly.jpg")}
+                        style={[
+                          styles.heroImage,
+                          { width: width >= 768 ? "50%" : "100%" },
+                        ]}
+                        resizeMode="cover"
+                      />
 
                       <View
                         style={[
