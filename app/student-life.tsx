@@ -6,7 +6,7 @@ import {
   useWindowDimensions,
   Image,
   TouchableOpacity,
-    Linking,
+  Linking,
 } from "react-native";
 import Animated, {
   useAnimatedScrollHandler,
@@ -467,7 +467,7 @@ const styles = StyleSheet.create({
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 2,
   },
-    downloadButton: {
+  downloadButton: {
     backgroundColor: "#2c365d",
     padding: 15,
     borderRadius: 10,
@@ -479,7 +479,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "600",
   },
-    calendarContainer: {
+  calendarContainer: {
     alignItems: "center",
     width: "100%",
     marginVertical: 20,
