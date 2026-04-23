@@ -31,6 +31,16 @@ export default function StudentLife() {
 
   const { width } = useWindowDimensions();
 
+  const responsiveContentWidth = () => {
+    if (width >= 1024) {
+      return { width: "80%" };
+    } else if (width >= 768) {
+      return { width: "100%" };
+    } else {
+      return { width: "100%" };
+    }
+  };
+
   const responsivePaddingStyle = () => {
     if (width >= 1024) {
       return { paddingHorizontal: 60, marginHorizontal: 40 };
@@ -64,7 +74,7 @@ export default function StudentLife() {
         scrollEventThrottle={16}
       >
         <Animated.View
-          style={[styles.content, responsivePaddingStyle(), contentStyle]}
+          style={[styles.content, responsivePaddingStyle(), responsiveContentWidth(), contentStyle]}
         >
           <ScrollReveal delay={200}>
             <GlassCard>
@@ -407,7 +417,9 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     minHeight: "100%",
   },
-  content: {},
+ content: {
+    alignSelf: 'center',
+  },
   sectionTitle: {
     fontSize: 28,
     fontWeight: "bold",

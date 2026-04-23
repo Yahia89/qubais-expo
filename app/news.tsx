@@ -5,7 +5,6 @@ import {
   ImageBackground,
   Image,
   TouchableOpacity,
-  Linking,
   useWindowDimensions,
   Modal,
 } from "react-native";
@@ -27,7 +26,20 @@ export default function News() {
 
   const imageMap: Record<string, any> = {
     "chadly.jpg": require("../assets/images/chadly.jpg"),
+    "reptiles_header.jpg": require("../assets/images/reptiles_header.jpg"),
+    "students_touching_largeLizard.jpg": require("../assets/images/students_touching_largeLizard.jpg"),
+    "reptile_onShoulder.jpg": require("../assets/images/reptile_onShoulder.jpg"),
+    "banana_snake.jpg": require("../assets/images/banana_snake.jpg"),
   };
+
+  // Debug: Log when modal opens
+  useEffect(() => {
+    if (selectedImage) {
+      console.log("Selected image:", selectedImage);
+      console.log("Image in map:", !!imageMap[selectedImage]);
+      console.log("Image data:", imageMap[selectedImage]);
+    }
+  }, [selectedImage]);
 
   const scrollHandler = useAnimatedScrollHandler({
     onScroll: (event) => {
@@ -75,6 +87,16 @@ export default function News() {
     }
   };
 
+  const responsiveContentWidth = () => {
+    if (width >= 1024) {
+      return { width: "80%" };
+    } else if (width >= 768) {
+      return { width: "100%" };
+    } else {
+      return { width: "100%" };
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.backgroundImage}>
@@ -94,12 +116,23 @@ export default function News() {
             activeOpacity={1}
             onPress={(e) => e.stopPropagation()}
           >
-            {selectedImage && imageMap[selectedImage] && (
+            {selectedImage && imageMap[selectedImage] ? (
               <Image
                 source={imageMap[selectedImage]}
                 style={styles.fullscreenImage}
                 resizeMode="contain"
+                onError={() =>
+                  console.log("Image failed to load:", selectedImage)
+                }
               />
+            ) : (
+              <View style={styles.modalContent}>
+                <Text style={styles.errorText}>
+                  {selectedImage
+                    ? `Image not found: ${selectedImage}`
+                    : "No image selected"}
+                </Text>
+              </View>
             )}
           </TouchableOpacity>
         </TouchableOpacity>
@@ -108,12 +141,18 @@ export default function News() {
         style={styles.scrollView}
         onScroll={scrollHandler}
         scrollEventThrottle={16}
+        contentContainerStyle={styles.scrollViewContent}
       >
         <Animated.View
-          style={[styles.content, responsivePaddingStyle(), contentStyle]}
+          style={[
+            styles.content,
+            responsivePaddingStyle(),
+            responsiveContentWidth(),
+            contentStyle,
+          ]}
         >
           <ScrollReveal delay={300}>
-            <View style={{ width: "100%", alignItems: "center" }}>
+            <View>
               <View>
                 <GlassCard>
                   <ScrollReveal delay={200}>
@@ -137,16 +176,7 @@ export default function News() {
                           styles.heroImageContainer,
                           { height: responsiveHeroImageHeight() },
                         ]}
-                      >
-                        <Image
-                          source={require("../assets/images/Mascot_2-nobg.png")}
-                          style={[
-                            styles.heroImage,
-                            { width: width >= 768 ? "50%" : "100%" },
-                          ]}
-                          resizeMode="contain"
-                        />
-                      </View>
+                      ></View>
                     </View>
                   </ScrollReveal>
                   <ScrollReveal delay={350}>
@@ -356,6 +386,83 @@ export default function News() {
                       </Text>
                     </View>
                   </ScrollReveal>
+
+                  {/* New Earth Day Celebration section */}
+                  <ScrollReveal delay={1150}>
+                    <View style={styles.reptileSection}>
+                      <Text style={styles.reptileTitle}>
+                        Earth Day Celebration at Quba Islamic School
+                      </Text>
+                      <Text style={styles.reptileSubtitle}>
+                        Students Enjoy a Live Reptile Show on Campus
+                      </Text>
+                      <Text style={styles.blogDate}>Date: April 22, 2026</Text>
+                      <View
+                        style={[
+                          styles.heroImageContainer,
+                          { height: responsiveHeroImageHeight() },
+                        ]}
+                      >
+                        <Image
+                          source={require("../assets/images/reptiles_header.jpg")}
+                          style={[
+                            styles.heroImage,
+                            { width: width >= 768 ? "50%" : "100%" },
+                          ]}
+                          resizeMode="cover"
+                        />
+                      </View>
+
+                      <Text style={styles.reptileText}>
+                        Quba Islamic School celebrated Earth Day on April 22
+                        with a fun and educational live reptile show on campus.
+                      </Text>
+
+                      <View style={styles.reptileGallery}>
+                        <Image
+                          source={require("../assets/images/students_touching_largeLizard.jpg")}
+                          style={styles.reptileThumb}
+                          resizeMode="cover"
+                        />
+
+                        <Text style={styles.reptileText}>
+                          Students had the opportunity to observe and interact
+                          with a variety of fascinating reptiles. The
+                          presentation gave students a closer look at these
+                          amazing animals while teaching them about their
+                          habitats, behaviors, and importance in the natural
+                          world.
+                        </Text>
+
+                        <Image
+                          source={require("../assets/images/reptile_onShoulder.jpg")}
+                          style={styles.reptileThumb}
+                          resizeMode="cover"
+                        />
+
+                        <Text style={styles.reptileText}>
+                          The event was filled with excitement, curiosity, and
+                          hands-on learning. Students eagerly participated,
+                          asked thoughtful questions, and showed great
+                          enthusiasm as they explored the beauty and diversity
+                          of Allah’s creation.
+                        </Text>
+
+                        <Image
+                          source={require("../assets/images/banana_snake.jpg")}
+                          style={styles.reptileThumb}
+                          resizeMode="cover"
+                        />
+                        <Text style={styles.reptileText}>
+                          At Quba Islamic School, we value opportunities that
+                          make learning meaningful and memorable. Our Earth Day
+                          celebration was a wonderful way to encourage
+                          appreciation for wildlife, nature, and our shared
+                          responsibility to care for the environment.
+                        </Text>
+                      </View>
+                    </View>
+                  </ScrollReveal>
                 </GlassCard>
               </View>
             </View>
@@ -367,7 +474,7 @@ export default function News() {
   );
 }
 
-const styles = StyleSheet.create({
+const styles: any = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
@@ -392,6 +499,8 @@ const styles = StyleSheet.create({
   scrollView: {
     flex: 1,
     marginTop: 40,
+  },
+  scrollViewContent: {
     flexGrow: 1,
     minHeight: "100%",
   },
@@ -584,6 +693,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     fontWeight: "500",
   },
+
   outlookSection: {
     // backgroundColor: "#e3f2fd",
     borderRadius: 10,
@@ -601,6 +711,71 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     color: "#2c365d",
     fontWeight: "500",
+  },
+
+  // New styles for Earth Day / reptile section
+  reptileSection: {
+    borderRadius: 10,
+    padding: 20,
+    marginVertical: 30,
+    backgroundColor: "transparent",
+  },
+  reptileTitle: {
+    fontSize: 20,
+    fontWeight: "700",
+    color: "#2c365d",
+    marginBottom: 8,
+  },
+  reptileSubtitle: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: "#1a5f2c",
+    marginBottom: 12,
+  },
+  reptileHeaderImageContainer: {
+    width: "100%",
+    height: 220,
+    marginBottom: 12,
+    borderRadius: 12,
+    overflow: "hidden",
+  },
+  reptileHeaderImage: {
+    width: "100%",
+    height: "100%",
+  },
+  reptileGallery: {
+    flexDirection: "column",
+    justifyContent: "space-between",
+    alignItems: "center",
+    // gap is not supported consistently; use padding/margins and wrapping
+    marginVertical: 12,
+    flexWrap: "wrap",
+  },
+  reptileThumb: {
+    width: 340,
+    height: 420,
+    borderRadius: 8,
+    marginVertical: 6,
+  },
+  reptileMain: {
+    flex: 1,
+    minWidth: 160,
+    height: 140,
+    marginHorizontal: 8,
+    borderRadius: 8,
+  },
+  reptileText: {
+    fontSize: 15,
+    lineHeight: 24,
+    color: "#2c365d",
+    marginBottom: 12,
+  },
+  // content wrapper to center and limit width on large screens
+  content: {
+    maxWidth: "100%",
+    alignSelf: "center",
+    paddingTop: 8,
+    paddingBottom: 20,
   },
   accreditationRow: {
     flexDirection: "row",
@@ -646,10 +821,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   fullscreenImage: {
-    width: 500,
-    height: 500,
-    maxWidth: "100%",
-    maxHeight: "100%",
+    width: "90%",
+    height: "70%",
+    maxWidth: 900,
+    maxHeight: 900,
+  },
+  modalContent: {
+    justifyContent: "center",
+    alignItems: "center",
+    flex: 1,
+  },
+  errorText: {
+    color: "#fff",
+    fontSize: 16,
+    textAlign: "center",
   },
   heroImageContainer: {
     width: "100%",
@@ -657,8 +842,9 @@ const styles = StyleSheet.create({
     marginTop: 60,
     borderRadius: 12,
     flexDirection: "row",
-    justifyContent: "flex-start",
-    alignItems: "flex-start",
+    justifyContent: "center",
+    alignItems: "center",
+    flexWrap: "wrap",
   },
   heroImage: {
     width: "100%",

@@ -30,6 +30,16 @@ export default function Parents() {
 
   const { width } = useWindowDimensions();
 
+  const responsiveContentWidth = () => {
+    if (width >= 1024) {
+      return { width: "80%" };
+    } else if (width >= 768) {
+      return { width: "100%" };
+    } else {
+      return { width: "100%" };
+    }
+  };
+
     const responsivePaddingStyle = () => {
     if (width >= 1024) {
       return { paddingHorizontal: 60, marginHorizontal: 40 };
@@ -54,7 +64,7 @@ export default function Parents() {
         onScroll={scrollHandler}
         scrollEventThrottle={16}
       >
-        <Animated.View style={[styles.content, responsivePaddingStyle(), contentStyle]}>
+        <Animated.View style={[styles.content, responsivePaddingStyle(), responsiveContentWidth(), contentStyle]}>
           <ScrollReveal delay={200}>
             <GlassCard>
               <Text style={styles.sectionTitle}>Parent Resources and School policies</Text>
@@ -162,6 +172,7 @@ const styles = StyleSheet.create({
     minHeight: '100%',
   },
   content: {
+    alignSelf: 'center',
   },
   sectionTitle: {
     fontSize: 28,

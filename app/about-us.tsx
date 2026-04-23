@@ -16,6 +16,16 @@ import { Footer } from '../components/Footer';
 
 export default function AboutUs() {
   const { width } = useWindowDimensions();
+
+  const responsiveContentWidth = () => {
+    if (width >= 1024) {
+      return { width: "80%" };
+    } else if (width >= 768) {
+      return { width: "100%" };
+    } else {
+      return { width: "100%" };
+    }
+  };
   const scrollY = useSharedValue(0);
   const contentOpacity = useSharedValue(0);
 
@@ -100,7 +110,7 @@ const blobStyle = useAnimatedStyle(() => ({
         scrollEventThrottle={16}
         contentContainerStyle={styles.scrollViewContent}
       >
-        <Animated.View style={[styles.content, responsivePaddingStyle(), contentStyle]}>
+        <Animated.View style={[styles.content, responsivePaddingStyle(), responsiveContentWidth(), contentStyle]}>
         <GlassCard>
           <ScrollReveal delay={200}>
                 <Text style={styles.sectionTitle}>Our Vision</Text>
@@ -226,6 +236,9 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
+   content: {
+    alignSelf: 'center',
+  },
   backgroundImageContent: {
     flex: 1,
     width: '100%',
@@ -239,9 +252,6 @@ const styles = StyleSheet.create({
   scrollViewContent: {
     flexGrow: 1,
     minHeight: '100%',
-  },
-  content: {
-   
   },
   contentCard: {
     backgroundColor: '#fff',

@@ -32,6 +32,16 @@ export default function Academics() {
 
   const { width } = useWindowDimensions();
 
+  const responsiveContentWidth = () => {
+    if (width >= 1024) {
+      return { width: "80%" };
+    } else if (width >= 768) {
+      return { width: "100%" };
+    } else {
+      return { width: "100%" };
+    }
+  };
+
   const responsivePaddingStyle = () => {
     if (width >= 1024) {
       return { paddingHorizontal: 60, marginHorizontal: 40 };
@@ -64,9 +74,7 @@ export default function Academics() {
         onScroll={scrollHandler}
         scrollEventThrottle={16}
       >
-        <Animated.View
-          style={[styles.content, responsivePaddingStyle(), contentStyle]}
-        >
+         <Animated.View style={[styles.content, responsivePaddingStyle(), responsiveContentWidth(), contentStyle]}>
           <ScrollReveal delay={200}>
             <GlassCard>
               <Text style={styles.sectionTitle}>K-12 Academic Program</Text>
@@ -633,8 +641,8 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     minHeight: "100%",
   },
-  content: {
-    padding: 20,
+ content: {
+    alignSelf: 'center',
   },
   sectionTitle: {
     fontSize: 32,

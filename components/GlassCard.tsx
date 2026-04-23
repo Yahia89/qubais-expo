@@ -19,7 +19,7 @@ export const GlassCard: React.FC<GlassCardProps> = ({ children }) => {
 const styles = StyleSheet.create({
   glassCard: {
     position: 'relative',
-    width: '75%',
+    width: '85%',
     minHeight: 150,
     marginVertical: 15,
     borderRadius: 21,

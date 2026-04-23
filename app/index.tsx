@@ -15,6 +15,16 @@ import { Footer } from '../components/Footer';
 export default function Index() {
   const { width } = useWindowDimensions();
 
+  const responsiveContentWidth = () => {
+    if (width >= 1024) {
+      return { width: "80%" };
+    } else if (width >= 768) {
+      return { width: "100%" };
+    } else {
+      return { width: "100%" };
+    }
+  };
+
   const scrollY = useSharedValue(0);
   const contentOpacity = useSharedValue(0);
 
@@ -60,6 +70,7 @@ export default function Index() {
     }
   };
 
+
   return (
     <View style={styles.container}>
       <View style={styles.backgroundImage}>
@@ -75,7 +86,7 @@ export default function Index() {
         scrollEventThrottle={16}
         contentContainerStyle={styles.scrollViewContent}
       >
-        <Animated.View style={[styles.content, responsivePaddingStyle(), contentStyle]}>
+         <Animated.View style={[styles.content, responsivePaddingStyle(), responsiveContentWidth(), contentStyle]}>
           <ScrollReveal delay={200}>
             <GlassCard>
               <Text style={styles.sectionTitle}>Quba Islamic School</Text>
@@ -88,7 +99,7 @@ export default function Index() {
               <View style={styles.welcomeContainer}>
                 <View style={[styles.logoContainer, { width: width >= 768 ? '75%' : '100%' }, responsiveLogoContainerStyle()]}>
                   <Image
-                    source={require('../assets/images/Mascot_2-nobg.png')}
+                    source={require('../assets/images/Mascot_3-nobg.png')}
                     style={[styles.Mascot_1, responsiveLogoSize()]}
                     resizeMode="contain"
                   />
@@ -158,8 +169,8 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     minHeight: '100%',
   },
-  content: {
-    // base styles here if needed
+ content: {
+    alignSelf: 'center',
   },
   sectionTitle: {
     fontSize: 32,
