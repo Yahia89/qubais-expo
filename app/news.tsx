@@ -8,18 +8,21 @@ import {
   useWindowDimensions,
   Modal,
 } from "react-native";
-import Animated, {
+import Animated,
+{
   useAnimatedScrollHandler,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
 import { useEffect, useState } from "react";
+import { useRouter } from "expo-router";
 import { ScrollReveal } from "../components/ScrollReveal";
 import { GlassCard } from "../components/GlassCard";
 import { Footer } from "../components/Footer";
 
 export default function News() {
+  const router = useRouter();
   const scrollY = useSharedValue(0);
   const contentOpacity = useSharedValue(0);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -30,7 +33,74 @@ export default function News() {
     "students_touching_largeLizard.jpg": require("../assets/images/students_touching_largeLizard.jpg"),
     "reptile_onShoulder.jpg": require("../assets/images/reptile_onShoulder.jpg"),
     "banana_snake.jpg": require("../assets/images/banana_snake.jpg"),
+    "Hands-On-Learning-thumbnail.jpg": require("../assets/images/Hands-On-Learning-thumbnail.jpg"),
+    "icna-header.jpg": require("../assets/images/icna-header.jpg"),
   };
+
+  const articles = [
+    {
+      id: "community-service",
+      title: "High School Students Give Back Through Community Service with ICNA Relief",
+      date: "April 28, 2026",
+      thumbnail: "icna-header.jpg",
+      excerpt:
+        "Our high school students volunteered with ICNA Relief, assisting with food organization and distribution efforts to support families facing food insecurity.",
+      body: `High School Students Give Back Through Community Service with ICNA Relief
+
+At Quba Islamic School, community service is more than a graduation requirement—it is a reflection of our values and commitment to developing compassionate, responsible leaders. Today, our high school students took that commitment beyond the classroom by volunteering with ICNA Relief, an organization dedicated to serving communities in need.
+
+Students were engaged in hands-on service, assisting with food organization and distribution efforts. From sorting fresh produce and packaged goods to preparing bags for families, every task contributed to a larger mission: supporting individuals and families facing food insecurity.
+
+This experience provided students with a meaningful opportunity to witness the direct impact of their efforts. It also reinforced important life skills such as teamwork, responsibility, and empathy. Working side by side, our students demonstrated initiative and a strong sense of purpose, embodying the spirit of service that we strive to instill in all our learners.
+
+Volunteering with ICNA Relief allowed students to connect their faith and values with real-world action. Acts of service like these not only strengthen our community but also help shape students into individuals who are mindful of others and committed to making a positive difference.
+
+We are proud of our students for dedicating their time and energy to such an important cause. Their efforts today are a reminder that even small acts of kindness can have a lasting impact.`,
+    },
+    {
+      id: "papermaking",
+      title: "Hands-On Learning: Students Make Their Own Paper",
+      date: "April 23, 2026",
+      thumbnail: "Hands-On-Learning-thumbnail.jpg",
+      excerpt:
+        "A Creative Earth-Friendly Classroom Activity — Kindergarten students learn the process of transforming pulp into paper.",
+      body: `Hands-On Learning: Students Make Their Own Paper
+
+A Creative Earth-Friendly Classroom Activity
+
+Our students in Kindergarten recently took part in a fun and meaningful hands-on activity—making their own paper from scratch!
+
+Using simple materials and guided instruction, students learned the process of transforming pulp into paper. From dipping frames into the mixture to pressing and drying their sheets, each step gave students a deeper appreciation for how everyday materials can be reused and repurposed.
+
+This activity was not only creative and engaging, but also reinforced important lessons about sustainability and environmental responsibility. Students explored how recycling works in a practical way, connecting their learning to real-world applications.
+
+Throughout the process, students demonstrated patience, teamwork, and excitement as they watched their handmade paper come to life. The pride on their faces reflected the joy of learning through experience.
+
+At Quba Islamic School, we are committed to providing interactive learning opportunities that inspire creativity while nurturing awareness of our responsibility to care for the environment.`,
+    },
+    {
+      id: "earth-day",
+      title: "Earth Day Celebration at Quba Islamic School",
+      date: "April 22, 2026",
+      thumbnail: "reptiles_header.jpg",
+      excerpt:
+        "Students Enjoy a Live Reptile Show on Campus — hands-on learning and appreciation for wildlife.",
+      body: `Quba Islamic School celebrated Earth Day on April 22 with a fun and educational live reptile show on campus. Students had the opportunity to observe and interact with a variety of fascinating reptiles. The presentation gave students a closer look at these amazing animals while teaching them about their habitats, behaviors, and importance in the natural world.`,
+    },
+    {
+      id: "science-fair",
+      title: "Quba Islamic School Shines at the LA County Science Fair 2026!",
+      date: "April 2026",
+      thumbnail: "chadly.jpg",
+      excerpt:
+        "Quba Islamic School proudly celebrates the outstanding achievements of our students in the fields of science, research, and innovation.",
+      body: `Quba Islamic School proudly celebrates the outstanding achievements of our students in the fields of science, research, and innovation. Through dedication, curiosity, and hard work, our students have demonstrated excellence across a wide range of disciplines, representing our school with distinction.
+
+Special Recognition: Rafia Ahmed (10th grade) earned the PECG Senior Honorable Mention Medal.
+
+(Full list of awards and student achievements available in the original article.)`,
+    },
+  ];
 
   // Debug: Log when modal opens
   useEffect(() => {
@@ -137,6 +207,7 @@ export default function News() {
           </TouchableOpacity>
         </TouchableOpacity>
       </Modal>
+
       <Animated.ScrollView
         style={styles.scrollView}
         onScroll={scrollHandler}
@@ -151,319 +222,59 @@ export default function News() {
             contentStyle,
           ]}
         >
-          <ScrollReveal delay={300}>
+          <ScrollReveal delay={200}>
             <View>
-              <View>
-                <GlassCard>
-                  <ScrollReveal delay={200}>
-                    <View
-                      style={[
-                        styles.heroImageContainer,
-                        { height: responsiveHeroImageHeight() },
-                      ]}
-                    >
-                      <Image
-                        source={require("../assets/images/chadly.jpg")}
-                        style={[
-                          styles.heroImage,
-                          { width: width >= 768 ? "50%" : "100%" },
-                        ]}
-                        resizeMode="cover"
-                      />
+              <Text style={styles.sectionTitle}>News & Blogs</Text>
 
+              <View
+                style={[
+                  styles.articleList,
+                  width >= 768 ? styles.articleGrid : {},
+                ]}
+              >
+                {articles.map((article) => (
+                  <TouchableOpacity
+                    key={article.id}
+                    activeOpacity={0.9}
+                    onPress={() =>
+                      router.push({
+                        pathname: "/news-detail" as any,
+                        params: { id: article.id },
+                      })
+                    }
+                    style={styles.articleTouchable}
+                  >
+                    <GlassCard>
                       <View
                         style={[
-                          styles.heroImageContainer,
-                          { height: responsiveHeroImageHeight() },
-                        ]}
-                      ></View>
-                    </View>
-                  </ScrollReveal>
-                  <ScrollReveal delay={350}>
-                    <View style={styles.blogHeader}>
-                      <Text
-                        style={[styles.blogTitle, responsiveBlogTitleSize()]}
-                      >
-                        Quba Islamic School Shines at the LA County Science Fair
-                        2026!
-                      </Text>
-                      <Text style={styles.blogDate}>Date: April 2026</Text>
-                    </View>
-                  </ScrollReveal>
-
-                  <ScrollReveal delay={400}>
-                    <Text style={styles.blogIntro}>
-                      Quba Islamic School proudly celebrates the outstanding
-                      achievements of our students in the fields of science,
-                      research, and innovation. Through dedication, curiosity,
-                      and hard work, our students have demonstrated excellence
-                      across a wide range of disciplines, representing our
-                      school with distinction.
-                    </Text>
-                  </ScrollReveal>
-
-                  <ScrollReveal delay={450}>
-                    <View style={styles.recognitionSection}>
-                      <Text style={styles.sectionHeading}>
-                        Special Recognition
-                      </Text>
-                      <Text style={styles.recognitionText}>
-                        We extend our heartfelt congratulations to{" "}
-                        <Text style={styles.highlight}>
-                          Rafia Ahmed (10th grade)
-                        </Text>{" "}
-                        for earning the PECG Senior Honorable Mention Medal.
-                        This prestigious recognition highlights her exceptional
-                        effort and commitment to academic excellence.
-                      </Text>
-                    </View>
-                  </ScrollReveal>
-
-                  <ScrollReveal delay={500}>
-                    <View style={styles.recognitionSection}>
-                      <Text style={styles.sectionHeading}>
-                        Honorable Mention
-                      </Text>
-                      <Text style={styles.recognitionText}>
-                        <Text style={styles.highlight}>
-                          Sarah Hamid (7th grade)
-                        </Text>{" "}
-                        was awarded Honorable Mention in Cognitive Science,
-                        showcasing her strong analytical thinking and passion
-                        for understanding human behavior and cognition.
-                      </Text>
-                    </View>
-                  </ScrollReveal>
-
-                  <ScrollReveal delay={550}>
-                    <View style={styles.categorySection}>
-                      <Text style={styles.sectionHeading}>
-                        Recognition Awards
-                      </Text>
-                      <Text style={styles.categorySubheading}>
-                        Our students were also recognized across multiple
-                        scientific categories:
-                      </Text>
-                    </View>
-                  </ScrollReveal>
-
-                  <ScrollReveal delay={600}>
-                    <View style={styles.categoryBox}>
-                      <Text style={styles.categoryTitle}>
-                        Behavioral & Social Sciences
-                      </Text>
-                      <Text style={styles.categoryStudents}>
-                        • Baierna Zulpihaer (7th grade){"\n"}• Yanar Akoshali
-                        (10th grade){"\n"}• Rory Zamril (10th grade)
-                      </Text>
-                    </View>
-                  </ScrollReveal>
-
-                  <ScrollReveal delay={650}>
-                    <View style={styles.categoryBox}>
-                      <Text style={styles.categoryTitle}>
-                        Biochemistry & Molecular Biology
-                      </Text>
-                      <Text style={styles.categoryStudents}>
-                        • Menaal Obaid (8th grade){"\n"}• Kenzy Morsy (9th
-                        grade)
-                      </Text>
-                    </View>
-                  </ScrollReveal>
-
-                  <ScrollReveal delay={700}>
-                    <View style={styles.categoryBox}>
-                      <Text style={styles.categoryTitle}>
-                        Chemistry (General)
-                      </Text>
-                      <Text style={styles.categoryStudents}>
-                        • Roqaia Eldokony (8th grade){"\n"}• Aliza Zafar (10th
-                        grade)
-                      </Text>
-                    </View>
-                  </ScrollReveal>
-
-                  <ScrollReveal delay={750}>
-                    <View style={styles.categoryBox}>
-                      <Text style={styles.categoryTitle}>
-                        Chemistry (Applied)
-                      </Text>
-                      <Text style={styles.categoryStudents}>
-                        • Fatima Ahmed (8th grade)
-                      </Text>
-                    </View>
-                  </ScrollReveal>
-
-                  <ScrollReveal delay={800}>
-                    <View style={styles.categoryBox}>
-                      <Text style={styles.categoryTitle}>
-                        Engineering: Civil & Environmental
-                      </Text>
-                      <Text style={styles.categoryStudents}>
-                        • Abdullah Zafar (8th grade){"\n"}• Omar Peerzay (6th
-                        grade)
-                        {"\n"}• Rashidi Zamril (6th grade){"\n"}• Rafia Ahmed
-                        (10th grade)
-                      </Text>
-                    </View>
-                  </ScrollReveal>
-
-                  <ScrollReveal delay={850}>
-                    <View style={styles.categoryBox}>
-                      <Text style={styles.categoryTitle}>
-                        Engineering: Electronics & Robotics
-                      </Text>
-                      <Text style={styles.categoryStudents}>
-                        • Joud Al Tawam (10th grade)
-                      </Text>
-                    </View>
-                  </ScrollReveal>
-
-                  <ScrollReveal delay={900}>
-                    <View style={styles.categoryBox}>
-                      <Text style={styles.categoryTitle}>Microbiology</Text>
-                      <Text style={styles.categoryStudents}>
-                        • Haneefa AW Rahmani (8th grade){"\n"}• Chadly Ayachi
-                        (7th grade){"\n"}• Erum Hashim (9th grade)
-                      </Text>
-                    </View>
-                  </ScrollReveal>
-
-                  <ScrollReveal delay={950}>
-                    <View style={styles.categoryBox}>
-                      <Text style={styles.categoryTitle}>Product Science</Text>
-                      <Text style={styles.categoryStudents}>
-                        • Malik Sabha (6th grade)
-                      </Text>
-                    </View>
-                  </ScrollReveal>
-
-                  <ScrollReveal delay={1000}>
-                    <View style={styles.categoryBox}>
-                      <Text style={styles.categoryTitle}>
-                        Materials Science
-                      </Text>
-                      <Text style={styles.categoryStudents}>
-                        • Lana Almassri (6th grade){"\n"}• Maryam Rahmani (6th
-                        grade)
-                      </Text>
-                    </View>
-                  </ScrollReveal>
-
-                  <ScrollReveal delay={1050}>
-                    <View style={styles.celebrationSection}>
-                      <Text style={styles.celebrationTitle}>
-                        A Celebration of Excellence
-                      </Text>
-                      <Text style={styles.celebrationText}>
-                        These accomplishments reflect not only academic
-                        strength, but also creativity, perseverance, and a
-                        genuine passion for learning. Our students continue to
-                        embody the values of curiosity, discipline, and
-                        excellence that define Quba Islamic School.
-                      </Text>
-                      <Text style={styles.celebrationText}>
-                        We are incredibly proud of each and every student for
-                        their dedication and achievements. Their success is a
-                        testament to their hard work, the support of their
-                        families, and the commitment of our educators.
-                      </Text>
-                      <Text style={styles.celebrationText}>
-                        May Allah (SWT) continue to bless their knowledge and
-                        grant them success in this life and the next.
-                      </Text>
-                    </View>
-                  </ScrollReveal>
-
-                  <ScrollReveal delay={1100}>
-                    <View style={styles.outlookSection}>
-                      <Text style={styles.outlookTitle}>Looking Ahead</Text>
-                      <Text style={styles.outlookText}>
-                        At Quba Islamic School, we remain committed to nurturing
-                        future scientists, leaders, and innovators through a
-                        strong academic foundation and meaningful opportunities
-                        for exploration and growth.
-                      </Text>
-                    </View>
-                  </ScrollReveal>
-
-                  {/* New Earth Day Celebration section */}
-                  <ScrollReveal delay={1150}>
-                    <View style={styles.reptileSection}>
-                      <Text style={styles.reptileTitle}>
-                        Earth Day Celebration at Quba Islamic School
-                      </Text>
-                      <Text style={styles.reptileSubtitle}>
-                        Students Enjoy a Live Reptile Show on Campus
-                      </Text>
-                      <Text style={styles.blogDate}>Date: April 22, 2026</Text>
-                      <View
-                        style={[
-                          styles.heroImageContainer,
-                          { height: responsiveHeroImageHeight() },
+                          styles.articleCard,
+                          width >= 768 && styles.articleCardLarge,
                         ]}
                       >
-                        <Image
-                          source={require("../assets/images/reptiles_header.jpg")}
-                          style={[
-                            styles.heroImage,
-                            { width: width >= 768 ? "50%" : "100%" },
-                          ]}
-                          resizeMode="cover"
-                        />
+                        {imageMap[article.thumbnail] ? (
+                          <Image
+                            source={imageMap[article.thumbnail]}
+                            style={[
+                              styles.articleThumb,
+                              width >= 768
+                                ? styles.thumbLarge
+                                : styles.thumbSmall,
+                            ]}
+                            resizeMode="cover"
+                          />
+                        ) : null}
+
+                        <View style={styles.cardContent}>
+                          <Text style={styles.blogTitleSmall}>
+                            {article.title}
+                          </Text>
+                          <Text style={styles.blogDate}>{article.date}</Text>
+                          <Text style={styles.blogIntro}>{article.excerpt}</Text>
+                        </View>
                       </View>
-
-                      <Text style={styles.reptileText}>
-                        Quba Islamic School celebrated Earth Day on April 22
-                        with a fun and educational live reptile show on campus.
-                      </Text>
-
-                      <View style={styles.reptileGallery}>
-                        <Image
-                          source={require("../assets/images/students_touching_largeLizard.jpg")}
-                          style={styles.reptileThumb}
-                          resizeMode="cover"
-                        />
-
-                        <Text style={styles.reptileText}>
-                          Students had the opportunity to observe and interact
-                          with a variety of fascinating reptiles. The
-                          presentation gave students a closer look at these
-                          amazing animals while teaching them about their
-                          habitats, behaviors, and importance in the natural
-                          world.
-                        </Text>
-
-                        <Image
-                          source={require("../assets/images/reptile_onShoulder.jpg")}
-                          style={styles.reptileThumb}
-                          resizeMode="cover"
-                        />
-
-                        <Text style={styles.reptileText}>
-                          The event was filled with excitement, curiosity, and
-                          hands-on learning. Students eagerly participated,
-                          asked thoughtful questions, and showed great
-                          enthusiasm as they explored the beauty and diversity
-                          of Allah’s creation.
-                        </Text>
-
-                        <Image
-                          source={require("../assets/images/banana_snake.jpg")}
-                          style={styles.reptileThumb}
-                          resizeMode="cover"
-                        />
-                        <Text style={styles.reptileText}>
-                          At Quba Islamic School, we value opportunities that
-                          make learning meaningful and memorable. Our Earth Day
-                          celebration was a wonderful way to encourage
-                          appreciation for wildlife, nature, and our shared
-                          responsibility to care for the environment.
-                        </Text>
-                      </View>
-                    </View>
-                  </ScrollReveal>
-                </GlassCard>
+                    </GlassCard>
+                  </TouchableOpacity>
+                ))}
               </View>
             </View>
           </ScrollReveal>
@@ -478,7 +289,7 @@ const styles: any = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    minHeight: "100vh",
+    minHeight: "100%",
   },
   backgroundImage: {
     position: "absolute",
@@ -602,7 +413,7 @@ const styles: any = StyleSheet.create({
   },
   blogIntro: {
     fontSize: 16,
-    lineHeight: 26,
+    // lineHeight: 26,
     color: "#2c365d",
     marginBottom: 30,
     fontWeight: "500",
@@ -770,6 +581,7 @@ const styles: any = StyleSheet.create({
     color: "#2c365d",
     marginBottom: 12,
   },
+
   // content wrapper to center and limit width on large screens
   content: {
     maxWidth: "100%",
@@ -777,6 +589,68 @@ const styles: any = StyleSheet.create({
     paddingTop: 8,
     paddingBottom: 20,
   },
+
+  // Styles for compact article list view
+  articleList: {
+    width: "100%",
+    flexDirection: "column",
+    paddingBottom: 20,
+  },
+  articleGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+  },
+  articleTouchable: {
+    width: "100%",
+    padding: 6,
+  },
+  articleCard: {
+    backgroundColor: "rgba(255, 255, 255, 0.49)",
+    borderRadius: 12,
+    overflow: "hidden",
+    flexDirection: "column",
+    alignItems: "center",
+    padding: 0,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.05,
+    shadowRadius: 4,
+    elevation: 1,
+    height: 400,
+  },
+  articleCardLarge: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  articleThumb: {
+    borderRadius: 8,
+    marginRight: 0,
+  },
+  thumbLarge: {
+    width: "40%",
+    height: 400,
+    borderTopLeftRadius: 12,
+    borderBottomLeftRadius: 12,
+    marginRight: 0,
+  },
+  thumbSmall: {
+    width: "100%",
+    height: 200,
+    marginBottom: 0,
+  },
+  cardContent: {
+    flex: 1,
+    padding: 8,
+  },
+  blogTitleSmall: {
+    fontSize: 18,
+    fontWeight: "700",
+    color: "#2c365d",
+    marginBottom: 6,
+    lineHeight: 24,
+  },
+
   accreditationRow: {
     flexDirection: "row",
     alignItems: "center",
