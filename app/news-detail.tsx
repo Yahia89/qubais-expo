@@ -36,6 +36,9 @@ export default function NewsDetail() {
     "icna-header.jpg": require("../assets/images/icna-header.jpg"),
     "icna-1.jpg": require("../assets/images/icna-1.jpg"),
     "icna-2.jpg": require("../assets/images/icna-2.jpg"),
+    "khutbah-header.jpg": require("../assets/images/khutbah-header.jpg"),
+    "khutbah-1.jpg": require("../assets/images/khutbah-1.jpg"),
+    "khutbah-3.jpg": require("../assets/images/khutbah-3.jpg"),
   };
 
   const articles: Record<string, any> = {
@@ -138,6 +141,28 @@ This experience provided students with a meaningful opportunity to witness the d
 Volunteering with ICNA Relief allowed students to connect their faith and values with real-world action. Acts of service like these not only strengthen our community but also help shape students into individuals who are mindful of others and committed to making a positive difference.
 
 We are proud of our students for dedicating their time and energy to such an important cause. Their efforts today are a reminder that even small acts of kindness can have a lasting impact.`,
+    },
+    "khutbah-presentations": {
+      id: "khutbah-presentations",
+      title: "Khutbah Presentations: A Milestone of Growth and Confidence",
+      date: "May 5 & May 7, 2026",
+      thumbnail: "khutbah-header.jpg",
+      images: ["khutbah-3.jpg", "khutbah-1.jpg"],
+      body: `Khutbah Presentations: A Milestone of Growth and Confidence
+
+May 5 & May 7, 2026 | Following Salat Al-Dhuhr
+
+Our school community was honored to host a special Khutbah presentation led by our students at the masjid, marking a meaningful milestone in their academic and spiritual journey.
+
+Over the past several weeks, students have been deeply engaged in preparing for this moment. Through guided instruction, they explored how to select meaningful and relevant topics, organize their thoughts with clarity, and deliver their messages with confidence and purpose. This process not only strengthened their public speaking skills but also nurtured their understanding of responsibility, leadership, and faith.
+
+Standing at the minbar, our students demonstrated remarkable growth. They spoke with sincerity and composure, addressing important themes that reflected both personal reflection and community awareness. Their ability to communicate their ideas so thoughtfully was a testament to their hard work and dedication.
+
+The presence of community members and peers played a vital role in making this experience even more impactful. Their support and encouragement created an atmosphere of pride and motivation, reinforcing the importance of uplifting our youth as they take on leadership roles.
+
+These Khutbah presentations were more than just an academic exercise—they were a powerful opportunity for students to connect knowledge with practice, and to experience the responsibility of sharing meaningful reminders with others.
+
+We are incredibly proud of our students and grateful to everyone who attended and supported them. Events like these highlight the strength of our community and the bright future ahead for our students.`,
     },
   };
 
